@@ -20,4 +20,5 @@ A mute button.
 - This document.
 
 ## What I still need to accomplish
-- Find and define what I still need to accomplish.
+- Divide big library into separate smaller libraries.
+- Find out how to put audio through at 0dB gain or attenuation.

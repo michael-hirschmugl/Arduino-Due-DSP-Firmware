@@ -1,9 +1,10 @@
 #include <stdint.h>
 #include "intrinsics.h"
 #include "sam3x8e.h"
+#include "sam3x8e_setup.h"
 
 #define NCoef 2
-#define DCgain_BP 192   //64*3 test
+#define DCgain_BP 192   //64*3
 #define DCgain_TP 384   //128*3
 #define DCgain_HP 3     //1*3
 #define DCgain_MainTP 1
@@ -291,6 +292,8 @@ int main()
     }
 
     __disable_interrupt();
+
+    SAM3X8E_SETUP.test();
 
     SAM3X8E.disable_watchdog_timer();
 

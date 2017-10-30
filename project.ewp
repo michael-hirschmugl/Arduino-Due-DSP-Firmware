@@ -2053,4 +2053,7 @@
     <file>
         <name>$PROJ_DIR$\sam3x8e_setup_definitions.h</name>
     </file>
+    <file>
+        <name>$PROJ_DIR$\wm8731_setup_definitions.h</name>
+    </file>
 </project>

@@ -293,11 +293,9 @@ int main()
 
     __disable_interrupt();
 
-    SAM3X8E_SETUP.test();
-
     SAM3X8E.disable_watchdog_timer();
 
-    SAM3X8E.init_clock();
+    SAM3X8E_SETUP.init_clock();
     SAM3X8E.init_clock_for_wm8731();
     SAM3X8E.init_twi1();
     SAM3X8E.setup_twi1_master_transfer();

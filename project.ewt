@@ -2325,4 +2325,10 @@
     <file>
         <name>$PROJ_DIR$\sam3x8e.h</name>
     </file>
+    <file>
+        <name>$PROJ_DIR$\sam3x8e_setup.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\sam3x8e_setup.h</name>
+    </file>
 </project>

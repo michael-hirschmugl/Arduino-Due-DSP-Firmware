@@ -2338,6 +2338,12 @@
         <name>$PROJ_DIR$\sam3x8e_setup_definitions.h</name>
     </file>
     <file>
+        <name>$PROJ_DIR$\sam3x8e_twi.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\sam3x8e_twi.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\sam3x8e_wdt.cpp</name>
     </file>
     <file>

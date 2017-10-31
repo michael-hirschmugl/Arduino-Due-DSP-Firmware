@@ -14,13 +14,13 @@ class SAM3X8EClass {
 public:
 	SAM3X8EClass(void) { };
 
-        void init_twi1_clk(void);
-        void init_twi1(void);
-        void setup_pio_for_twi1(void);
+        
+        
+        
         void init_clock_for_wm8731(void);
-        void setup_twi1_master_transfer(void);
-        uint8_t send_two_bytes_to_wm8731(uint8_t, uint8_t);
-        uint16_t setup_WM8731(void);
+        
+        
+        
         void init_ssc_clk(void);
         void init_ssc(void);
         void setup_pio_for_ssc(void);

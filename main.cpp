@@ -3,6 +3,7 @@
 #include "sam3x8e.h"
 #include "sam3x8e_setup.h"
 #include "sam3x8e_wdt.h"
+#include "sam3x8e_twi.h"
 
 #define NCoef           2
 #define DCgain_BP       192   //64*3
@@ -298,11 +299,11 @@ int main()
 
     SAM3X8E_SETUP.init_clock();
     SAM3X8E.init_clock_for_wm8731();
-    SAM3X8E.init_twi1();
-    SAM3X8E.setup_twi1_master_transfer();
+    SAM3X8E_TWI.init_twi1();
+    SAM3X8E_TWI.setup_twi1_master_transfer();
     SAM3X8E.init_ssc();
 
-    i =  SAM3X8E.setup_WM8731();
+    i =  SAM3X8E_TWI.setup_WM8731();
 
     SAM3X8E.setup_ssc_master_transfer();
     SAM3X8E.ssc_interrupt_setup();

@@ -4,6 +4,9 @@
 #include "sam3x8e_setup.h"
 #include "sam3x8e_wdt.h"
 #include "sam3x8e_twi.h"
+#include "sam3x8e_ssc.h"
+#include "sam3x8e_adc.h"
+#include "sam3x8e_din.h"
 
 #define NCoef           2
 #define DCgain_BP       192   //64*3
@@ -301,14 +304,14 @@ int main()
     SAM3X8E.init_clock_for_wm8731();
     SAM3X8E_TWI.init_twi1();
     SAM3X8E_TWI.setup_twi1_master_transfer();
-    SAM3X8E.init_ssc();
+    SAM3X8E_SSC.init_ssc();
 
     i =  SAM3X8E_TWI.setup_WM8731();
 
-    SAM3X8E.setup_ssc_master_transfer();
-    SAM3X8E.ssc_interrupt_setup();
-    SAM3X8E.enable_digital_input();
-    SAM3X8E.enable_adc_input();
+    SAM3X8E_SSC.setup_ssc_master_transfer();
+    SAM3X8E_SSC.ssc_interrupt_setup();
+    SAM3X8E_DIN.enable_digital_input();
+    SAM3X8E_ADC.enable_adc_input();
 
     __enable_interrupt();
 

@@ -21,16 +21,9 @@ public:
         
         
         
-        void init_ssc_clk(void);
-        void init_ssc(void);
-        void setup_pio_for_ssc(void);
-        void setup_ssc_master_transfer(void);
-        void ssc_interrupt_setup(void);
-        void disable_ssc_interrupt_for_dma(void);
-        void enable_digital_input(void);
-        void enable_digital_input_interrupts(void);
-        void enable_adc_input(void);
-        void enable_adc_input_interrupts(void);
+        
+        
+        
         void configure_dma(uint8_t,uint8_t,uint32_t*,uint32_t*,uint32_t,
                            uint8_t,uint8_t);
         void enable_dma_interrupts(uint8_t);

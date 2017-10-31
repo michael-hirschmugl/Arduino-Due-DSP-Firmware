@@ -3,7 +3,6 @@
 */
 
 #include "sam3x8e_dma.h"
-#include "intrinsics.h"
 
 void SAM3X8E_DMAClass::configure_dma(uint8_t channel, uint8_t sod,
                                  uint32_t* src, uint32_t* dst,

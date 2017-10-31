@@ -3,7 +3,6 @@
 */
 
 #include "sam3x8e_adc.h"
-#include "intrinsics.h"
 
 void SAM3X8E_ADCClass::enable_adc_input(void)
 {

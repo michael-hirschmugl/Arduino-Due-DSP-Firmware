@@ -3,7 +3,6 @@
 */
 
 #include "sam3x8e_twi.h"
-#include "intrinsics.h"
 
 /*
     Enables the peripheral clock for TWI1.

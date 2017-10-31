@@ -3,7 +3,6 @@
 */
 
 #include "sam3x8e_setup.h"
-#include "intrinsics.h"
 
 /*
     Sets the main clock frequency to 84MHz.

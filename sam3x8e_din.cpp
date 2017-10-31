@@ -3,7 +3,6 @@
 */
 
 #include "sam3x8e_din.h"
-#include "intrinsics.h"
 
 void SAM3X8E_DINClass::enable_digital_input(void)
 {

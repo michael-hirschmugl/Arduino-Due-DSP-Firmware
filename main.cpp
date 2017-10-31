@@ -2,12 +2,13 @@
 #include "intrinsics.h"
 #include "sam3x8e.h"
 #include "sam3x8e_setup.h"
+#include "sam3x8e_wdt.h"
 
-#define NCoef 2
-#define DCgain_BP 192   //64*3
-#define DCgain_TP 384   //128*3
-#define DCgain_HP 3     //1*3
-#define DCgain_MainTP 1
+#define NCoef           2
+#define DCgain_BP       192   //64*3
+#define DCgain_TP       384   //128*3
+#define DCgain_HP       3     //1*3
+#define DCgain_MainTP   1
 
 using namespace std;
 
@@ -293,7 +294,7 @@ int main()
 
     __disable_interrupt();
 
-    SAM3X8E.disable_watchdog_timer();
+    SAM3X8E_WDT.disable_watchdog_timer();
 
     SAM3X8E_SETUP.init_clock();
     SAM3X8E.init_clock_for_wm8731();

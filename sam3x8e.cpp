@@ -477,10 +477,7 @@ void SAM3X8EClass::enable_dma_channel(uint8_t channel)
     DMAC_WPMR = DMAC_WPM_KEY | (1U << 0);
 }
 
-void SAM3X8EClass::disable_watchdog_timer(void)
-{
-    (*((volatile unsigned long *)0x400E1A54U)) = (1U << 15);
-}
+
 
 void SAM3X8EClass::set_dma_btsize(uint8_t channel, uint32_t btsize)
 {

@@ -36,7 +36,7 @@ public:
         void enable_dma_interrupts(uint8_t);
         void enable_dma(void);
         void enable_dma_channel(uint8_t);
-        void disable_watchdog_timer(void);
+        
         void set_dma_btsize(uint8_t, uint32_t);
 
 

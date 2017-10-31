@@ -1,19 +1,25 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.11.2.13589/W32 for ARM                30/Oct/2017  20:20:40
+# IAR ELF Linker V8.11.2.13589/W32 for ARM                31/Oct/2017  16:04:05
 # Copyright 2007-2017 IAR Systems AB.
 #
-#    Output file  =  E:\embedded programming\sam3x8e\Debug\Exe\project.out
-#    Map file     =  E:\embedded programming\sam3x8e\Debug\List\project.map
+#    Output file  =  E:\Git-Hub\Arduino-Due-DSP\Debug\Exe\project.out
+#    Map file     =  E:\Git-Hub\Arduino-Due-DSP\Debug\List\project.map
 #    Command line =  
-#        -f C:\Users\Michael\AppData\Local\Temp\EW4708.tmp ("E:\embedded
-#        programming\sam3x8e\Debug\Obj\cstartup_M_cpp.o" "E:\embedded
-#        programming\sam3x8e\Debug\Obj\main.o" "E:\embedded
-#        programming\sam3x8e\Debug\Obj\sam3x8e.o" -o "E:\embedded
-#        programming\sam3x8e\Debug\Exe\project.out" --redirect
+#        -f C:\Users\Michael\AppData\Local\Temp\EW98AF.tmp
+#        (E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\cstartup_M_cpp.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\main.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_adc.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_din.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_dma.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_setup.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_ssc.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_twi.o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_wdt.o -o
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\Exe\project.out --redirect
 #        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
-#        "E:\embedded programming\sam3x8e\Debug\List\project.map" --config
-#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        E:\Git-Hub\Arduino-Due-DSP\Debug\List\project.map --config "C:\Program
+#        Files (x86)\IAR Systems\Embedded Workbench
 #        8.0\arm\config\linker\Atmel\sam3x8e\flash.icf" --semihosting --entry
 #        __iar_program_start --vfe --text_out locale)
 #
@@ -57,45 +63,55 @@ initialize by copy { rw };
   .intvec            const    0x00080000    0xe0  cstartup_M_cpp.o [1]
                             - 0x000800e0    0xe0
 
-"P1":                                      0xa6d
-  .text              ro code  0x000800e0   0x4b0  sam3x8e.o [1]
-  .text              ro code  0x00080590   0x480  main.o [1]
-  .text              ro code  0x00080a10    0x38  packbits_init_single.o [4]
-  .text              ro code  0x00080a48    0x28  data_init.o [4]
-  .iar.init_table    const    0x00080a70    0x10  - Linker created -
-  .text              ro code  0x00080a80    0x1a  cmain.o [4]
-  .text              ro code  0x00080a9a     0x4  low_level_init.o [3]
-  .text              ro code  0x00080a9e     0x4  exit.o [3]
-  .text              ro code  0x00080aa2     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080aa4     0xa  cexit.o [4]
-  .text              ro code  0x00080aae     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ab0    0x14  exit.o [5]
-  .text              ro code  0x00080ac4    0x16  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ada     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080adc     0x2  cstartup_M_cpp.o [1]
+"P1":                                      0xaa9
+  .text              ro code  0x000800e0   0x4f8  main.o [1]
+  .text              ro code  0x000805d8    0x10  sam3x8e_wdt.o [1]
+  .text              ro code  0x000805e8    0xd8  sam3x8e_setup.o [1]
+  .text              ro code  0x000806c0   0x180  sam3x8e_twi.o [1]
+  .text              ro code  0x00080840   0x134  sam3x8e_ssc.o [1]
+  .text              ro code  0x00080974    0x5c  sam3x8e_din.o [1]
+  .text              ro code  0x000809d0    0x7c  sam3x8e_adc.o [1]
+  .text              ro code  0x00080a4c    0x38  packbits_init_single.o [4]
+  .text              ro code  0x00080a84    0x28  data_init.o [4]
+  .iar.init_table    const    0x00080aac    0x10  - Linker created -
+  .text              ro code  0x00080abc    0x1a  cmain.o [4]
+  .text              ro code  0x00080ad6     0x4  low_level_init.o [3]
+  .text              ro code  0x00080ada     0x4  exit.o [3]
   .text              ro code  0x00080ade     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ae0     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ae2     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ae4     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ae6     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080ae8     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080ae0     0xa  cexit.o [4]
   .text              ro code  0x00080aea     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080aec     0x2  cstartup_M_cpp.o [1]
-  .rodata            const    0x00080aee     0x1  unwind_debug.o [5]
-  .rodata            const    0x00080aef     0x0  packbits_init_single.o [4]
-  Initializer bytes  const    0x00080aef    0x5e  <for P2-1>
-                            - 0x00080b4d   0xa6d
+  .text              ro code  0x00080aec    0x14  exit.o [5]
+  .text              ro code  0x00080b00    0x16  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b16     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b18     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b1a     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b1c     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b1e     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b20     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b22     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b24     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b26     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080b28     0x2  cstartup_M_cpp.o [1]
+  .rodata            const    0x00080b2a     0x1  unwind_debug.o [5]
+  .rodata            const    0x00080b2b     0x0  packbits_init_single.o [4]
+  Initializer bytes  const    0x00080b2b    0x5e  <for P2-1>
+                            - 0x00080b89   0xaa9
 
-"P2", part 1 of 2:                         0x138
-  P2-1                        0x20070000   0x138  <Init block>
+"P2", part 1 of 2:                         0x13d
+  P2-1                        0x20070000   0x13d  <Init block>
     .data            inited   0x20070000   0x134  main.o [1]
-    .bss             inited   0x20070134     0x4  sam3x8e.o [1]
-                            - 0x20070138   0x138
+    .bss             inited   0x20070134     0x4  sam3x8e_setup.o [1]
+    .bss             inited   0x20070138     0x1  sam3x8e_adc.o [1]
+    .bss             inited   0x20070139     0x1  sam3x8e_din.o [1]
+    .bss             inited   0x2007013a     0x1  sam3x8e_ssc.o [1]
+    .bss             inited   0x2007013b     0x1  sam3x8e_twi.o [1]
+    .bss             inited   0x2007013c     0x1  sam3x8e_wdt.o [1]
+                            - 0x2007013d   0x13d
 
 "P2", part 2 of 2:                        0x1000
-  CSTACK                      0x20070138  0x1000  <Block>
-    CSTACK           uninit   0x20070138  0x1000  <Block tail>
-                            - 0x20071138  0x1000
+  CSTACK                      0x20070140  0x1000  <Block>
+    CSTACK           uninit   0x20070140  0x1000  <Block tail>
+                            - 0x20071140  0x1000
 
 
 *******************************************************************************
@@ -105,10 +121,10 @@ initialize by copy { rw };
           Address     Size
           -------     ----
 Copy/packbits (__iar_packbits_init_single3)
-    1 source range, total size 0x5e (30% of destination):
-          0x00080aef   0x5e
-    1 destination range, total size 0x138:
-          0x20070000  0x138
+    1 source range, total size 0x5e (29% of destination):
+          0x00080b2b   0x5e
+    1 destination range, total size 0x13d:
+          0x20070000  0x13d
 
 
 
@@ -118,12 +134,17 @@ Copy/packbits (__iar_packbits_init_single3)
 
     Module                  ro code  ro data  rw data
     ------                  -------  -------  -------
-E:\embedded programming\sam3x8e\Debug\Obj: [1]
+E:\Git-Hub\Arduino-Due-DSP\Debug\Obj: [1]
     cstartup_M_cpp.o             46      224
-    main.o                    1 152       92      308
-    sam3x8e.o                 1 200        2        4
+    main.o                    1 272       91      308
+    sam3x8e_adc.o               124                 1
+    sam3x8e_din.o                92        1        1
+    sam3x8e_setup.o             216        1        4
+    sam3x8e_ssc.o               308                 1
+    sam3x8e_twi.o               384                 1
+    sam3x8e_wdt.o                16        1        1
     -------------------------------------------------
-    Total:                    2 398      318      312
+    Total:                    2 458      318      317
 
 command line: [2]
     -------------------------------------------------
@@ -151,7 +172,7 @@ shb_l.a: [5]
 
     Linker created                        16    4 096
 -----------------------------------------------------
-    Grand Total:              2 558      335    4 408
+    Grand Total:              2 618      335    4 413
 
 
 *******************************************************************************
@@ -160,9 +181,9 @@ shb_l.a: [5]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.iar.init_table$$Base   0x00080a70          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x00080a80          --   Gb  - Linker created -
-?main                   0x00080a81         Code  Gb  cmain.o [4]
+.iar.init_table$$Base   0x00080aac          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00080abc          --   Gb  - Linker created -
+?main                   0x00080abd         Code  Gb  cmain.o [4]
 ACoef_BP                0x200700ec    0xc  Data  Lc  main.o [1]
 ACoef_HP                0x2007011c    0xc  Data  Lc  main.o [1]
 ACoef_MainTP            0x20070000    0xc  Data  Lc  main.o [1]
@@ -171,55 +192,60 @@ BCoef_BP                0x200700f8    0xc  Data  Lc  main.o [1]
 BCoef_HP                0x20070128    0xc  Data  Lc  main.o [1]
 BCoef_MainTP            0x2007000c    0xc  Data  Lc  main.o [1]
 BCoef_TP                0x20070110    0xc  Data  Lc  main.o [1]
-CSTACK$$Base            0x20070138          --   Gb  - Linker created -
-CSTACK$$Limit           0x20071138          --   Gb  - Linker created -
-Region$$Table$$Base     0x00080a70          --   Gb  - Linker created -
-Region$$Table$$Limit    0x00080a80          --   Gb  - Linker created -
-SAM3X8E                 0x20070134    0x4  Data  Gb  sam3x8e.o [1]
-SAM3X8EClass::disable_watchdog_timer()
-                        0x0008052f    0xa  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::enable_adc_input()
-                        0x000804d9   0x56  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::enable_digital_input()
-                        0x00080493   0x46  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::init_clock()
-                        0x00080145   0x6a  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::init_clock_for_wm8731()
-                        0x00080211   0x58  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::init_ssc()
-                        0x00080379   0x1c  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::init_twi1()
-                        0x000801af   0x48  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::select_master_clock()
-                        0x000800e1   0x64  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::send_two_bytes_to_wm8731(unsigned char, unsigned char)
-                        0x0008030d   0x6c  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::setup_WM8731()
-                        0x00080269   0xa4  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::setup_pio_for_ssc()
-                        0x00080395   0xb0  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::setup_ssc_master_transfer()
-                        0x00080445   0x3a  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::setup_twi1_master_transfer()
-                        0x000801f7   0x1a  Code  Gb  sam3x8e.o [1]
-SAM3X8EClass::ssc_interrupt_setup()
-                        0x0008047f   0x14  Code  Gb  sam3x8e.o [1]
-SSC1::Handler()         0x00080591  0x412  Code  Gb  main.o [1]
-__cmain                 0x00080a81         Code  Gb  cmain.o [4]
-__exit                  0x00080ab1   0x14  Code  Gb  exit.o [5]
-__iar_data_init3        0x00080a49   0x28  Code  Gb  data_init.o [4]
-__iar_debug_exceptions  0x00080aee    0x1  Data  Gb  unwind_debug.o [5]
+CSTACK$$Base            0x20070140          --   Gb  - Linker created -
+CSTACK$$Limit           0x20071140          --   Gb  - Linker created -
+Region$$Table$$Base     0x00080aac          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00080abc          --   Gb  - Linker created -
+SAM3X8E_ADC             0x20070138    0x1  Data  Gb  sam3x8e_adc.o [1]
+SAM3X8E_ADCClass::enable_adc_input()
+                        0x000809d1   0x56  Code  Gb  sam3x8e_adc.o [1]
+SAM3X8E_DIN             0x20070139    0x1  Data  Gb  sam3x8e_din.o [1]
+SAM3X8E_DINClass::enable_digital_input()
+                        0x00080975   0x46  Code  Gb  sam3x8e_din.o [1]
+SAM3X8E_SETUP           0x20070134    0x4  Data  Gb  sam3x8e_setup.o [1]
+SAM3X8E_SETUPClass::init_clock()
+                        0x000805e9   0x60  Code  Gb  sam3x8e_setup.o [1]
+SAM3X8E_SETUPClass::select_master_clock()
+                        0x00080649   0x5e  Code  Gb  sam3x8e_setup.o [1]
+SAM3X8E_SSC             0x2007013a    0x1  Data  Gb  sam3x8e_ssc.o [1]
+SAM3X8E_SSCClass::init_ssc()
+                        0x00080841   0x16  Code  Gb  sam3x8e_ssc.o [1]
+SAM3X8E_SSCClass::setup_pio_for_ssc()
+                        0x00080857   0xac  Code  Gb  sam3x8e_ssc.o [1]
+SAM3X8E_SSCClass::setup_ssc_master_transfer()
+                        0x00080903   0x3a  Code  Gb  sam3x8e_ssc.o [1]
+SAM3X8E_SSCClass::ssc_interrupt_setup()
+                        0x0008093d   0x14  Code  Gb  sam3x8e_ssc.o [1]
+SAM3X8E_TWI             0x2007013b    0x1  Data  Gb  sam3x8e_twi.o [1]
+SAM3X8E_TWIClass::init_twi1()
+                        0x000806c1   0x3e  Code  Gb  sam3x8e_twi.o [1]
+SAM3X8E_TWIClass::send_two_bytes_to_wm8731(unsigned char, unsigned char)
+                        0x00080715   0x6a  Code  Gb  sam3x8e_twi.o [1]
+SAM3X8E_TWIClass::setup_WM8731()
+                        0x0008079d   0xa4  Code  Gb  sam3x8e_twi.o [1]
+SAM3X8E_TWIClass::setup_twi1_master_transfer()
+                        0x000806ff   0x16  Code  Gb  sam3x8e_twi.o [1]
+SAM3X8E_WDT             0x2007013c    0x1  Data  Gb  sam3x8e_wdt.o [1]
+SAM3X8E_WDTClass::disable_watchdog_timer()
+                        0x000805d9   0x10  Code  Gb  sam3x8e_wdt.o [1]
+SSC1::Handler()         0x000800e1  0x412  Code  Gb  main.o [1]
+__cmain                 0x00080abd         Code  Gb  cmain.o [4]
+__exit                  0x00080aed   0x14  Code  Gb  exit.o [5]
+__iar_data_init3        0x00080a85   0x28  Code  Gb  data_init.o [4]
+__iar_debug_exceptions  0x00080b2a    0x1  Data  Gb  unwind_debug.o [5]
 __iar_packbits_init_single3
-                        0x00080a11   0x38  Code  Gb  packbits_init_single.o [4]
-__iar_program_start     0x00080ac5   0x16  Code  Gb  cstartup_M_cpp.o [1]
+                        0x00080a4d   0x38  Code  Gb  packbits_init_single.o [4]
+__iar_program_start     0x00080b01   0x16  Code  Gb  cstartup_M_cpp.o [1]
 __iar_systems$$module {Abs}
                         0x00000001         Data  Gb  command line/config [2]
-__low_level_init        0x00080a9b    0x4  Code  Gb  low_level_init.o [3]
+__low_level_init        0x00080ad7    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x00080000   0xe0  Data  Gb  cstartup_M_cpp.o [1]
-_call_main              0x00080a8d         Code  Gb  cmain.o [4]
-_exit                   0x00080aa5         Code  Gb  cexit.o [4]
-_main                   0x00080a97         Code  Gb  cmain.o [4]
-exit                    0x00080a9f    0x4  Code  Gb  exit.o [3]
+_call_main              0x00080ac9         Code  Gb  cmain.o [4]
+_exit                   0x00080ae1         Code  Gb  cexit.o [4]
+_main                   0x00080ad3         Code  Gb  cmain.o [4]
+exit                    0x00080adb    0x4  Code  Gb  exit.o [3]
+init_clock_for_wm8731()
+                        0x0008054f   0x4e  Code  Gb  main.o [1]
 input_l_x_BP            0x20070024    0xc  Data  Lc  main.o [1]
 input_l_x_HP            0x20070054    0xc  Data  Lc  main.o [1]
 input_l_x_MainTP        0x2007006c    0xc  Data  Lc  main.o [1]
@@ -238,21 +264,21 @@ input_r_y_HP            0x200700c0    0xc  Data  Lc  main.o [1]
 input_r_y_MainTP        0x200700d8    0xc  Data  Lc  main.o [1]
 input_r_y_TP            0x200700a8    0xc  Data  Lc  main.o [1]
 lrtoggle                0x20070020    0x4  Data  Lc  main.o [1]
-main                    0x000809a3   0x5a  Code  Gb  main.o [1]
+main                    0x000804f3   0x5c  Code  Gb  main.o [1]
 mute                    0x2007001c    0x1  Data  Lc  main.o [1]
 mute_count              0x200700e8    0x4  Data  Lc  main.o [1]
 vol_pot                 0x200700e4    0x4  Data  Lc  main.o [1]
 
 
-[1] = E:\embedded programming\sam3x8e\Debug\Obj
+[1] = E:\Git-Hub\Arduino-Due-DSP\Debug\Obj
 [2] = command line
 [3] = dl7M_tln.a
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-  2 558 bytes of readonly  code memory
+  2 618 bytes of readonly  code memory
     335 bytes of readonly  data memory
-  4 408 bytes of readwrite data memory
+  4 413 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

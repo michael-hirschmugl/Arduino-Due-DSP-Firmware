@@ -2029,16 +2029,70 @@
             <data />
         </settings>
     </configuration>
+    <group>
+        <name>defines</name>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_register_definitions.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_setup_definitions.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\wm8731_setup_definitions.h</name>
+        </file>
+    </group>
+    <group>
+        <name>libs</name>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_adc.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_din.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_dma.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_setup.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_ssc.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_twi.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_wdt.h</name>
+        </file>
+    </group>
+    <group>
+        <name>sources</name>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_adc.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_din.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_dma.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_setup.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_ssc.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_twi.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_wdt.cpp</name>
+        </file>
+    </group>
     <file>
         <name>$PROJ_DIR$\cstartup_M_cpp.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\main.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\sam3x8e.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\sam3x8e.h</name>
     </file>
 </project>

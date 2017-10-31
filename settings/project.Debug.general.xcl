@@ -2,7 +2,7 @@
 
 "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\bin\armjlink2.dll" 
 
-"E:\embedded programming\sam3x8e\Debug\Exe\project.out" 
+"E:\Git-Hub\Arduino-Due-DSP\Debug\Exe\project.out" 
 
 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\bin\armbat.dll" 
 

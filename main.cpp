@@ -1,99 +1,107 @@
 #include <stdint.h>
 #include "intrinsics.h"
-#include "sam3x8e.h"
+#include "sam3x8e_setup.h"
+#include "sam3x8e_wdt.h"
+#include "sam3x8e_twi.h"
+#include "sam3x8e_ssc.h"
+#include "sam3x8e_adc.h"
+#include "sam3x8e_din.h"
+//#include "sam3x8e_dma.h"
 
-#define NCoef 2
-#define DCgain_BP 192   //64*3
-#define DCgain_TP 384   //128*3
-#define DCgain_HP 3     //1*3
-#define DCgain_MainTP 1
+#define NCoef           2
+#define DCgain_BP       192   //64*3
+#define DCgain_TP       384   //128*3
+#define DCgain_HP       3     //1*3
+#define DCgain_MainTP   1
 
 using namespace std;
 
-static int lrtoggle = 0;
+void init_clock_for_wm8731(void);
 
-static int32_t input_l = 0;
+static int      lrtoggle        = 0;
 
-static int32_t input_l_x_BP[NCoef+1];
-static int32_t input_l_y_BP[NCoef+1];
-static int32_t input_l_x_TP[NCoef+1];
-static int32_t input_l_y_TP[NCoef+1];
-static int32_t input_l_x_HP[NCoef+1];
-static int32_t input_l_y_HP[NCoef+1];
-static int32_t input_l_HP_temp = 0;
+static int32_t  input_l         = 0;
 
-static int32_t input_l_x_MainTP[NCoef+1];
-static int32_t input_l_y_MainTP[NCoef+1];
+static int32_t  input_l_x_BP[NCoef+1];
+static int32_t  input_l_y_BP[NCoef+1];
+static int32_t  input_l_x_TP[NCoef+1];
+static int32_t  input_l_y_TP[NCoef+1];
+static int32_t  input_l_x_HP[NCoef+1];
+static int32_t  input_l_y_HP[NCoef+1];
+static int32_t  input_l_HP_temp = 0;
 
-static int32_t input_r = 0;
+static int32_t  input_l_x_MainTP[NCoef+1];
+static int32_t  input_l_y_MainTP[NCoef+1];
 
-static int32_t input_r_x_BP[NCoef+1];
-static int32_t input_r_y_BP[NCoef+1];
-static int32_t input_r_x_TP[NCoef+1];
-static int32_t input_r_y_TP[NCoef+1];
-static int32_t input_r_x_HP[NCoef+1];
-static int32_t input_r_y_HP[NCoef+1];
-static int32_t input_r_HP_temp = 0;
+static int32_t  input_r         = 0;
 
-static int32_t input_r_x_MainTP[NCoef+1];
-static int32_t input_r_y_MainTP[NCoef+1];
+static int32_t  input_r_x_BP[NCoef+1];
+static int32_t  input_r_y_BP[NCoef+1];
+static int32_t  input_r_x_TP[NCoef+1];
+static int32_t  input_r_y_TP[NCoef+1];
+static int32_t  input_r_x_HP[NCoef+1];
+static int32_t  input_r_y_HP[NCoef+1];
+static int32_t  input_r_HP_temp = 0;
 
-static int8_t input_pointer[NCoef+1];
+static int32_t  input_r_x_MainTP[NCoef+1];
+static int32_t  input_r_y_MainTP[NCoef+1];
 
-static int32_t vol_pot = 0;
-static uint8_t mute = 0;
+static int8_t   input_pointer[NCoef+1];
+
+static int32_t  vol_pot = 0;
+static uint8_t  mute = 0;
 static uint32_t mute_count = 0;
 
-static int32_t ACoef_BP[NCoef+1] =
+static int32_t  ACoef_BP[NCoef+1] =
 {
     76,
     0,
     -76
 };
 
-static int32_t BCoef_BP[NCoef+1] =
+static int32_t  BCoef_BP[NCoef+1] =
 {
     64,
     -125,
     62
 };
 
-static int32_t ACoef_TP[NCoef+1] =
+static int32_t  ACoef_TP[NCoef+1] =
 {
     32,
     64,
     32
 };
 
-static int32_t BCoef_TP[NCoef+1] =
+static int32_t  BCoef_TP[NCoef+1] =
 {
     64,
     -116,
     53
 };
 
-static int32_t ACoef_HP[NCoef+1] =
+static int32_t  ACoef_HP[NCoef+1] =
 {
     58,
     -116,
     58
 };
 
-static int32_t BCoef_HP[NCoef+1] =
+static int32_t  BCoef_HP[NCoef+1] =
 {
     64,
     -116,
     53
 };
 
-static int32_t ACoef_MainTP[NCoef+1] =
+static int32_t  ACoef_MainTP[NCoef+1] =
 {
     44,
     88,
      44
 };
 
-static int32_t BCoef_MainTP[NCoef+1] =
+static int32_t  BCoef_MainTP[NCoef+1] =
 {
     64,
     81,
@@ -292,20 +300,22 @@ int main()
 
     __disable_interrupt();
 
-    SAM3X8E.disable_watchdog_timer();
+    SAM3X8E_WDT.disable_watchdog_timer();
 
-    SAM3X8E.init_clock();
-    SAM3X8E.init_clock_for_wm8731();
-    SAM3X8E.init_twi1();
-    SAM3X8E.setup_twi1_master_transfer();
-    SAM3X8E.init_ssc();
+    SAM3X8E_SETUP.init_clock();
+    
+    init_clock_for_wm8731();
+    
+    SAM3X8E_TWI.init_twi1();
+    SAM3X8E_TWI.setup_twi1_master_transfer();
+    SAM3X8E_SSC.init_ssc();
 
-    i =  SAM3X8E.setup_WM8731();
+    i =  SAM3X8E_TWI.setup_WM8731();
 
-    SAM3X8E.setup_ssc_master_transfer();
-    SAM3X8E.ssc_interrupt_setup();
-    SAM3X8E.enable_digital_input();
-    SAM3X8E.enable_adc_input();
+    SAM3X8E_SSC.setup_ssc_master_transfer();
+    SAM3X8E_SSC.ssc_interrupt_setup();
+    SAM3X8E_DIN.enable_digital_input();
+    SAM3X8E_ADC.enable_adc_input();
 
     __enable_interrupt();
 
@@ -314,4 +324,18 @@ int main()
 
     }
 
+}
+
+void init_clock_for_wm8731()
+{
+    PIOA_WPMR = (0x50494FU << 8) | (0U << 0);
+    PIOA_PDR = ~PIOA_PSR | (1U << 1);  // enable peripheral control
+    PIOA_PER = PIOA_PSR & ~(1U << 1);
+    PIOA_ABSR |= (1U << 1);  // peripherial B selected
+    PIOA_WPMR = (0x50494FU << 8) | (1U << 0);
+    
+    PMC_WPMR = 0x504D4300U;
+    PMC_SCER |=	0x0100U;  // page 558
+    PMC_PCK0 = 0x01U;  // main crystak osc = 12Mhz
+    PMC_WPMR = 0x504D4301U;
 }

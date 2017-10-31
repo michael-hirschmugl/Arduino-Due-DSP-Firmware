@@ -2328,13 +2328,13 @@
     <group>
         <name>libs</name>
         <file>
-            <name>$PROJ_DIR$\sam3x8e.h</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\sam3x8e_adc.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\sam3x8e_din.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_dma.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\sam3x8e_setup.h</name>
@@ -2352,13 +2352,13 @@
     <group>
         <name>sources</name>
         <file>
-            <name>$PROJ_DIR$\sam3x8e.cpp</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\sam3x8e_adc.cpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\sam3x8e_din.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_dma.cpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\sam3x8e_setup.cpp</name>

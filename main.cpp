@@ -138,6 +138,9 @@ void SSC1::Handler()
     {
         lrtoggle = 1;
         
+        input_l = (int32_t)(SSC_RHR);
+        
+/*
         input_l = (((int32_t)(SSC_RHR << 8)));
         input_l = input_l / 256;
 
@@ -210,14 +213,18 @@ void SSC1::Handler()
             input_l_y_MainTP[input_pointer[0]] / BCoef_MainTP[0];
         
         input_l = ((input_l_y_MainTP[input_pointer[0]] * 128) / DCgain_MainTP);
+*/
         
         if(mute) SSC_THR = 0;
-        else SSC_THR = input_l;
+        else SSC_THR = (input_l);
     }
     else
     {
         lrtoggle = 0;
         
+        input_r = (int32_t)(SSC_RHR);
+        
+/*
         input_r = (((int32_t)(SSC_RHR << 8)));
         input_r = input_r / 256;
 
@@ -280,7 +287,7 @@ void SSC1::Handler()
             input_r_y_MainTP[input_pointer[0]] / BCoef_MainTP[0];
         
         input_r = ((input_r_y_MainTP[input_pointer[0]] * 128) / DCgain_MainTP);
-        
+*/
         if(mute) SSC_THR = 0;
         else SSC_THR = input_r;
     }
@@ -323,7 +330,6 @@ int main()
     {
 
     }
-
 }
 
 void init_clock_for_wm8731()

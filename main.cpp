@@ -11,7 +11,7 @@
 #define NCoef                   2
 #define DCgain_BP               16   //16*1
 #define DCgain_TP               128   //128*1
-#define DCgain_HP               8     //1*1 //6?
+#define DCgain_HP               1     //1*1 //6?
 #define prescaling_factor       65536
 
 using namespace std;
@@ -138,14 +138,14 @@ void SSC1::Handler()
     
     vol_pot = (int32_t)(ADC_CDR);
     vol_pot = vol_pot + 1;
-    if(filter_select == 0) lp_pot = (vol_pot * 6) / 1025;
+    if(filter_select == 0) lp_pot = ((vol_pot * 6) / 1025) + 1;
     
     //lp_pot = 1;
-    if(filter_select == 1) bp_pot = (vol_pot * 6) / 1025;
+    if(filter_select == 1) bp_pot = ((vol_pot * 4) / 1025) + 1;
     //bp_pot = 1;
-    if(filter_select == 2) hp_pot = (vol_pot * 6) / 1025;
+    if(filter_select == 2) hp_pot = ((vol_pot * 128) / 1025) + 1;
     //hp_pot = 8;
-    if(filter_select == 3) volume = ((vol_pot * 200) / 1025) + 1;
+    if(filter_select == 3) volume = ((vol_pot * 6) / 1025) + 1;
     //volume = 100;
 
     if(!lrtoggle)
@@ -214,7 +214,7 @@ void SSC1::Handler()
         input_l =
             ((input_l_y_TP[input_pointer[0]]) / (DCgain_TP / lp_pot)) +
             ((input_l_y_BP[input_pointer[0]]) / (DCgain_BP / bp_pot)) +
-            ((input_l_y_HP[input_pointer[0]]) / (DCgain_HP / hp_pot)) +
+            ((input_l_y_HP[input_pointer[0]] * 6) / (hp_pot)) +
             input_l_bypass;
 
         if(mute) SSC_THR = 0;
@@ -275,7 +275,7 @@ void SSC1::Handler()
         input_r =
             ((input_r_y_TP[input_pointer[0]]) / (DCgain_TP / lp_pot)) +
             ((input_r_y_BP[input_pointer[0]]) / (DCgain_BP / bp_pot)) +
-            ((input_r_y_HP[input_pointer[0]]) / (DCgain_HP / hp_pot)) +
+            ((input_r_y_HP[input_pointer[0]] * 6) / (hp_pot)) +
             input_r_bypass;
 
         if(mute) SSC_THR = 0;

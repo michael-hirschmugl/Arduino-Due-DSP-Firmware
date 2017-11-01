@@ -11,6 +11,15 @@
 #define SSC_INTERRUPT_PRIORITY          (0)
 #define DIG_INP_INTERRUPT_PRIORITY      (5)
 
-#define GLOBAL_TIMEOUT                  0xFFDCU
+#define GLOBAL_TIMEOUT                  (0xFFDCU)
+
+
+/*
+    SSC Controller Setup
+*/
+//#define SSC_RDATLEN             (0x17U << 0) // 23 + 1 Bit
+//#define SSC_RDATLEN             (0x0AU << 0) // 7 + 1 Bit
+#define SSC_RDATLEN             (0x0FU << 0) // 15 + 1 Bit
+#define SSC_TDATLEN             (0x0FU << 0) // 15 + 1 Bit
 
 #endif

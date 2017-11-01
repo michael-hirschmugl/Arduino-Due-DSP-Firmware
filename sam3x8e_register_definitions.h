@@ -190,7 +190,6 @@
 #define SSC_RPERIOD             (0x00U << 24)
 
 #define SSC_RFMR                (*((volatile unsigned long *)0x40004014U))
-#define SSC_RDATLEN             (0x17U << 0) // 23 + 1 Bit
 #define SSC_RLOOP               (0U << 5)
 #define SSC_RMSBF               (1U << 7)
 #define SSC_RDATNB              (0x0U << 8)
@@ -209,7 +208,6 @@
 #define SSC_TPERIOD             (0x00U << 24)
 
 #define SSC_TFMR                (*((volatile unsigned long *)0x4000401CU))
-#define SSC_TDATLEN             (0x17U << 0)
 #define SSC_TDATDEF             (0U << 5)
 #define SSC_TMSBF               (1U << 7)
 #define SSC_TDATNB              (0x0U << 8)

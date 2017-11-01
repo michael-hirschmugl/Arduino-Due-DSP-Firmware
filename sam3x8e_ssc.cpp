@@ -9,9 +9,9 @@
 */
 void SAM3X8E_SSCClass::init_ssc_clk(void)
 {
-    PMC_WPMR = 0x504D4300U;
-    PMC_PCER0 = PMC_PCSR0 | SSC_PER;
-    PMC_WPMR = 0x504D4301U;
+    PMC_WPMR = (0x504D4300U);
+    PMC_PCER0 = (PMC_PCSR0 | SSC_PER);
+    PMC_WPMR = (0x504D4301U);
 }
 
 /*
@@ -61,11 +61,11 @@ void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
     SSC_CR = SWRST;  // Reset
     
     SSC_CR = RXEN | RXDIS | TXEN | TXDIS;
-    SSC_CMR = SSC_DIV; // divider is deaktivated (kept for compatibility)
+    SSC_CMR = SSC_DIV; // divider is deactivated (kept for compatibility)
     
     // Clock for receiver and transmitter will both come from RK
     SSC_RCMR = SSC_RCKS | SSC_RCKO | SSC_RCKI | SSC_RCKG | SSC_RSTART
-                       | SSC_RSTOP | SSC_RSTTDLY | SSC_RPERIOD;
+                        | SSC_RSTOP | SSC_RSTTDLY | SSC_RPERIOD;
     
     SSC_RFMR = SSC_RDATLEN | SSC_RLOOP | SSC_RMSBF | SSC_RDATNB
                            | SSC_RFSLEN | SSC_RFSOS | SSC_RFSEDGE
@@ -101,9 +101,7 @@ void SAM3X8E_SSCClass::disable_ssc_interrupt_for_dma(void)
 {
     INTERRUPT0_DISABLE |= (0U << 26);
     INTERRUPT0_CLEAR_PENDING = (0xFFFFFFFFU);
-
 }
-
 
 // Create object
 SAM3X8E_SSCClass SAM3X8E_SSC = SAM3X8E_SSCClass();

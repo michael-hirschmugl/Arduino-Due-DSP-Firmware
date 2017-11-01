@@ -21,5 +21,7 @@
 //#define SSC_RDATLEN             (0x0AU << 0) // 7 + 1 Bit
 #define SSC_RDATLEN             (0x0FU << 0) // 15 + 1 Bit
 #define SSC_TDATLEN             (0x0FU << 0) // 15 + 1 Bit
+//#define SSC_RDATLEN             (0x1FU << 0) // 31 + 1 Bit
+//#define SSC_TDATLEN             (0x1FU << 0) // 31 + 1 Bit
 
 #endif

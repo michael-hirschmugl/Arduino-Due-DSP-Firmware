@@ -8,14 +8,14 @@
 // LEFT LINE IN
 #define LRINBOTH                (0U)    // L register controls L/R
 #define LINMUTE                 (0U)    // Mute OFF
-#define LINVOL                  (0x17U) // 0dB input
-//#define LINVOL                  (0x1FU) // +12dB input
+//#define LINVOL                  (0x17U) // 0dB input
+#define LINVOL                  (0x1FU) // +12dB input
 
 // RIGHT LINE IN
 #define RLINBOTH                (0U)
 #define RINMUTE                 (0U)
-#define RINVOL                  (0x17U)
-//#define RINVOL                  (0x1FU)
+//#define RINVOL                  (0x17U)
+#define RINVOL                  (0x1FU)
 
 // LEFT HEADPHONE OUT
 #define LRHPBOTH                (1U)    // L register controls L/R

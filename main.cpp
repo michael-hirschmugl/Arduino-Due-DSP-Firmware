@@ -8,11 +8,11 @@
 #include "sam3x8e_din.h"
 //#include "sam3x8e_dma.h"
 
-#define NCoef           2
-#define DCgain_BP       192   //64*3
-#define DCgain_TP       384   //128*3
-#define DCgain_HP       3     //1*3
-#define DCgain_MainTP   1
+#define NCoef                   2
+#define DCgain_BP               16   //16*1
+#define DCgain_TP               128   //128*1
+#define DCgain_HP               1     //1*1
+#define prescaling_factor       65536
 
 using namespace std;
 
@@ -21,6 +21,7 @@ void init_clock_for_wm8731(void);
 static int      lrtoggle        = 0;
 
 static int32_t  input_l         = 0;
+static int32_t  input_l_bypass  = 0;
 
 static int32_t  input_l_x_BP[NCoef+1];
 static int32_t  input_l_y_BP[NCoef+1];
@@ -28,12 +29,9 @@ static int32_t  input_l_x_TP[NCoef+1];
 static int32_t  input_l_y_TP[NCoef+1];
 static int32_t  input_l_x_HP[NCoef+1];
 static int32_t  input_l_y_HP[NCoef+1];
-static int32_t  input_l_HP_temp = 0;
-
-static int32_t  input_l_x_MainTP[NCoef+1];
-static int32_t  input_l_y_MainTP[NCoef+1];
 
 static int32_t  input_r         = 0;
+static int32_t  input_r_bypass  = 0;
 
 static int32_t  input_r_x_BP[NCoef+1];
 static int32_t  input_r_y_BP[NCoef+1];
@@ -41,10 +39,6 @@ static int32_t  input_r_x_TP[NCoef+1];
 static int32_t  input_r_y_TP[NCoef+1];
 static int32_t  input_r_x_HP[NCoef+1];
 static int32_t  input_r_y_HP[NCoef+1];
-static int32_t  input_r_HP_temp = 0;
-
-static int32_t  input_r_x_MainTP[NCoef+1];
-static int32_t  input_r_y_MainTP[NCoef+1];
 
 static int8_t   input_pointer[NCoef+1];
 
@@ -54,58 +48,44 @@ static uint32_t mute_count = 0;
 
 static int32_t  ACoef_BP[NCoef+1] =
 {
-    76,
-    0,
-    -76
+          103,
+            0,
+         -103
 };
 
 static int32_t  BCoef_BP[NCoef+1] =
 {
-    64,
-    -125,
-    62
+           64,
+         -117,
+           55
 };
 
 static int32_t  ACoef_TP[NCoef+1] =
 {
-    32,
-    64,
-    32
+           37,
+           75,
+           37
 };
 
 static int32_t  BCoef_TP[NCoef+1] =
 {
-    64,
-    -116,
-    53
+           64,
+         -115,
+           52
 };
 
 static int32_t  ACoef_HP[NCoef+1] =
 {
-    58,
-    -116,
-    58
+           70,
+            0,
+          -70
 };
 
 static int32_t  BCoef_HP[NCoef+1] =
 {
-    64,
-    -116,
-    53
-};
-
-static int32_t  ACoef_MainTP[NCoef+1] =
-{
-    44,
-    88,
-     44
-};
-
-static int32_t  BCoef_MainTP[NCoef+1] =
-{
-    64,
-    81,
-    30
+          128,
+          -75,
+           19
 };
 
 class SSC1
@@ -133,18 +113,16 @@ void SSC1::Handler()
         if(mute == 1) mute = 0;
         else mute = 1;
     }
+    
+    vol_pot = ADC_CDR;
 
     if(!lrtoggle)
     {
         lrtoggle = 1;
         
-        input_l = (int32_t)(SSC_RHR);
-        
-/*
-        input_l = (((int32_t)(SSC_RHR << 8)));
-        input_l = input_l / 256;
-
-        vol_pot = ADC_CDR;
+        input_l = (int32_t)(SSC_RHR << 16);
+        input_l = input_l / prescaling_factor;
+        input_l_bypass = input_l / 10;
 
         i = 0;
         while(i <= NCoef)
@@ -186,35 +164,24 @@ void SSC1::Handler()
         input_l_y_HP[input_pointer[0]] =
             input_l_y_HP[input_pointer[0]] / BCoef_HP[0];
         
-        input_l_HP_temp =
-            ((input_l_y_HP[input_pointer[0]] * 256) / DCgain_HP);
-        
-        if(vol_pot != 0) input_l_HP_temp = input_l_HP_temp / (vol_pot/10);
+        /*
         input_l =
-            ((input_l_y_TP[input_pointer[0]] * 256) / DCgain_TP) +
-            ((input_l_y_BP[input_pointer[0]] * 256) / DCgain_BP) +
-            input_l_HP_temp;
-        
-        
-        input_l_x_MainTP[input_pointer[0]] = (input_l / 256);
-        input_l_y_MainTP[input_pointer[0]] = ACoef_MainTP[0] * input_l_x_MainTP[input_pointer[0]];
-        
-        i = 1;
-        while(i <= NCoef)
-        {
-            input_l_y_MainTP[input_pointer[0]] =
-                input_l_y_MainTP[input_pointer[0]] +
-                (ACoef_MainTP[i] * input_l_x_MainTP[input_pointer[i]]) -
-                (BCoef_MainTP[i] * input_l_y_MainTP[input_pointer[i]]);
-            i++;
-        }
-        
-        input_l_y_MainTP[input_pointer[0]] =
-            input_l_y_MainTP[input_pointer[0]] / BCoef_MainTP[0];
-        
-        input_l = ((input_l_y_MainTP[input_pointer[0]] * 128) / DCgain_MainTP);
+            ((input_l_y_TP[input_pointer[0]]) / DCgain_TP);
 */
-        
+        /*
+        input_l =
+            ((input_l_y_BP[input_pointer[0]]) / DCgain_BP);
+*/
+        /*
+        input_l =
+            ((input_l_y_HP[input_pointer[0]]) / DCgain_HP);
+*/
+        input_l =
+            ((input_l_y_TP[input_pointer[0]]) / DCgain_TP) +
+            ((input_l_y_BP[input_pointer[0]]) / DCgain_BP) +
+            ((input_l_y_HP[input_pointer[0]]) / DCgain_HP) +
+            input_l_bypass;
+
         if(mute) SSC_THR = 0;
         else SSC_THR = (input_l);
     }
@@ -222,11 +189,9 @@ void SSC1::Handler()
     {
         lrtoggle = 0;
         
-        input_r = (int32_t)(SSC_RHR);
-        
-/*
-        input_r = (((int32_t)(SSC_RHR << 8)));
-        input_r = input_r / 256;
+        input_r = (int32_t)(SSC_RHR << 16);
+        input_r = input_r / prescaling_factor;
+        input_r_bypass = input_r / 10;
 
         input_r_x_TP[input_pointer[0]] = input_r;
         input_r_y_TP[input_pointer[0]] = ACoef_TP[0] * input_r;
@@ -259,37 +224,26 @@ void SSC1::Handler()
             input_r_y_BP[input_pointer[0]] / BCoef_BP[0];
         input_r_y_HP[input_pointer[0]] =
             input_r_y_HP[input_pointer[0]] / BCoef_HP[0];
-        
-        input_r_HP_temp =
-            ((input_r_y_HP[input_pointer[0]] * 256) / DCgain_HP);
-        
-        if(vol_pot != 0) input_r_HP_temp = input_r_HP_temp / (vol_pot/10);
+        /*
         input_r =
-            ((input_r_y_TP[input_pointer[0]] * 256) / DCgain_TP) +
-            ((input_r_y_BP[input_pointer[0]] * 256) / DCgain_BP) +
-            input_r_HP_temp;
-        
-        
-        input_r_x_MainTP[input_pointer[0]] = (input_r / 256);
-        input_r_y_MainTP[input_pointer[0]] = ACoef_MainTP[0] * input_r_x_MainTP[input_pointer[0]];
-        
-        i = 1;
-        while(i <= NCoef)
-        {
-            input_r_y_MainTP[input_pointer[0]] =
-                input_r_y_MainTP[input_pointer[0]] +
-                (ACoef_MainTP[i] * input_r_x_MainTP[input_pointer[i]]) -
-                (BCoef_MainTP[i] * input_r_y_MainTP[input_pointer[i]]);
-            i++;
-        }
-        
-        input_r_y_MainTP[input_pointer[0]] =
-            input_r_y_MainTP[input_pointer[0]] / BCoef_MainTP[0];
-        
-        input_r = ((input_r_y_MainTP[input_pointer[0]] * 128) / DCgain_MainTP);
+            ((input_r_y_TP[input_pointer[0]]) / DCgain_TP);
 */
+        /*
+        input_r =
+            ((input_r_y_BP[input_pointer[0]]) / DCgain_BP);
+*/
+        /*
+        input_r =
+            ((input_r_y_HP[input_pointer[0]]) / DCgain_HP);
+*/
+        input_r =
+            ((input_r_y_TP[input_pointer[0]]) / DCgain_TP) +
+            ((input_r_y_BP[input_pointer[0]]) / DCgain_BP) +
+            ((input_r_y_HP[input_pointer[0]]) / DCgain_HP) +
+            input_r_bypass;
+
         if(mute) SSC_THR = 0;
-        else SSC_THR = input_r;
+        else SSC_THR = (input_r);
     }
 }
 

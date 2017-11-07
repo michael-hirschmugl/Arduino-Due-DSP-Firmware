@@ -10,7 +10,7 @@
 void SAM3X8E_SSCClass::init_ssc_clk(void)
 {
     PMC_WPMR = PMC_WPKEY | WPEN_0;
-    PMC_PCER0 = PMC_PCSR0 | SSC_PER;  //Reading from Enable register??
+    PMC_PCER0 = PMC_PCSR0 | SSC_PID;
     PMC_WPMR = PMC_WPKEY | WPEN_1;
 }
 
@@ -68,7 +68,7 @@ void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
     
     SSC_RFMR = SSC_RDATLEN | SSC_RLOOP | SSC_RMSBF | SSC_RDATNB
                            | SSC_RFSLEN | SSC_RFSOS | SSC_RFSEDGE
-                           | RFSLEN_EXT;
+                           | SSC_RFSLEN_EXT;
     
     // Transmitter Config
     SSC_TCMR = SSC_TCKS | SSC_TCKI | SSC_TCKO | SSC_TCKG | SSC_TSTART
@@ -76,7 +76,7 @@ void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
     
     SSC_TFMR = SSC_TDATLEN | SSC_TDATDEF | SSC_TMSBF | SSC_TDATNB
                            | SSC_TFSLEN | SSC_TFSOS | SSC_TFSEDGE
-                           | TFSLEN_EXT;
+                           | SSC_TFSLEN_EXT;
     
     SSC_IER = SSC_IETXRDY | SSC_IETXEMPTY | SSC_IERXRDY | SSC_IEOVRUN
                           | SSC_IECP0 | SSC_IECP1 | SSC_IETXSYN
@@ -91,14 +91,13 @@ void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
 
 void SAM3X8E_SSCClass::ssc_interrupt_setup(void)
 {
-    INTERRUPT0_ENABLE |= (1U << 26);
-    (*((volatile unsigned long *)(0xE000E400 + (6)))) |=
-                                    (uint8_t)(SSC_INTERRUPT_PRIORITY << 16);
+    INTERRUPT0_ENABLE |= SSC_PID;
+    INTERRUPT_PRIORITY_REG_6 |= (uint8_t)(SSC_INTERRUPT_PRIORITY << 16);
 }
 
 void SAM3X8E_SSCClass::disable_ssc_interrupt_for_dma(void)
 {
-    INTERRUPT0_DISABLE |= (0U << 26);
+    INTERRUPT0_DISABLE |= SSC_PID;
     INTERRUPT0_CLEAR_PENDING = (0xFFFFFFFFU);
 }
 

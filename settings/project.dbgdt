@@ -1211,7 +1211,7 @@
                     <item>input_l_y_TP[input_pointer[0]]</item>
                     <item>volume</item>
                     <item>lp_pot</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

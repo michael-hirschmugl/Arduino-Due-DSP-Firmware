@@ -47,14 +47,14 @@ void SAM3X8E_SETUPClass::change_flash_read_waitstate(int waitstate)
 void SAM3X8E_SETUPClass::enable_main_oscillator(void)
 {
     PMC_WPMR = PMC_WPKEY | WPEN_0;
-    PMC_CKGR_MOR = PMC_CKGR_KEY |
-                   PMC_CKGR_MOSCXTEN |
-                   PMC_CKGR_MOSCXTBY |
-                   PMC_CKGR_MOSCRCEN |
-                   PMC_CKGR_MOSCRCF |
-                   PMC_CKGR_MOSCXTST |
-                   PMC_CKGR_MOSCSEL |
-                   PMC_CKGR_CFDEN;
+    PMC_CKGR_MOR = PMC_CKGR_MOR_KEY |
+                   PMC_CKGR_MOR_MOSCXTEN |
+                   PMC_CKGR_MOR_MOSCXTBY |
+                   PMC_CKGR_MOR_MOSCRCEN |
+                   PMC_CKGR_MOR_MOSCRCF |
+                   PMC_CKGR_MOR_MOSCXTST |
+                   PMC_CKGR_MOR_MOSCSEL |
+                   PMC_CKGR_MOR_CFDEN;
     PMC_WPMR = PMC_WPKEY | WPEN_1;
 }
 

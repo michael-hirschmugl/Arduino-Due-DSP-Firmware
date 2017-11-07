@@ -9,9 +9,9 @@
 */
 void SAM3X8E_TWIClass::init_twi1_clk(void)
 {
-    PMC_WPMR = 0x504D4300U;
-    PMC_PCER0 = PMC_PCER0 | TWI1_PER;
-    PMC_WPMR = 0x504D4301U;
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
+    PMC_PCER0 = PMC_PCSR0 | TWI1_PID;
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
 }
 
 /*
@@ -29,12 +29,12 @@ void SAM3X8E_TWIClass::init_twi1(void)
 */
 void SAM3X8E_TWIClass::setup_pio_for_twi1(void)
 {
-    PIOB_WPMR = (0x50494FU << 8) | (0U << 0);
+    PIOB_WPMR = PIO_WPKEY | WPEN_0;
     PIOB_PDR = (1U << 12);
     PIOB_PDR = (1U << 13);
     PIOB_ABSR = (0U << 12);
     PIOB_ABSR = (0U << 13);
-    PIOB_WPMR = (0x50494FU << 8) | (1U << 0);
+    PIOB_WPMR = PIO_WPKEY | WPEN_1;
 }
 
 /*

@@ -1,9 +1,11 @@
 /**************************************************
  *
- * This file contains an interrupt vector for Cortex-M written in C++.
- * Compare it to the <EWARM>\arm\src\lib\thumb\cstartup_M.c written in C.
- * The actual interrupt functions must be provided by the application developer.
+ * This file contains the vector table for the SAM3X8E.
+ * Not all available interrupt vectors are implemented.
+ * This file was changed from a template file, which is provided with
+ * IAR Workbench.
  *
+ * Changes by Michael Hirschmugl
  * Copyright 2007 IAR Systems. All rights reserved.
  *
  * $Revision: 41481 $

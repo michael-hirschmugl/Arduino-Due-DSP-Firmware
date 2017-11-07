@@ -9,9 +9,9 @@
 */
 void SAM3X8E_SSCClass::init_ssc_clk(void)
 {
-    PMC_WPMR = (0x504D4300U);
-    PMC_PCER0 = (PMC_PCSR0 | SSC_PER);
-    PMC_WPMR = (0x504D4301U);
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
+    PMC_PCER0 = PMC_PCSR0 | SSC_PER;  //Reading from Enable register??
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
 }
 
 /*
@@ -25,12 +25,11 @@ void SAM3X8E_SSCClass::init_ssc(void)
 
 /*
     The six pins for SSC are configured.
-    
 */
 void SAM3X8E_SSCClass::setup_pio_for_ssc(void)
 {
     // Peripheral A
-    PIOB_WPMR = (0x50494FU << 8) | (0U << 0);
+    PIOB_WPMR = PIO_WPKEY | WPEN_0;
     PIOB_PDR = ~PIOB_PSR | (1U << 17);
     PIOB_PDR = ~PIOB_PSR | (1U << 18);
     PIOB_PDR = ~PIOB_PSR | (1U << 19);
@@ -38,9 +37,9 @@ void SAM3X8E_SSCClass::setup_pio_for_ssc(void)
     PIOB_ABSR |= (0U << 17);
     PIOB_ABSR |= (0U << 18);
     PIOB_ABSR |= (0U << 19);
-    PIOB_WPMR = (0x50494FU << 8) | (1U << 0);
+    PIOB_WPMR = PIO_WPKEY | WPEN_1;
     // Peripheral B
-    PIOA_WPMR = (0x50494FU << 8) | (0U << 0);
+    PIOA_WPMR = PIO_WPKEY | WPEN_0;
     PIOA_PDR = ~PIOA_PSR | (1U << 14);
     PIOA_PDR = ~PIOA_PSR | (1U << 15);
     PIOA_PDR = ~PIOA_PSR | (1U << 16);
@@ -49,7 +48,7 @@ void SAM3X8E_SSCClass::setup_pio_for_ssc(void)
     PIOA_ABSR |= (1U << 14);
     PIOA_ABSR |= (1U << 15);
     PIOA_ABSR |= (1U << 16);
-    PIOA_WPMR = (0x50494FU << 8) | (1U << 0);
+    PIOA_WPMR = PIO_WPKEY | WPEN_1;
 }
 
 /*
@@ -57,7 +56,7 @@ void SAM3X8E_SSCClass::setup_pio_for_ssc(void)
 */
 void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
 {
-    SSC_WPMR = WPKEY | (0U << 0);
+    SSC_WPMR = SSC_WPKEY | WPEN_0;
     SSC_CR = SWRST;  // Reset
     
     SSC_CR = RXEN | RXDIS | TXEN | TXDIS;
@@ -87,12 +86,12 @@ void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
                           | SSC_IDCP0 | SSC_IDCP1 | SSC_IDTXSYN
                           | SSC_IDRXSYN;
     
-    SSC_WPMR = WPKEY | (1U << 0);
+    SSC_WPMR = SSC_WPKEY | WPEN_1;
 }
 
 void SAM3X8E_SSCClass::ssc_interrupt_setup(void)
 {
-    INTERRUPT_ENABLE |= (1U << 26);
+    INTERRUPT0_ENABLE |= (1U << 26);
     (*((volatile unsigned long *)(0xE000E400 + (6)))) |=
                                     (uint8_t)(SSC_INTERRUPT_PRIORITY << 16);
 }

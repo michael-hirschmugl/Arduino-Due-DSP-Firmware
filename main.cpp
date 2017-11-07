@@ -136,7 +136,7 @@ void SSC1::Handler()
         filter_count = 0;
     }
     
-    vol_pot = (int32_t)(ADC_CDR);
+    vol_pot = (int32_t)(ADC_CDR_AD4);
     vol_pot = vol_pot + 1;
     if(filter_select == 0) lp_pot = ((vol_pot * 6) / 1025) + 1;
     

@@ -5,8 +5,8 @@
 #ifndef SAM3X8E_SETUP_DEFINITIONS_H
 #define SAM3X8E_SETUP_DEFINITIONS_H
 
-#define DMA_CH                          0
-#define DMA_BUF_SIZE                    32
+#define DMA_CH                          (0)
+#define DMA_BUF_SIZE                    (32)
 #define DMAC_INTERRUPT_PRIORITY         (0)
 #define SSC_INTERRUPT_PRIORITY          (0)
 #define DIG_INP_INTERRUPT_PRIORITY      (5)
@@ -92,6 +92,28 @@
 /* Frame Sync Edge Detection: POSITIVE */
 #define SSC_RFSEDGE             (0U << 24)
 #define SSC_RFSLEN_EXT          (0x0U << 28)
+
+/*
+    TWI1 Controller Setup
+*/
+/* TWI Master Mode Enabled */
+#define TWI1_CR_MSEN            (1U << 2)
+/* TWI Master Mode disable */
+#define TWI1_CR_MSDIS           (0U << 3)
+/* TWI Slave Mode Enable */
+#define TWI1_CR_SVEN            (0U << 4)
+/* TWI Slave Mode disable */
+#define TWI1_CR_SVDIS           (1U << 5)
+/* Master Read Direction */
+#define TWI1_MMR_MREAD          (0U << 12)
+/* Device Address */
+#define TWI1_MMR_DADR           (0x1AU << 16)
+/* Clock Low Divider */
+#define TWI1_CWGR_CLDIV         (0xD0U << 0)
+/* Clock High Divider */
+#define TWI1_CWGR_CHDIV         (0xD0U << 8)
+/* Clock Divider */
+#define TWI1_CWGR_CKDIV         (0x1U << 16)
 
 /*
     ADC Controller Setup

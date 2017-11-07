@@ -9,7 +9,7 @@
 #include "sam3x8e_adc.h"
 
 /*
-  
+  Enables analog input on Pin 81.
 */
 void SAM3X8E_ADCClass::enable_adc_input(void)
 {
@@ -59,6 +59,9 @@ void SAM3X8E_ADCClass::enable_adc_input(void)
     ADC_WPMR = ADC_WPKEY | WPEN_1;
 }
 
+/*
+  Not used.
+*/
 void SAM3X8E_ADCClass::enable_adc_input_interrupts(void)
 {
 

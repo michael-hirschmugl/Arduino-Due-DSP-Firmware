@@ -1,9 +1,16 @@
 /*
   sam3x8e_din.cpp
+
+  Library for the digital inputs on the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #include "sam3x8e_din.h"
 
+/*
+  Enables digital input on Pin 20.
+*/
 void SAM3X8E_DINClass::enable_digital_input(void)
 {
     // Pin 20 - PD7
@@ -23,6 +30,9 @@ void SAM3X8E_DINClass::enable_digital_input(void)
     
 }
 
+/*
+  Enables interrupts for digital input on Pin 20.
+*/
 void SAM3X8E_DINClass::enable_digital_input_interrupts(void)
 {
     PIOD_WPMR = PIO_WPKEY | WPEN_0;

@@ -1,5 +1,9 @@
 /*
   sam3x8e_ssc.cpp
+
+  Library for the SSC interface on the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #include "sam3x8e_ssc.h"
@@ -57,10 +61,10 @@ void SAM3X8E_SSCClass::setup_pio_for_ssc(void)
 void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
 {
     SSC_WPMR = SSC_WPKEY | WPEN_0;
-    SSC_CR = SWRST;  // Reset
+    SSC_CR = TWI1_CR_SWRST;  // Reset
     
-    SSC_CR = RXEN | RXDIS | TXEN | TXDIS;
-    SSC_CMR = SSC_DIV; // divider is deactivated (kept for compatibility)
+    SSC_CR = SSC_CR_RXEN | SSC_CR_RXDIS | SSC_CR_TXEN | SSC_CR_TXDIS;
+    SSC_CMR = SSC_CMR_DIV; // divider is deactivated (kept for compatibility)
     
     // Clock for receiver and transmitter will both come from RK
     SSC_RCMR = SSC_RCKS | SSC_RCKO | SSC_RCKI | SSC_RCKG | SSC_RSTART
@@ -89,12 +93,18 @@ void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
     SSC_WPMR = SSC_WPKEY | WPEN_1;
 }
 
+/*
+  Configures interrupt registers of the SSC interface.
+*/
 void SAM3X8E_SSCClass::ssc_interrupt_setup(void)
 {
     INTERRUPT0_ENABLE |= SSC_PID;
     INTERRUPT_PRIORITY_REG_6 |= (uint8_t)(SSC_INTERRUPT_PRIORITY << 16);
 }
 
+/*
+  Enables interrupts for the SSC interface.
+*/
 void SAM3X8E_SSCClass::disable_ssc_interrupt_for_dma(void)
 {
     INTERRUPT0_DISABLE |= SSC_PID;

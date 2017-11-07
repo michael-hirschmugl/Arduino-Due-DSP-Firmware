@@ -165,48 +165,39 @@
 /* ADC Mode Register */
 #define ADC_MR                  (*((volatile unsigned long *)0x400C0004U))
 
-
-
-
+/* TWI Clock Waveform Generator Register RW */
 #define TWI1_CWGR               (*((volatile unsigned long *)0x40090010U))
-#define CLDIV                   (0xD0U << 0)
-#define CHDIV                   (0xD0U << 8)
-#define CKDIV                   (0x1U << 16)
 
+/* TWI1 Control Register WO */
 #define TWI1_CR                 (*((volatile unsigned long *)0x40090000U))
-#define START                   (0U << 0)
-#define STOP                    (1U << 1)
-#define MSEN                    (1U << 2)
-#define MSDIS                   (0U << 3)
-#define SVEN                    (0U << 4)
-#define SVDIS                   (1U << 5)
-#define QUICK                   (0U << 6)
-#define SWRST                   (1U << 7)
+#define TWI1_CR_START           (0U << 0)
+#define TWI1_CR_STOP            (1U << 1)
+#define TWI1_CR_QUICK           (0U << 6)
+#define TWI1_CR_SWRST           (1U << 7)
 
+/* TWI1 Master Mode Register RW */
 #define TWI1_MMR                (*((volatile unsigned long *)0x40090004U))
-#define MREAD                   (0U << 12)
-#define DADR                    (0x1AU << 16)
 
+/* TWI1 Transmit Holding Register RW */
 #define TWI1_THR                (*((volatile unsigned long *)0x40090034U))
+
+/* TWI1 Status Register RO */
 #define TWI1_SR                 (*((volatile unsigned long *)0x40090020U))
-#define TXRDY                   (1U << 2)
-#define TXCOMP                  (1U << 0)
-#define NACK                    (1U << 8)
-
-
-
-
+#define TWI1_SR_TXRDY           (1U << 2)
+#define TWI1_SR_TXCOMP          (1U << 0)
+#define TWI1_SR_NACK            (1U << 8)
 
 /* SSC Control Register WO */
 #define SSC_CR                  (*((volatile unsigned long *)0x40004000U))
-#define RXEN                    (1U << 0)
-#define RXDIS                   (0U << 1)
-#define TXEN                    (1U << 8)
-#define TXDIS                   (0U << 9)
-#define SWRST_SSC               (1U << 15)
+#define SSC_CR_RXEN             (1U << 0)
+#define SSC_CR_RXDIS            (0U << 1)
+#define SSC_CR_TXEN             (1U << 8)
+#define SSC_CR_TXDIS            (0U << 9)
+#define SSC_CR_SWRST_SSC        (1U << 15)
 
+/* SSC Clock Mode Register RW */
 #define SSC_CMR                 (*((volatile unsigned long *)0x40004004U))
-#define SSC_DIV                 (0x000U << 0)
+#define SSC_CMR_DIV             (0x000U << 0)
 
 /* SSC Write Protect Mode Register */
 #define SSC_WPMR                (*((volatile unsigned long *)0x400040E4U))

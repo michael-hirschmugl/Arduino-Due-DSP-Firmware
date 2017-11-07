@@ -1,5 +1,9 @@
 /*
   sam3x8e_setup.cpp
+
+  General setup library of the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #include "sam3x8e_setup.h"

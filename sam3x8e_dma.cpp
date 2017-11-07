@@ -1,5 +1,9 @@
 /*
   sam3x8e_dma.cpp
+
+  Library for the DMA controller on the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #include "sam3x8e_dma.h"

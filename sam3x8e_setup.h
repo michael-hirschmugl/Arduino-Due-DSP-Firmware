@@ -9,8 +9,6 @@
 #include "sam3x8e_register_definitions.h"
 #include "sam3x8e_setup_definitions.h"
 
-
-
 class SAM3X8E_SETUPClass {
 public:
 	SAM3X8E_SETUPClass(void) { };

@@ -136,7 +136,7 @@ void SSC1::Handler()
         filter_count = 0;
     }
     
-    vol_pot = (int32_t)(ADC_CDR);
+    vol_pot = (int32_t)(ADC_CDR_AD4);
     vol_pot = vol_pot + 1;
     if(filter_select == 0) lp_pot = ((vol_pot * 6) / 1025) + 1;
     
@@ -324,14 +324,14 @@ int main()
 
 void init_clock_for_wm8731()
 {
-    PIOA_WPMR = (0x50494FU << 8) | (0U << 0);
+    PIOA_WPMR = PIO_WPKEY | WPEN_0;
     PIOA_PDR = ~PIOA_PSR | (1U << 1);  // enable peripheral control
     PIOA_PER = PIOA_PSR & ~(1U << 1);
     PIOA_ABSR |= (1U << 1);  // peripherial B selected
-    PIOA_WPMR = (0x50494FU << 8) | (1U << 0);
+    PIOA_WPMR = PIO_WPKEY | WPEN_1;
     
-    PMC_WPMR = 0x504D4300U;
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
     PMC_SCER |=	0x0100U;  // page 558
     PMC_PCK0 = 0x01U;  // main crystak osc = 12Mhz
-    PMC_WPMR = 0x504D4301U;
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
 }

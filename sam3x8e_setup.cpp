@@ -1,5 +1,9 @@
 /*
   sam3x8e_setup.cpp
+
+  General setup library of the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #include "sam3x8e_setup.h"
@@ -46,10 +50,16 @@ void SAM3X8E_SETUPClass::change_flash_read_waitstate(int waitstate)
 */
 void SAM3X8E_SETUPClass::enable_main_oscillator(void)
 {
-    PMC_WPMR = WPKEY | WPEN_0;
-    CKGR_MOR = KEY | MOSCXTEN | MOSCXTBY | MOSCRCEN | MOSCRCF | MOSCXTST 
-                   | MOSCSEL | CFDEN;
-    PMC_WPMR = WPKEY | WPEN_1;
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
+    PMC_CKGR_MOR = PMC_CKGR_MOR_KEY |
+                   PMC_CKGR_MOR_MOSCXTEN |
+                   PMC_CKGR_MOR_MOSCXTBY |
+                   PMC_CKGR_MOR_MOSCRCEN |
+                   PMC_CKGR_MOR_MOSCRCF |
+                   PMC_CKGR_MOR_MOSCXTST |
+                   PMC_CKGR_MOR_MOSCSEL |
+                   PMC_CKGR_MOR_CFDEN;
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
 }
 
 /*
@@ -62,7 +72,7 @@ uint8_t SAM3X8E_SETUPClass::wait_for_main_oscillator(void)
 {
     uint16_t i = 0;
     
-    while(MOSCXTS != (PMC_SR & MOSCXTS))
+    while(PMC_SR_MOSCXTS != (PMC_SR & PMC_SR_MOSCXTS))
     {
         if(i++ > GLOBAL_TIMEOUT)
         {
@@ -78,9 +88,12 @@ uint8_t SAM3X8E_SETUPClass::wait_for_main_oscillator(void)
 */
 void SAM3X8E_SETUPClass::set_pll_and_divider(void)
 {
-    PMC_WPMR = WPKEY | WPEN_0;
-    CKGR_PLLAR = DIVA | PLLACOUNT | MULA | ONE;
-    PMC_WPMR = WPKEY | WPEN_1;
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
+    PMC_CKGR_PLLAR = PMC_CKGR_PLLAR_DIVA |
+                     PMC_CKGR_PLLAR_PLLACOUNT |
+                     PMC_CKGR_PLLAR_MULA |
+                     PMC_CKGR_PLLAR_ONE;
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
 }
 
 /*
@@ -92,7 +105,7 @@ uint8_t SAM3X8E_SETUPClass::wait_for_pll(void)
 {
     uint16_t i = 0;
     
-    while(LOCKA != (PMC_SR & LOCKA))
+    while(PMC_SR_LOCKA != (PMC_SR & PMC_SR_LOCKA))
     {
         if(i++ > GLOBAL_TIMEOUT)
         {
@@ -111,18 +124,18 @@ uint8_t SAM3X8E_SETUPClass::wait_for_pll(void)
 */
 uint8_t SAM3X8E_SETUPClass::select_master_clock(void)
 {
-    PMC_WPMR = WPKEY | WPEN_0;
-    PMC_MCKR = (PMC_MCKR & ~PRES_MSK) | PRES;
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
+    PMC_MCKR = (PMC_MCKR & ~PMC_MCKR_PRES_MSK) | PMC_MCKR_PRES;
     if(wait_for_master_clock())
     {
         return 1;
     }
-    PMC_MCKR = (PMC_MCKR & ~CSS_MSK) | CSS;
+    PMC_MCKR = (PMC_MCKR & ~PMC_MCKR_CSS_MSK) | PMC_MCKR_CSS;
     if(wait_for_master_clock())
     {
         return 1;
     }
-    PMC_WPMR = WPKEY | WPEN_1;
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
     return 0;
 }
 
@@ -135,7 +148,7 @@ uint8_t SAM3X8E_SETUPClass::wait_for_master_clock(void)
 {
     uint16_t i = 0;
   
-    while(MCKRDY != (PMC_SR & MCKRDY))
+    while(PMC_SR_MCKRDY != (PMC_SR & PMC_SR_MCKRDY))
     {
         if(i++ > GLOBAL_TIMEOUT)
         {
@@ -151,8 +164,10 @@ uint8_t SAM3X8E_SETUPClass::wait_for_master_clock(void)
 */
 void SAM3X8E_SETUPClass::check_main_oscillator_frequency(void)
 {
-    while(MAINFRDY != (CKGR_MCFR & MAINFRDY)){}  // This should be ready by now
-    main_oscillator_frequency = (((CKGR_MCFR & MAINF_MSK) / 16) * 32000);
+    // This should be ready by now
+    while(PMC_CKGR_MCFR_MAINFRDY != (PMC_CKGR_MCFR & PMC_CKGR_MCFR_MAINFRDY)){}
+    main_oscillator_frequency =
+      (((PMC_CKGR_MCFR & PMC_CKGR_MCFR_MAINF_MSK) / 16) * 32000);
 }
 
 // Create object

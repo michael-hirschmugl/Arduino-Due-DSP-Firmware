@@ -20,5 +20,6 @@ A mute button.
 - This document.
 
 ## What I still need to accomplish
-- Divide big library into separate smaller libraries.
-- Find out how to put audio through at 0dB gain or attenuation.
+- Work on defined filter gain control in dB.
+- Three potentiometers for every filter gain.
+- Measure frequency response for all filters.

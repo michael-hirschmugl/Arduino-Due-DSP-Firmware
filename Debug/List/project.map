@@ -1,12 +1,12 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.11.2.13589/W32 for ARM                01/Nov/2017  15:32:16
+# IAR ELF Linker V8.11.2.13589/W32 for ARM                13/Nov/2017  19:15:45
 # Copyright 2007-2017 IAR Systems AB.
 #
 #    Output file  =  E:\Git-Hub\Arduino-Due-DSP\Debug\Exe\project.out
 #    Map file     =  E:\Git-Hub\Arduino-Due-DSP\Debug\List\project.map
 #    Command line =  
-#        -f C:\Users\Michael\AppData\Local\Temp\EWD633.tmp
+#        -f C:\Users\Michael\AppData\Local\Temp\EWA017.tmp
 #        (E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\cstartup_M_cpp.o
 #        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\main.o
 #        E:\Git-Hub\Arduino-Due-DSP\Debug\Obj\sam3x8e_adc.o
@@ -63,27 +63,25 @@ initialize by copy { rw };
   .intvec            const    0x00080000    0xe0  cstartup_M_cpp.o [1]
                             - 0x000800e0    0xe0
 
-"P1":                                      0x9f3
+"P1":                                      0x9f7
   .text              ro code  0x000800e0   0x44c  main.o [1]
   .text              ro code  0x0008052c    0x10  sam3x8e_wdt.o [1]
   .text              ro code  0x0008053c    0xd8  sam3x8e_setup.o [1]
   .text              ro code  0x00080614   0x180  sam3x8e_twi.o [1]
-  .text              ro code  0x00080794   0x134  sam3x8e_ssc.o [1]
-  .text              ro code  0x000808c8    0x5c  sam3x8e_din.o [1]
-  .text              ro code  0x00080924    0x7c  sam3x8e_adc.o [1]
-  .text              ro code  0x000809a0    0x38  packbits_init_single.o [4]
-  .text              ro code  0x000809d8    0x28  data_init.o [4]
-  .iar.init_table    const    0x00080a00    0x10  - Linker created -
-  .text              ro code  0x00080a10    0x1a  cmain.o [4]
-  .text              ro code  0x00080a2a     0x4  low_level_init.o [3]
-  .text              ro code  0x00080a2e     0x4  exit.o [3]
-  .text              ro code  0x00080a32     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080a34     0xa  cexit.o [4]
-  .text              ro code  0x00080a3e     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080a40    0x14  exit.o [5]
-  .text              ro code  0x00080a54    0x16  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080a6a     0x2  cstartup_M_cpp.o [1]
-  .text              ro code  0x00080a6c     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080794   0x13c  sam3x8e_ssc.o [1]
+  .text              ro code  0x000808d0    0x5c  sam3x8e_din.o [1]
+  .text              ro code  0x0008092c    0x78  sam3x8e_adc.o [1]
+  .text              ro code  0x000809a4    0x38  packbits_init_single.o [4]
+  .text              ro code  0x000809dc    0x28  data_init.o [4]
+  .iar.init_table    const    0x00080a04    0x10  - Linker created -
+  .text              ro code  0x00080a14    0x1a  cmain.o [4]
+  .text              ro code  0x00080a2e     0x4  low_level_init.o [3]
+  .text              ro code  0x00080a32     0x4  exit.o [3]
+  .text              ro code  0x00080a36     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080a38     0xa  cexit.o [4]
+  .text              ro code  0x00080a42     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080a44    0x14  exit.o [5]
+  .text              ro code  0x00080a58    0x16  cstartup_M_cpp.o [1]
   .text              ro code  0x00080a6e     0x2  cstartup_M_cpp.o [1]
   .text              ro code  0x00080a70     0x2  cstartup_M_cpp.o [1]
   .text              ro code  0x00080a72     0x2  cstartup_M_cpp.o [1]
@@ -92,10 +90,12 @@ initialize by copy { rw };
   .text              ro code  0x00080a78     0x2  cstartup_M_cpp.o [1]
   .text              ro code  0x00080a7a     0x2  cstartup_M_cpp.o [1]
   .text              ro code  0x00080a7c     0x2  cstartup_M_cpp.o [1]
-  .rodata            const    0x00080a7e     0x1  unwind_debug.o [5]
-  .rodata            const    0x00080a7f     0x0  packbits_init_single.o [4]
-  Initializer bytes  const    0x00080a7f    0x54  <for P2-1>
-                            - 0x00080ad3   0x9f3
+  .text              ro code  0x00080a7e     0x2  cstartup_M_cpp.o [1]
+  .text              ro code  0x00080a80     0x2  cstartup_M_cpp.o [1]
+  .rodata            const    0x00080a82     0x1  unwind_debug.o [5]
+  .rodata            const    0x00080a83     0x0  packbits_init_single.o [4]
+  Initializer bytes  const    0x00080a83    0x54  <for P2-1>
+                            - 0x00080ad7   0x9f7
 
 "P2", part 1 of 2:                         0x101
   P2-1                        0x20070000   0x101  <Init block>
@@ -122,7 +122,7 @@ initialize by copy { rw };
           -------     ----
 Copy/packbits (__iar_packbits_init_single3)
     1 source range, total size 0x54 (32% of destination):
-          0x00080a7f   0x54
+          0x00080a83   0x54
     1 destination range, total size 0x101:
           0x20070000  0x101
 
@@ -137,14 +137,14 @@ Copy/packbits (__iar_packbits_init_single3)
 E:\Git-Hub\Arduino-Due-DSP\Debug\Obj: [1]
     cstartup_M_cpp.o             46      224
     main.o                    1 100       81      248
-    sam3x8e_adc.o               124                 1
+    sam3x8e_adc.o               120                 1
     sam3x8e_din.o                92        1        1
     sam3x8e_setup.o             216        1        4
-    sam3x8e_ssc.o               308                 1
+    sam3x8e_ssc.o               316                 1
     sam3x8e_twi.o               384                 1
     sam3x8e_wdt.o                16        1        1
     -------------------------------------------------
-    Total:                    2 286      308      257
+    Total:                    2 290      308      257
 
 command line: [2]
     -------------------------------------------------
@@ -172,7 +172,7 @@ shb_l.a: [5]
 
     Linker created                        16    4 096
 -----------------------------------------------------
-    Grand Total:              2 446      325    4 353
+    Grand Total:              2 450      325    4 353
 
 
 *******************************************************************************
@@ -181,9 +181,9 @@ shb_l.a: [5]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.iar.init_table$$Base   0x00080a00          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x00080a10          --   Gb  - Linker created -
-?main                   0x00080a11         Code  Gb  cmain.o [4]
+.iar.init_table$$Base   0x00080a04          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00080a14          --   Gb  - Linker created -
+?main                   0x00080a15         Code  Gb  cmain.o [4]
 ACoef_BP                0x200700b0    0xc  Data  Lc  main.o [1]
 ACoef_HP                0x200700e0    0xc  Data  Lc  main.o [1]
 ACoef_TP                0x200700c8    0xc  Data  Lc  main.o [1]
@@ -192,14 +192,14 @@ BCoef_HP                0x200700ec    0xc  Data  Lc  main.o [1]
 BCoef_TP                0x200700d4    0xc  Data  Lc  main.o [1]
 CSTACK$$Base            0x20070108          --   Gb  - Linker created -
 CSTACK$$Limit           0x20071108          --   Gb  - Linker created -
-Region$$Table$$Base     0x00080a00          --   Gb  - Linker created -
-Region$$Table$$Limit    0x00080a10          --   Gb  - Linker created -
+Region$$Table$$Base     0x00080a04          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00080a14          --   Gb  - Linker created -
 SAM3X8E_ADC             0x200700fc    0x1  Data  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::enable_adc_input()
-                        0x00080925   0x56  Code  Gb  sam3x8e_adc.o [1]
+                        0x0008092d   0x52  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_DIN             0x200700fd    0x1  Data  Gb  sam3x8e_din.o [1]
 SAM3X8E_DINClass::enable_digital_input()
-                        0x000808c9   0x46  Code  Gb  sam3x8e_din.o [1]
+                        0x000808d1   0x46  Code  Gb  sam3x8e_din.o [1]
 SAM3X8E_SETUP           0x200700f8    0x4  Data  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::init_clock()
                         0x0008053d   0x60  Code  Gb  sam3x8e_setup.o [1]
@@ -227,22 +227,22 @@ SAM3X8E_WDT             0x20070100    0x1  Data  Gb  sam3x8e_wdt.o [1]
 SAM3X8E_WDTClass::disable_watchdog_timer()
                         0x0008052d   0x10  Code  Gb  sam3x8e_wdt.o [1]
 SSC1::Handler()         0x000800e1  0x366  Code  Gb  main.o [1]
-__cmain                 0x00080a11         Code  Gb  cmain.o [4]
-__exit                  0x00080a41   0x14  Code  Gb  exit.o [5]
-__iar_data_init3        0x000809d9   0x28  Code  Gb  data_init.o [4]
-__iar_debug_exceptions  0x00080a7e    0x1  Data  Gb  unwind_debug.o [5]
+__cmain                 0x00080a15         Code  Gb  cmain.o [4]
+__exit                  0x00080a45   0x14  Code  Gb  exit.o [5]
+__iar_data_init3        0x000809dd   0x28  Code  Gb  data_init.o [4]
+__iar_debug_exceptions  0x00080a82    0x1  Data  Gb  unwind_debug.o [5]
 __iar_packbits_init_single3
-                        0x000809a1   0x38  Code  Gb  packbits_init_single.o [4]
-__iar_program_start     0x00080a55   0x16  Code  Gb  cstartup_M_cpp.o [1]
+                        0x000809a5   0x38  Code  Gb  packbits_init_single.o [4]
+__iar_program_start     0x00080a59   0x16  Code  Gb  cstartup_M_cpp.o [1]
 __iar_systems$$module {Abs}
                         0x00000001         Data  Gb  command line/config [2]
-__low_level_init        0x00080a2b    0x4  Code  Gb  low_level_init.o [3]
+__low_level_init        0x00080a2f    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x00080000   0xe0  Data  Gb  cstartup_M_cpp.o [1]
-_call_main              0x00080a1d         Code  Gb  cmain.o [4]
-_exit                   0x00080a35         Code  Gb  cexit.o [4]
-_main                   0x00080a27         Code  Gb  cmain.o [4]
+_call_main              0x00080a21         Code  Gb  cmain.o [4]
+_exit                   0x00080a39         Code  Gb  cexit.o [4]
+_main                   0x00080a2b         Code  Gb  cmain.o [4]
 bp_pot                  0x200700a4    0x4  Data  Lc  main.o [1]
-exit                    0x00080a2f    0x4  Code  Gb  exit.o [3]
+exit                    0x00080a33    0x4  Code  Gb  exit.o [3]
 filter_count            0x20070008    0x4  Data  Lc  main.o [1]
 filter_select           0x2007000c    0x4  Data  Lc  main.o [1]
 hp_pot                  0x200700a8    0x4  Data  Lc  main.o [1]
@@ -273,7 +273,7 @@ volume                  0x200700ac    0x4  Data  Lc  main.o [1]
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-  2 446 bytes of readonly  code memory
+  2 450 bytes of readonly  code memory
     325 bytes of readonly  data memory
   4 353 bytes of readwrite data memory
 

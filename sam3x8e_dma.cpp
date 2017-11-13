@@ -1,5 +1,9 @@
 /*
   sam3x8e_dma.cpp
+
+  Library for the DMA controller on the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #include "sam3x8e_dma.h"
@@ -66,15 +70,15 @@ void SAM3X8E_DMAClass::configure_dma(uint8_t channel, uint8_t sod,
     /*
         pmc_enable_periph_clk(ID_DMAC);
     */
-    PMC_WPMR = WPKEY | 0U;
+    PMC_WPMR = PMC_WPKEY | WPEN_0;
     PMC_PCER1 = PMC_PCSR1 | (1U << 7);  // PID: 39 (DMA)
-    PMC_WPMR = WPKEY | 1U;
+    PMC_WPMR = PMC_WPKEY | WPEN_1;
     
     /*
         dmac_init(DMAC);
         = disable DMA
     */
-    DMAC_WPMR = DMAC_WPM_KEY | (0U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_0;
     DMAC_EN = 0U;
     
     /*
@@ -116,7 +120,7 @@ void SAM3X8E_DMAClass::configure_dma(uint8_t channel, uint8_t sod,
                                        | DMAC_CTRLB0_SRC_INCR
                                        | DMAC_CTRLB0_DST_INCR;
     
-    DMAC_WPMR = DMAC_WPM_KEY | (1U << 0);    
+    DMAC_WPMR = DMAC_WPKEY | WPEN_1;    
 
 }
 
@@ -125,16 +129,16 @@ void SAM3X8E_DMAClass::enable_dma(void)
     /*
         dmac_enable(DMAC);
     */
-    DMAC_WPMR = DMAC_WPM_KEY | (0U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_0;
     DMAC_EN = 1U;
-    DMAC_WPMR = DMAC_WPM_KEY | (1U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_1;
 }
 
 void SAM3X8E_DMAClass::enable_dma_interrupts(uint8_t channel)
 {
-    DMAC_WPMR = DMAC_WPM_KEY | (0U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_0;
     DMAC_EBCIER = DMAC_EBCISR | (1U << channel);
-    DMAC_WPMR = DMAC_WPM_KEY | (1U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_1;
     
     INTERRUPT1_ENABLE |= (1U << 7);  // ISR 37 (PID 39?!)
     
@@ -148,20 +152,20 @@ void SAM3X8E_DMAClass::enable_dma_channel(uint8_t channel)
     /*
         dmac_channel_enable(DMAC, DMA_CH);
     */
-    DMAC_WPMR = DMAC_WPM_KEY | (0U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_0;
     DMAC_CHER = (0x0000003FU & (1U << channel));
-    DMAC_WPMR = DMAC_WPM_KEY | (1U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_1;
 }
 
 
 
 void SAM3X8E_DMAClass::set_dma_btsize(uint8_t channel, uint32_t btsize)
 {
-    DMAC_WPMR = DMAC_WPM_KEY | (0U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_0;
     DMAC_EN = 0U;
     DMAC_CTRLA0(channel) = DMAC_CTRLA0(channel) | (0x0000FFFFU & (btsize));
     enable_dma();
-    DMAC_WPMR = DMAC_WPM_KEY | (1U << 0);
+    DMAC_WPMR = DMAC_WPKEY | WPEN_1;
 
 
 }

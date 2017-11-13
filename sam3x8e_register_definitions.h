@@ -1,202 +1,213 @@
 /*
   sam3x8e_register_definitions.h
+
+  Defines for peripheral registers of the SAM3X8E.
+
+  By Michael Hirschmugl
 */
 
 #ifndef SAM3X8E_REGISTER_DEFINITIONS_H
 #define SAM3X8E_REGISTER_DEFINITIONS_H
 
-/* PMC (Power Management Controller) Write Protect Mode Register */
-#define PMC_WPMR                (*((volatile unsigned long *)0x400E06E4U))
-#define WPKEY                   (0x504D43U << 8)
 #define WPEN_0                  (0U << 0)
 #define WPEN_1                  (1U << 0)
 
-/* PMC Clock Generator Main Oscillator register */
-#define CKGR_MOR                (*((volatile unsigned long *)0x400E0620U))
-#define KEY                     (0x37U << 16)
-#define MOSCXTEN                (1U << 0)
-#define MOSCXTBY                (0U << 1)
-#define MOSCRCEN                (0U << 3)
-#define MOSCRCF                 (0x0U << 4)
-#define MOSCXTST                (0xFFU << 8)
-#define MOSCSEL                 (1U << 24)
-#define CFDEN                   (0U << 25)
+#define TWI1_PID                (1U << 23)
+#define SSC_PID                 (1U << 26)
+#define ADC_PID                 (1U << 5)  // PID 37
+#define DIN_PID                 (1U << 14)
 
-/* PMC Status register */
+/* EEFC Flash Mode Register RW */
+#define EEFC_FMR0               (*((volatile unsigned long *)0x400E0A00U))
+#define EEFC_FMR1               (*((volatile unsigned long *)0x400E0C00U))
+
+/* PMC (Power Management Controller) Write Protect Mode Register */
+#define PMC_WPMR                (*((volatile unsigned long *)0x400E06E4U))
+#define PMC_WPKEY               (0x504D43U << 8)
+
+/* PMC Clock Generator Main Oscillator register RW */
+#define PMC_CKGR_MOR            (*((volatile unsigned long *)0x400E0620U))
+#define PMC_CKGR_MOR_KEY        (0x37U << 16)
+
+/* PMC Status register RO */
 #define PMC_SR                  (*((volatile unsigned long *)0x400E0668U))
-#define MOSCXTS                 (0U << 0)
-#define LOCKA                   (0U << 1)
-#define MCKRDY                  (1U << 3)
-#define LOCKU                   (1U << 6)
-#define PCKRDY0                 (1U << 8)
-#define PCKRDY1                 (1U << 9)
-#define PCKRDY2                 (1U << 10)
-#define MOSCSELS                (1U << 16)
-#define MOSCRCS                 (1U << 17)
-#define CFDEV                   (1U << 18)
+#define PMC_SR_MOSCXTS          (0U << 0)
+#define PMC_SR_LOCKA            (0U << 1)
+#define PMC_SR_MCKRDY           (1U << 3)
+#define PMC_SR_LOCKU            (1U << 6)
+#define PMC_SR_PCKRDY0          (1U << 8)
+#define PMC_SR_PCKRDY1          (1U << 9)
+#define PMC_SR_PCKRDY2          (1U << 10)
+#define PMC_SR_MOSCSELS         (1U << 16)
+#define PMC_SR_MOSCRCS          (1U << 17)
+#define PMC_SR_CFDEV            (1U << 18)
 
-/* PMC PLLA Register */
-#define CKGR_PLLAR              (*((volatile unsigned long *)0x400E0628U))
-#define DIVA                    (0x01U << 0)
-#define PLLACOUNT               (0x3FU << 8)
-#define MULA                    (0x0DU << 16)
-#define ONE                     (1U << 29)
+/* PMC PLLA Register RW */
+#define PMC_CKGR_PLLAR          (*((volatile unsigned long *)0x400E0628U))
+#define PMC_CKGR_PLLAR_ONE      (1U << 29)
 
-/* PMC Master Clock register */
+/* PMC Master Clock register RW */
 #define PMC_MCKR                (*((volatile unsigned long *)0x400E0630U))
-#define CSS                     (0x2U << 0)
-#define CSS_MSK                 (0x3U << 0)
-#define PRES                    (0x01U << 4)
-#define PRES_MSK                (0x7U << 4)
-#define PLLADIV2                (0U << 12)
-#define PLLADIV2_MSK            (1U << 12)
-#define UPLLDIV2                (0U << 13)
-#define UPLLDIV2_MSK            (1U << 13)
+#define PMC_MCKR_CSS_MSK        (0x3U << 0)
+#define PMC_MCKR_PRES_MSK       (0x7U << 4)
+#define PMC_MCKR_PLLADIV2_MSK   (1U << 12)
+#define PMC_MCKR_UPLLDIV2_MSK   (1U << 13)
+
+/* System Clock Enable Register WO */
+#define PMC_SCER                (*((volatile unsigned long *)0x400E0600U))
+/* Programmable Clock 0 Register RW */
+#define PMC_PCK0                (*((volatile unsigned long *)0x400E0640U))
 
 /* PMC Main Clock Frequency Register */
-#define CKGR_MCFR               (*((volatile unsigned long *)0x400E0624U))
-#define MAINF_MSK               (0xFFFFU << 0)
-#define MAINFRDY                (1U << 16)
+#define PMC_CKGR_MCFR           (*((volatile unsigned long *)0x400E0624U))
+#define PMC_CKGR_MCFR_MAINF_MSK (0xFFFFU << 0)
+#define PMC_CKGR_MCFR_MAINFRDY  (1U << 16)
 
-/* PMC Peripheral Clock Enable Register 0 */
+/* PMC Peripheral Clock Enable Register 0 WO */
 #define PMC_PCER0               (*((volatile unsigned long *)0x400E0610U))
-/* PMC Peripheral Clock Status Register 0 */
+/* PMC Peripheral Clock Status Register 0 RO */
 #define PMC_PCSR0               (*((volatile unsigned long *)0x400E0618U))
-/* PMC Peripheral Clock Enable Register 1 */
+/* PMC Peripheral Clock Enable Register 1 WO */
 #define PMC_PCER1               (*((volatile unsigned long *)0x400E0700U))
-/* PMC Peripheral Clock Status Register 1 */
+/* PMC Peripheral Clock Status Register 1 RO */
 #define PMC_PCSR1               (*((volatile unsigned long *)0x400E0708U))
 
+/* PIO Write Protect Mode Registers */
 #define PIOA_WPMR               (*((volatile unsigned long *)0x400E0EE4U))
 #define PIOB_WPMR               (*((volatile unsigned long *)0x400E10E4U))
 #define PIOC_WPMR               (*((volatile unsigned long *)0x400E12E4U))
 #define PIOD_WPMR               (*((volatile unsigned long *)0x400E14E4U))
-#define PIO_WPMR_KEY            (0x50494FU << 8)
+#define PIO_WPKEY               (0x50494FU << 8)
 
-#define PIOA_PDR                (*((volatile unsigned long *)0x400E0E04U))
-#define PIOA_PSR                (*((volatile unsigned long *)0x400E0E08U))
-#define PIOA_OER                (*((volatile unsigned long *)0x400E0E10U))
-#define PIOA_ODR                (*((volatile unsigned long *)0x400E0E14U))
-#define PIOA_OSR                (*((volatile unsigned long *)0x400E0E18U))
-#define PIOA_PUDR               (*((volatile unsigned long *)0x400E0E60U))
-#define PIOA_PUSR               (*((volatile unsigned long *)0x400E0E68U))
+/* PIO Enable Register WO */
 #define PIOA_PER                (*((volatile unsigned long *)0x400E0E00U))
-#define PIOA_ABSR               (*((volatile unsigned long *)0x400E0E70U))
+#define PIOC_PER                (*((volatile unsigned long *)0x400E1200U))
+#define PIOD_PER                (*((volatile unsigned long *)0x400E1400U))
 
-#define PIOB_PUDR               (*((volatile unsigned long *)0x400E1060U))
-#define PIOB_PUSR               (*((volatile unsigned long *)0x400E1068U))
+/* PIO Disable Register WO */
+#define PIOA_PDR                (*((volatile unsigned long *)0x400E0E04U))
 #define PIOB_PDR                (*((volatile unsigned long *)0x400E1004U))
+
+/* PIO Status Register RO */
+#define PIOA_PSR                (*((volatile unsigned long *)0x400E0E08U))
 #define PIOB_PSR                (*((volatile unsigned long *)0x400E1008U))
+#define PIOC_PSR                (*((volatile unsigned long *)0x400E1208U))
+#define PIOD_PSR                (*((volatile unsigned long *)0x400E1408U))
+
+/* Output Enable Register WO */
+#define PIOA_OER                (*((volatile unsigned long *)0x400E0E10U))
+
+/* Output Disable Register WO */
+#define PIOA_ODR                (*((volatile unsigned long *)0x400E0E14U))
+#define PIOD_ODR                (*((volatile unsigned long *)0x400E1414U))
+
+/* Output Status Register RO */
+#define PIOA_OSR                (*((volatile unsigned long *)0x400E0E18U))
+
+/* Pull-up Disable Register WO */
+#define PIOA_PUDR               (*((volatile unsigned long *)0x400E0E60U))
+#define PIOB_PUDR               (*((volatile unsigned long *)0x400E1060U))
+#define PIOC_PUDR               (*((volatile unsigned long *)0x400E1260U))
+#define PIOD_PUDR               (*((volatile unsigned long *)0x400E1460U))
+
+/* Pad Pull-up Status Register RO */
+#define PIOA_PUSR               (*((volatile unsigned long *)0x400E0E68U))
+#define PIOB_PUSR               (*((volatile unsigned long *)0x400E1068U))
+
+/* Peripheral AB Select Register RW */
+#define PIOA_ABSR               (*((volatile unsigned long *)0x400E0E70U))
 #define PIOB_ABSR               (*((volatile unsigned long *)0x400E1070U))
 
-#define PIOC_PER                (*((volatile unsigned long *)0x400E1200U))
-#define PIOC_PSR                (*((volatile unsigned long *)0x400E1208U))
-#define PIOC_PUDR               (*((volatile unsigned long *)0x400E1260U))
-
-#define PIOD_PER                (*((volatile unsigned long *)0x400E1400U))
-#define PIOD_PSR                (*((volatile unsigned long *)0x400E1408U))
-#define PIOD_PUDR               (*((volatile unsigned long *)0x400E1460U))
+/* Interrupt Enable Register WO */
 #define PIOD_IER                (*((volatile unsigned long *)0x400E1440U))
+/* Interrupt Mask Register RO */
 #define PIOD_IMR                (*((volatile unsigned long *)0x400E1448U))
-#define PIOD_ODR                (*((volatile unsigned long *)0x400E1414U))
+
+/* Glitch Input Filter Enable Register WO */
 #define PIOD_IFER               (*((volatile unsigned long *)0x400E1420U))
+
+/* Level Select Register WO */
 #define PIOD_LSR                (*((volatile unsigned long *)0x400E14C4U))
+
+/* Debouncing Input Filter Select Register WO */
 #define PIOD_DIFSR              (*((volatile unsigned long *)0x400E1484U))
+
+/* Pin Data Status Register RO */
 #define PIOD_PDSR               (*((volatile unsigned long *)0x400E143CU))
 
-#define PMC_SCER                (*((volatile unsigned long *)0x400E0600U))
-#define PMC_PCK0                (*((volatile unsigned long *)0x400E0640U))
-
-#define INTERRUPT_ENABLE        (*((volatile unsigned long *)0xE000E100U))
+/* Interrupt Control Registers */
+#define INTERRUPT0_ENABLE       (*((volatile unsigned long *)0xE000E100U))
 #define INTERRUPT1_ENABLE       (*((volatile unsigned long *)0xE000E104U))
 #define INTERRUPT0_DISABLE      (*((volatile unsigned long *)0xE000E180U))
 #define INTERRUPT0_CLEAR_PENDING (*((volatile unsigned long *)0xE000E280U))
+#define INTERRUPT_PRIORITY_REG_3 (*((volatile unsigned long *)(0xE000E400U \
+                                 + (3))))
+#define INTERRUPT_PRIORITY_REG_6 (*((volatile unsigned long *)(0xE000E400U \
+                                 + (6))))
 
-#define ADC_CHER                (*((volatile unsigned long *)0x400C0010U))
-#define ADC_CHSR                (*((volatile unsigned long *)0x400C0018U))
+/* ADC Write Protect Mode Register */
 #define ADC_WPMR                (*((volatile unsigned long *)0x400C00E4U))
-#define ADC_WPMR_KEY            (0x414443U << 8)
+#define ADC_WPKEY               (0x414443U << 8)
+
+/* ADC Channel Enable Register WO */
+#define ADC_CHER                (*((volatile unsigned long *)0x400C0010U))
+/* ADC Channel Status Register RO */
+#define ADC_CHSR                (*((volatile unsigned long *)0x400C0018U))
+
+/* ADC Channel Data Register AD4 */
+#define ADC_CDR_AD4             (*((volatile unsigned long *)0x400C0060U))
+
+/* ADC Control Register */
 #define ADC_CR                  (*((volatile unsigned long *)0x400C0000U))
+#define ADC_CR_SWRST            (1U << 0)
+#define ADC_CR_START            (1U << 1)
+
+/* ADC Mode Register */
 #define ADC_MR                  (*((volatile unsigned long *)0x400C0004U))
-#define ADC_TRGEN               (1U << 0)
-#define ADC_CDR                 (*((volatile unsigned long *)0x400C0060U))
 
-/* TIOA Output of the Timer Counter Channel 2 */
-#define ADC_TRGSEL              (0x3U << 1) 
-#define ADC_LOWRES              (1U << 4)
-#define ADC_SLEEP               (0U << 5)
-#define ADC_FWUP                (0U << 6)
-#define ADC_FREERUN             (1U << 7)
-#define ADC_PRESCAL             (0x7DU << 8)
-#define ADC_STARTUP             (0x8U << 16)
-#define ADC_SETTLING            (0x3U << 20)
-#define ADC_ANACH               (0U << 23)
-#define ADC_TRACKTIM            (0x5U << 24)
-#define ADC_TRANSFER            (0x6U << 28)
-#define ADC_USEQ                (0U << 31)
-
-#define TWI1_PER                (1U << 23)
-
+/* TWI Clock Waveform Generator Register RW */
 #define TWI1_CWGR               (*((volatile unsigned long *)0x40090010U))
-#define CLDIV                   (0xD0U << 0)
-#define CHDIV                   (0xD0U << 8)
-#define CKDIV                   (0x1U << 16)
 
+/* TWI1 Control Register WO */
 #define TWI1_CR                 (*((volatile unsigned long *)0x40090000U))
-#define START                   (0U << 0)
-#define STOP                    (1U << 1)
-#define MSEN                    (1U << 2)
-#define MSDIS                   (0U << 3)
-#define SVEN                    (0U << 4)
-#define SVDIS                   (1U << 5)
-#define QUICK                   (0U << 6)
-#define SWRST                   (1U << 7)
+#define TWI1_CR_START           (0U << 0)
+#define TWI1_CR_STOP            (1U << 1)
+#define TWI1_CR_QUICK           (0U << 6)
+#define TWI1_CR_SWRST           (1U << 7)
 
+/* TWI1 Master Mode Register RW */
 #define TWI1_MMR                (*((volatile unsigned long *)0x40090004U))
-#define MREAD                   (0U << 12)
-#define DADR                    (0x1AU << 16)
 
+/* TWI1 Transmit Holding Register RW */
 #define TWI1_THR                (*((volatile unsigned long *)0x40090034U))
+
+/* TWI1 Status Register RO */
 #define TWI1_SR                 (*((volatile unsigned long *)0x40090020U))
-#define TXRDY                   (1U << 2)
-#define TXCOMP                  (1U << 0)
-#define NACK                    (1U << 8)
+#define TWI1_SR_TXRDY           (1U << 2)
+#define TWI1_SR_TXCOMP          (1U << 0)
+#define TWI1_SR_NACK            (1U << 8)
 
-#define EEFC_FMR0               (*((volatile unsigned long *)0x400E0A00U))
-#define EEFC_FMR1               (*((volatile unsigned long *)0x400E0C00U))
-
-#define SSC_PER                 (1U << 26)
+/* SSC Control Register WO */
 #define SSC_CR                  (*((volatile unsigned long *)0x40004000U))
-#define RXEN                    (1U << 0)
-#define RXDIS                   (0U << 1)
-#define TXEN                    (1U << 8)
-#define TXDIS                   (0U << 9)
-#define SWRST_SSC               (1U << 15)
+#define SSC_CR_RXEN             (1U << 0)
+#define SSC_CR_RXDIS            (0U << 1)
+#define SSC_CR_TXEN             (1U << 8)
+#define SSC_CR_TXDIS            (0U << 9)
+#define SSC_CR_SWRST_SSC        (1U << 15)
 
+/* SSC Clock Mode Register RW */
 #define SSC_CMR                 (*((volatile unsigned long *)0x40004004U))
-#define SSC_DIV                 (0x000U << 0)
+#define SSC_CMR_DIV             (0x000U << 0)
 
+/* SSC Write Protect Mode Register */
 #define SSC_WPMR                (*((volatile unsigned long *)0x400040E4U))
 #define SSC_WPKEY               (0x535343U << 8)
 
+/* SSC Receive Clock Mode Register RW */
 #define SSC_RCMR                (*((volatile unsigned long *)0x40004010U))
-#define SSC_RCKS                (0x2U << 0)
-#define SSC_RCKO                (0x0U << 2)
-#define SSC_RCKI                (1U << 5)
-#define SSC_RCKG                (0x0U << 6)
-#define SSC_RSTART              (0x7U << 8)
-#define SSC_RSTOP               (0U << 12)
-#define SSC_RSTTDLY             (0x01U << 16)
-#define SSC_RPERIOD             (0x00U << 24)
 
+/* SSC Receive Frame Mode Register RW */
 #define SSC_RFMR                (*((volatile unsigned long *)0x40004014U))
-#define SSC_RLOOP               (0U << 5)
-#define SSC_RMSBF               (1U << 7)
-#define SSC_RDATNB              (0x0U << 8)
-#define SSC_RFSLEN              (0x0U << 16)
-#define SSC_RFSOS               (0x0U << 20)
-#define SSC_RFSEDGE             (0U << 24)
-#define RFSLEN_EXT              (0x0U << 28)
 
 #define SSC_TCMR                (*((volatile unsigned long *)0x40004018U))
 #define SSC_TCKS                (0x2U << 0)
@@ -215,7 +226,7 @@
 #define SSC_TFSOS               (0x0U << 20)
 #define SSC_TFSDEN              (1U << 23)
 #define SSC_TFSEDGE             (0U << 24)
-#define TFSLEN_EXT              (0x0U << 28)
+#define SSC_TFSLEN_EXT          (0x0U << 28)
 
 #define SSC_RHR                 (*((volatile unsigned long *)0x40004020U))
 #define SSC_RDAT                (0xFFFFFFFFU << 0)
@@ -268,6 +279,7 @@
 #define SSC_IMCP1               (0U << 9)
 #define SSC_IMTXSYN             (0U << 10)
 #define SSC_IMRXSYN             (0U << 11)
+
 
 #define DMAC_GCFG               (*((volatile unsigned long *)0x400C4000U))
 #define DMAC_ARB_CFG            (1U << 4)
@@ -618,7 +630,9 @@
 #define DMAC_CFG5_LOCK_IF_L     (0U << 22)
 #define DMAC_CFG5_AHB_PROT      (0xFU << 24)
 #define DMAC_CFG5_FIFOCFG       (0xFU << 28)
+
+/* DMAC Write Protect Mode Register */
 #define DMAC_WPMR               (*((volatile unsigned long *)0x400C41E4U))
-#define DMAC_WPM_KEY            (0x50494FU << 8)
+#define DMAC_WPKEY              (0x50494FU << 8)
 
 #endif

@@ -22,7 +22,7 @@ void SAM3X8E_ADCClass::enable_adc_input(void)
         Enable Power Management Controller and Clock for ADC
     */
     PMC_WPMR = PMC_WPKEY | WPEN_0;
-    PMC_PCER1 = PMC_PCSR1 | (ADC_PID >> 32);  // PID: 37
+    PMC_PCER1 = PMC_PCSR1 | ADC_PID;  // PID: 37
     PMC_WPMR = PMC_WPKEY | WPEN_1;
 
     PIOA_WPMR = PIO_WPKEY | WPEN_0;

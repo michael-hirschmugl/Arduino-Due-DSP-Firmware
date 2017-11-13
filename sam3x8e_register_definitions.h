@@ -14,7 +14,7 @@
 
 #define TWI1_PID                (1U << 23)
 #define SSC_PID                 (1U << 26)
-#define ADC_PID                 (1U << 37)
+#define ADC_PID                 (1U << 5)  // PID 37
 #define DIN_PID                 (1U << 14)
 
 /* EEFC Flash Mode Register RW */

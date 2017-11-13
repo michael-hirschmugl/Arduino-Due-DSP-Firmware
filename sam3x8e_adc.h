@@ -14,6 +14,11 @@ public:
 	SAM3X8E_ADCClass(void) { };
         
         void enable_adc_input(void);
+        void configure_adc_input(void);
+        void reset_adc(void);
+        void enable_ad3(void);
+        void enable_ad2(void);
+        void enable_ad1(void);
         void enable_adc_input_interrupts(void);
         
 private:

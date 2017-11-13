@@ -136,16 +136,16 @@ void SSC1::Handler()
         filter_count = 0;
     }
     
-    vol_pot = (int32_t)(ADC_CDR_AD4);
-    vol_pot = vol_pot + 1;
-    if(filter_select == 0) lp_pot = ((vol_pot * 6) / 1025) + 1;
+    //vol_pot = ((int32_t)(ADC_CDR_AD4) + 1);
+    //vol_pot = vol_pot + 1;
     
+    lp_pot = ((((int32_t)(ADC_CDR_AD6) + 1) * 6) / 1025) + 1;
     //lp_pot = 1;
-    if(filter_select == 1) bp_pot = ((vol_pot * 4) / 1025) + 1;
+    bp_pot = ((((int32_t)(ADC_CDR_AD5) + 1) * 4) / 1025) + 1;
     //bp_pot = 1;
-    if(filter_select == 2) hp_pot = ((vol_pot * 128) / 1025) + 1;
+    hp_pot = ((((int32_t)(ADC_CDR_AD4) + 1) * 128) / 1025) + 1;
     //hp_pot = 8;
-    if(filter_select == 3) volume = ((vol_pot * 6) / 1025) + 1;
+    //volume = ((vol_pot * 6) / 1025) + 1;
     //volume = 100;
 
     if(!lrtoggle)
@@ -313,6 +313,11 @@ int main()
     SAM3X8E_SSC.ssc_interrupt_setup();
     SAM3X8E_DIN.enable_digital_input();
     SAM3X8E_ADC.enable_adc_input();
+    SAM3X8E_ADC.reset_adc();
+    SAM3X8E_ADC.enable_ad1();
+    SAM3X8E_ADC.enable_ad2();
+    SAM3X8E_ADC.enable_ad3();
+    SAM3X8E_ADC.configure_adc_input();
 
     __enable_interrupt();
 

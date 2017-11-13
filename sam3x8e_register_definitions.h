@@ -156,6 +156,10 @@
 
 /* ADC Channel Data Register AD4 */
 #define ADC_CDR_AD4             (*((volatile unsigned long *)0x400C0060U))
+/* ADC Channel Data Register AD5 */
+#define ADC_CDR_AD5             (*((volatile unsigned long *)0x400C0064U))
+/* ADC Channel Data Register AD6 */
+#define ADC_CDR_AD6             (*((volatile unsigned long *)0x400C0068U))
 
 /* ADC Control Register */
 #define ADC_CR                  (*((volatile unsigned long *)0x400C0000U))

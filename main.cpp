@@ -9,10 +9,12 @@
 //#include "sam3x8e_dma.h"
 
 #define NCoef                   2
-#define DCgain_BP               16   //16*1
-#define DCgain_TP               128   //128*1
-#define DCgain_HP               1     //1*1 //6?
+#define DCgain_BP               16   //16
+#define DCgain_TP               128   //128
+#define DCgain_HP               1     //1
 #define prescaling_factor       65536
+
+#define pot_factor              29 //15/512 * 1000
 
 using namespace std;
 
@@ -44,54 +46,89 @@ static int32_t  input_r_y_HP[NCoef+1];
 
 static int8_t   input_pointer[NCoef+1];
 
-static int32_t  vol_pot = 0;
+static int32_t  vol_pot = 1;
 static int32_t  lp_pot = 1;
 static int32_t  bp_pot = 1;
-static int32_t  hp_pot = 8;
+static int32_t  hp_pot = 1;
 static int32_t  volume = 1;
 static uint8_t  mute = 0;
 static uint32_t mute_count = 0;
 
-static int32_t  ACoef_BP[NCoef+1] =
+static int32_t ACoef_BP[NCoef+1] =
 {
           103,
             0,
          -103
 };
 
-static int32_t  BCoef_BP[NCoef+1] =
+static int32_t BCoef_BP[NCoef+1] =
 {
            64,
          -117,
            55
 };
 
-static int32_t  ACoef_TP[NCoef+1] =
+static int32_t ACoef_TP[NCoef+1] =
 {
            37,
            75,
            37
 };
 
-static int32_t  BCoef_TP[NCoef+1] =
+static int32_t BCoef_TP[NCoef+1] =
 {
            64,
          -115,
            52
 };
 
-static int32_t  ACoef_HP[NCoef+1] =
+static int32_t ACoef_HP[NCoef+1] =
 {
            70,
             0,
           -70
 };
 
-static int32_t  BCoef_HP[NCoef+1] =
+static int32_t BCoef_HP[NCoef+1] =
 {
           128,
           -75,
            19
+};
+
+static int32_t GaindB[31] =
+{
+          17,
+          18,
+          20,
+          22,
+          25,
+          28,
+          31,
+          35,
+          39,
+          44,
+          50,
+          56,
+          63,
+          70,
+          79,
+          100,
+          125,
+          126,
+          141,
+          158,
+          178,
+          200,
+          223,
+          251,
+          282,
+          316,
+          355,
+          398,
+          447,
+          500,
+          560
 };
 
 class SSC1
@@ -104,49 +141,27 @@ public:
 void SSC1::Handler()
 {
     uint8_t i = 0;
-/*
+
     if((PIOD_PDSR & 0x80U) == 0x80U)
     {
         mute_count++;
     }
     else
     {
-        //mute_count = 0;
+        mute_count = 0;
     }
     if(mute_count > 0xFFFFU)
     {
-        //mute_count = 0;
-        //if(mute == 1) mute = 0;
-        //else mute = 1;
-    }
-*/
-    
-    if((PIOD_PDSR & 0x80U) == 0x80U)
-    {
-        filter_count++;
-    }
-    else
-    {
-        filter_count = 0;
-    }
-    if(filter_count > 0xFFFFU)
-    {
-        filter_select++;
-        if(filter_select > 3) filter_select = 0;
-        filter_count = 0;
+        mute_count = 0;
+        if(mute == 1) mute = 0;
+        else mute = 1;
     }
     
-    //vol_pot = ((int32_t)(ADC_CDR_AD4) + 1);
-    //vol_pot = vol_pot + 1;
-    
-    lp_pot = ((((int32_t)(ADC_CDR_AD6) + 1) * 6) / 1025) + 1;
-    //lp_pot = 1;
-    bp_pot = ((((int32_t)(ADC_CDR_AD5) + 1) * 4) / 1025) + 1;
-    //bp_pot = 1;
-    hp_pot = ((((int32_t)(ADC_CDR_AD4) + 1) * 128) / 1025) + 1;
-    //hp_pot = 8;
-    //volume = ((vol_pot * 6) / 1025) + 1;
-    //volume = 100;
+    lp_pot = GaindB[((pot_factor * ((int32_t)(ADC_CDR_AD6) - 512))/1000)+15];
+
+    bp_pot = GaindB[((pot_factor * ((int32_t)(ADC_CDR_AD5) - 512))/1000)+15];
+
+    hp_pot = GaindB[((pot_factor * ((int32_t)(ADC_CDR_AD4) - 512))/1000)+15];
 
     if(!lrtoggle)
     {
@@ -196,25 +211,10 @@ void SSC1::Handler()
         input_l_y_HP[input_pointer[0]] =
             input_l_y_HP[input_pointer[0]] / BCoef_HP[0];
         
-        //input_l_y_TP[input_pointer[0]] =
-        //    input_l_y_TP[input_pointer[0]] * (vol_pot);
-        
-        /*
         input_l =
-            ((input_l_y_TP[input_pointer[0]]) / DCgain_TP);
-*/
-        /*
-        input_l =
-            ((input_l_y_BP[input_pointer[0]]) / DCgain_BP);
-*/
-        /*
-        input_l =
-            ((input_l_y_HP[input_pointer[0]]) / DCgain_HP);
-*/
-        input_l =
-            ((input_l_y_TP[input_pointer[0]]) / (DCgain_TP / lp_pot)) +
-            ((input_l_y_BP[input_pointer[0]]) / (DCgain_BP / bp_pot)) +
-            ((input_l_y_HP[input_pointer[0]] * 6) / (hp_pot)) +
+            (((input_l_y_TP[input_pointer[0]] / DCgain_TP)*lp_pot)/100) +
+            (((input_l_y_BP[input_pointer[0]] / DCgain_BP)*bp_pot)/100) +
+            (((input_l_y_HP[input_pointer[0]] / DCgain_HP)*hp_pot)/100) +
             input_l_bypass;
 
         if(mute) SSC_THR = 0;
@@ -259,23 +259,11 @@ void SSC1::Handler()
             input_r_y_BP[input_pointer[0]] / BCoef_BP[0];
         input_r_y_HP[input_pointer[0]] =
             input_r_y_HP[input_pointer[0]] / BCoef_HP[0];
-        
-        /*
+
         input_r =
-            ((input_r_y_TP[input_pointer[0]]) / DCgain_TP);
-*/
-        /*
-        input_r =
-            ((input_r_y_BP[input_pointer[0]]) / DCgain_BP);
-*/
-        /*
-        input_r =
-            ((input_r_y_HP[input_pointer[0]]) / DCgain_HP);
-*/
-        input_r =
-            ((input_r_y_TP[input_pointer[0]]) / (DCgain_TP / lp_pot)) +
-            ((input_r_y_BP[input_pointer[0]]) / (DCgain_BP / bp_pot)) +
-            ((input_r_y_HP[input_pointer[0]] * 6) / (hp_pot)) +
+            (((input_r_y_TP[input_pointer[0]] / DCgain_TP)*lp_pot)/100) +
+            (((input_r_y_BP[input_pointer[0]] / DCgain_BP)*bp_pot)/100) +
+            (((input_r_y_HP[input_pointer[0]] / DCgain_HP)*hp_pot)/100) +
             input_r_bypass;
 
         if(mute) SSC_THR = 0;

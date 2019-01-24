@@ -1,9 +1,9 @@
-"C:\Users\u15q86\Downloads\Arduino-Due-DSP-master\sam3x8e_setup.cpp"
+"C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\sam3x8e_setup.cpp"
 -std=c++14
 -ferror-limit=0
 -fbracket-depth=512
 -I
-C:\Users\u15q86\Downloads\Arduino-Due-DSP-master
+C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\inc
 -I

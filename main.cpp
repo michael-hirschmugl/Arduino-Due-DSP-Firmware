@@ -17,13 +17,16 @@ volatile uint32_t  adc_volt_a2[5];
 
 void init_clock_for_wm8731(void);
 void measure_system(void);
+int32_t convert_sample_to_voltage(int32_t);
+int32_t convert_voltage_to_sample(int32_t);
 
-static int      lrtoggle        = 0;
-static int32_t  input_l         = 0;
-static int32_t  input_r         = 0;
+static   int      lrtoggle  = 0;
+volatile int32_t  input_l   = 0;
+volatile int32_t  input_r   = 0;
 
-volatile int32_t  samples[500];
-volatile int index = 0;
+//volatile int32_t  samples[500];
+volatile int32_t  sample;
+//volatile int      index     = 0;
 
 class SSC1
 {
@@ -39,13 +42,22 @@ void SSC1::Handler()
         lrtoggle = 1;
         
         input_l = (int32_t)(SSC_RHR);
+        
+        sample = convert_sample_to_voltage(input_l);
+        
+        sample = sample / 2;
+        
+        sample = convert_voltage_to_sample(sample);
+
+        /*
         if(index > 499)
         {
           index = 0;
         }
-        samples[index++] = input_l;
+        samples[index++] = sample;
+        */
 
-        SSC_THR = input_l;
+        SSC_THR = sample;
     }
     else
     {
@@ -53,7 +65,7 @@ void SSC1::Handler()
         
         input_r = (int32_t)(SSC_RHR);
 
-        SSC_THR = input_r;
+        SSC_THR = 0x0000U;
     }
 }
 
@@ -188,4 +200,40 @@ void measure_system()
       SAM3X8E_DOUT.set_relay(RELAY_IN_AUDIO);
       break;
     }
+}
+
+int32_t convert_sample_to_voltage(int32_t sample)
+{
+  if(sample >= 32767)
+  {
+    sample = sample - 65535;
+    sample = (2850000/32767) * sample;
+  }
+  else
+  {
+    sample = (2850000/32767) * sample;
+  }
+  return sample;
+}
+
+int32_t convert_voltage_to_sample(int32_t sample)
+{
+  volatile int32_t temp = sample;
+  uint32_t temp1 = 0;
+  if(temp >= 0)
+  {
+    temp1 = (uint32_t)(temp * 1000);
+    temp1 = temp1 / 86975;
+    temp = temp1;
+  }
+  else
+  {
+    temp1 = (uint32_t)(temp * (-1000));
+    temp1 = temp1 / 86975;
+    temp = temp1;
+    temp = temp * (-1);
+    temp = (temp & 0x0000FFFFU) | 0x8000U;
+  }
+  
+  return temp;
 }

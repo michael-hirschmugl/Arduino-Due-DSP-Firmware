@@ -6,26 +6,26 @@
 #define WM8731_SETUP_DEFINITIONS_H
 
 // LEFT LINE IN
-#define LRINBOTH                (0U)    // L register controls L/R
+#define LRINBOTH                (1U)    // L register controls L/R
 #define LINMUTE                 (0U)    // Mute OFF
-//#define LINVOL                  (0x17U) // 0dB input
-#define LINVOL                  (0x1FU) // +12dB input
+#define LINVOL                  (0x17U) // 0dB input
+//#define LINVOL                  (0x1FU) // +12dB input
 
 // RIGHT LINE IN
-#define RLINBOTH                (0U)
+#define RLINBOTH                (1U)
 #define RINMUTE                 (0U)
-//#define RINVOL                  (0x17U)
-#define RINVOL                  (0x1FU)
+#define RINVOL                  (0x17U)
+//#define RINVOL                  (0x1FU)
 
 // LEFT HEADPHONE OUT
 #define LRHPBOTH                (1U)    // L register controls L/R
 #define LZCEN                   (1U)    // Zero crossing detection ON
-#define LHPVOL                  (0x79U) // 0dB output
+#define LHPVOL                  (0xf3U) // 0dB output
 
 // RIGHT HEADPHONE OUT
 #define RLHPBOTH                (0U)
 #define RZCEN                   (1U)
-#define RHPVOL                  (0x79U)
+#define RHPVOL                  (0xf3U)
 
 // ANALOG AUDIO PATH CONTROL
 #define SIDEATT                 (0x3U)  // -15dB
@@ -61,8 +61,8 @@
 #define LRP                     (0U)    // Right Channel DAC data when
                                         // DACLRC low
 //#define IWL                     (0x3U)  // 32 bit data
-//#define IWL                     (0x2U)  // 24 bit data
-#define IWL                     0x00U  // 16 bit input
+#define IWL                     (0x2U)  // 24 bit data
+//#define IWL                     0x00U  // 16 bit input
 #define FORMAT                  (0x2U)  // I2S
 
 // SAMPLING CONTROL

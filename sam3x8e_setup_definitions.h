@@ -13,6 +13,12 @@
 
 #define GLOBAL_TIMEOUT                  (0xFFDCU)
 
+#define RELAY_IN_AUDIO                  (1U << 13)
+#define RELAY_IN_CV                     (1U << 15)
+#define RELAY_MEAS_A1                   (1U << 12)
+#define RELAY_MEAS_A2                   (1U << 14)
+#define RELAY_ALL                       (0xF000U)
+
 /*
     Main Oscillator Setup
 */
@@ -124,7 +130,9 @@
 /* TIOA Output of the Timer Counter Channel 2 triggers conversion */
 #define ADC_MR_TRGSEL           (0x3U << 1)
 /* 10 Bit resolution */
-#define ADC_MR_LOWRES           (1U << 4)
+//#define ADC_MR_LOWRES           (1U << 4)
+/* 12 Bit resolution */
+#define ADC_MR_LOWRES           (0U << 4)
 /* "Normal" Mode */
 #define ADC_MR_SLEEP            (0U << 5)
 /* Sleep Mode set by sleep bit */

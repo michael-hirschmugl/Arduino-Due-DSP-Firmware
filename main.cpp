@@ -6,6 +6,8 @@
 #include "sam3x8e_ssc.h"
 #include "sam3x8e_adc.h"
 #include "sam3x8e_din.h"
+#include "sam3x8e_dac.h"
+#include "sam3x8e_dout.h"
 //#include "sam3x8e_dma.h"
 
 #define NCoef                   2
@@ -17,6 +19,10 @@
 #define pot_factor              29 //15/512 * 1000
 
 using namespace std;
+
+int32_t            dac_volt[5];
+volatile uint32_t  adc_volt_a1[5];
+volatile uint32_t  adc_volt_a2[5];
 
 void init_clock_for_wm8731(void);
 
@@ -275,6 +281,14 @@ int main()
 {
     int i = NCoef;
     int j = 0;
+    dac_volt[0] = -1000000;
+    dac_volt[1] = -500000;
+    dac_volt[2] = 500000;
+    dac_volt[3] = 700000;
+    dac_volt[4] = 1000000;
+    volatile int count = 0;
+    volatile int index = 0;
+    
 
     while(i >= 0)
     {
@@ -305,13 +319,81 @@ int main()
     SAM3X8E_ADC.enable_ad1();
     SAM3X8E_ADC.enable_ad2();
     SAM3X8E_ADC.enable_ad3();
+    SAM3X8E_ADC.enable_measure_adc();
     SAM3X8E_ADC.configure_adc_input();
+    
+    SAM3X8E_DAC.enable_dac_output();
+    SAM3X8E_DAC.configure_dac_output();
+    
+    SAM3X8E_DOUT.enable_digital_output();
+    
+    SAM3X8E_DOUT.reset_relay(RELAY_ALL);
+    SAM3X8E_DAC.write_dac(0x07FFU);
+    
+    SAM3X8E_DOUT.set_relay(RELAY_MEAS_A1);
+    SAM3X8E_DOUT.set_relay(RELAY_IN_CV);
 
-    __enable_interrupt();
-
+    //__enable_interrupt();
+    index = 0;
+    count = 0;
     while(1)
     {
-
+      while(index < 5)
+      {
+        while(count < 999999)
+        {
+          SAM3X8E_DAC.write_dac_voltage(dac_volt[index]);
+          adc_volt_a1[index] = SAM3X8E_ADC.read_measure_adc();
+          count++;
+        }
+        count = 0;
+        index++;
+      }
+      index = 0;
+      count = 0;
+      SAM3X8E_DOUT.reset_relay(RELAY_ALL);
+      while(count < 999999)
+      {
+        count++;
+      }
+      count = 0;
+      SAM3X8E_DOUT.set_relay(RELAY_MEAS_A2);
+      while(count < 999999)
+      {
+        count++;
+      }
+      count = 0;
+      SAM3X8E_DOUT.set_relay(RELAY_IN_CV);
+      while(count < 999999)
+      {
+        count++;
+      }
+      count = 0;
+      while(index < 5)
+      {
+        while(count < 999999)
+        {
+          SAM3X8E_DAC.write_dac_voltage(dac_volt[index]);
+          adc_volt_a2[index] = SAM3X8E_ADC.read_measure_adc();
+          count++;
+        }
+        count = 0;
+        index++;
+      }
+      while(count < 999999)
+      {
+        count++;
+      }
+      count = 0;
+      SAM3X8E_DOUT.reset_relay(RELAY_ALL);
+      SAM3X8E_DOUT.set_relay(RELAY_IN_AUDIO);
+      break;
+    }
+    __enable_interrupt();
+    
+    while(1)
+    {
+      
     }
 }
 

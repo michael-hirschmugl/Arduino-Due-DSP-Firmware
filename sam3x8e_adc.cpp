@@ -30,6 +30,7 @@ void SAM3X8E_ADCClass::enable_adc_input(void)
 void SAM3X8E_ADCClass::configure_adc_input(void)
 {
     // 10 bit resolution
+    // actually 12 bit at the moment... (changed for reading of measurement voltages)
     
     ADC_WPMR = ADC_WPKEY | WPEN_0;
     
@@ -63,6 +64,28 @@ void SAM3X8E_ADCClass::reset_adc(void)
     //ADC Reset
     ADC_CR = ADC_CR_SWRST;
 
+}
+
+/*
+  Enables analog input on Pin 82.
+  Analog In 4 on the Due board.
+*/
+void SAM3X8E_ADCClass::enable_measure_adc(void)
+{
+    // Pin 82 - Signal: AD3 - I/O line: PA6 - Peripheral: X1 - Channel: CH3
+
+    PIOA_WPMR = PIO_WPKEY | WPEN_0;
+    PIOA_PDR = ~PIOA_PSR | (1U << 6);
+    PIOA_ODR = ~PIOA_OSR | (1U << 6);
+    PIOA_PUDR = PIOA_PUSR | (1U << 6);
+    PIOA_WPMR = PIO_WPKEY | WPEN_1;
+
+    
+    ADC_WPMR = ADC_WPKEY | WPEN_0;
+    //ADC_CHER enable ADC input and assign pin to adc
+    ADC_CHER = ADC_CHSR | (1U << 3);
+
+    ADC_WPMR = ADC_WPKEY | WPEN_1;
 }
 
 /*
@@ -129,6 +152,17 @@ void SAM3X8E_ADCClass::enable_ad1(void)
     ADC_CHER = ADC_CHSR | (1U << 6);
 
     ADC_WPMR = ADC_WPKEY | WPEN_1;
+}
+
+/*
+  Read voltage from arduino due A4 analog in
+*/
+uint32_t SAM3X8E_ADCClass::read_measure_adc(void)
+{
+    uint32_t temp_volt = 0;
+    temp_volt = (0x00000FFFU & ADC_DATA_MEASURE);
+    temp_volt = (3000000 / 4096) * temp_volt;
+    return temp_volt;
 }
 
 /*

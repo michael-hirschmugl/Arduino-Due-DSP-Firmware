@@ -16,6 +16,8 @@
 #define SSC_PID                 (1U << 26)
 #define ADC_PID                 (1U << 5)  // PID 37
 #define DIN_PID                 (1U << 14)
+#define DOUT_PID                (1U << 13)
+#define DAC_PID                 (1U << 6)  // PID 38
 
 /* EEFC Flash Mode Register RW */
 #define EEFC_FMR0               (*((volatile unsigned long *)0x400E0A00U))
@@ -96,6 +98,7 @@
 
 /* Output Enable Register WO */
 #define PIOA_OER                (*((volatile unsigned long *)0x400E0E10U))
+#define PIOC_OER                (*((volatile unsigned long *)0x400E1210U))
 
 /* Output Disable Register WO */
 #define PIOA_ODR                (*((volatile unsigned long *)0x400E0E14U))
@@ -103,6 +106,16 @@
 
 /* Output Status Register RO */
 #define PIOA_OSR                (*((volatile unsigned long *)0x400E0E18U))
+#define PIOC_OSR                (*((volatile unsigned long *)0x400E1218U))
+
+/* PIO Set Output Data Register WO */
+#define PIOC_SODR               (*((volatile unsigned long *)0x400E1230U))
+
+/* PIO Clear Output Data Register WO */
+#define PIOC_CODR               (*((volatile unsigned long *)0x400E1234U))
+
+/* PIO Output Data Status Register WO */
+#define PIOC_ODSR               (*((volatile unsigned long *)0x400E1238U))
 
 /* Pull-up Disable Register WO */
 #define PIOA_PUDR               (*((volatile unsigned long *)0x400E0E60U))
@@ -145,6 +158,18 @@
 #define INTERRUPT_PRIORITY_REG_6 (*((volatile unsigned long *)(0xE000E400U \
                                  + (6))))
 
+#define DAC_WPMR                (*((volatile unsigned long *)0x400C80E4U))
+#define DAC_CR                  (*((volatile unsigned long *)0x400C8000U))
+#define DAC_MR                  (*((volatile unsigned long *)0x400C8004U))
+#define DAC_WORD                (0x00U << 4)
+#define DAC_REFRESH             (0xFFU << 8)
+#define DAC_MAXS                (0x01U << 21)
+#define DAC_STARTUP             (0x08U << 24)
+#define DAC_WPKEY               (0x444143U << 8)
+#define DAC_CHER                (*((volatile unsigned long *)0x400C8010U))
+#define DAC_CDR                 (*((volatile unsigned long *)0x400C8020U))
+
+
 /* ADC Write Protect Mode Register */
 #define ADC_WPMR                (*((volatile unsigned long *)0x400C00E4U))
 #define ADC_WPKEY               (0x414443U << 8)
@@ -154,6 +179,8 @@
 /* ADC Channel Status Register RO */
 #define ADC_CHSR                (*((volatile unsigned long *)0x400C0018U))
 
+/* ADC Channel Data Register AD3 */
+#define ADC_DATA_MEASURE        (*((volatile unsigned long *)0x400C005CU))
 /* ADC Channel Data Register AD4 */
 #define ADC_CDR_AD4             (*((volatile unsigned long *)0x400C0060U))
 /* ADC Channel Data Register AD5 */

@@ -22,6 +22,9 @@ static int      lrtoggle        = 0;
 static int32_t  input_l         = 0;
 static int32_t  input_r         = 0;
 
+volatile int32_t  samples[500];
+volatile int index = 0;
+
 class SSC1
 {
 public:
@@ -36,6 +39,11 @@ void SSC1::Handler()
         lrtoggle = 1;
         
         input_l = (int32_t)(SSC_RHR);
+        if(index > 499)
+        {
+          index = 0;
+        }
+        samples[index++] = input_l;
 
         SSC_THR = input_l;
     }

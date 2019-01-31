@@ -17,7 +17,7 @@ public:
         void configure_adc_input(void);
         void reset_adc(void);
         void enable_measure_adc(void);
-        uint32_t read_measure_adc(void);
+        uint32_t read_measure_adc(int);
         void enable_ad3(void);
         void enable_ad2(void);
         void enable_ad1(void);

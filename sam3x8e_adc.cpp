@@ -157,11 +157,11 @@ void SAM3X8E_ADCClass::enable_ad1(void)
 /*
   Read voltage from arduino due A4 analog in
 */
-uint32_t SAM3X8E_ADCClass::read_measure_adc(void)
+uint32_t SAM3X8E_ADCClass::read_measure_adc(int full_range)
 {
     uint32_t temp_volt = 0;
     temp_volt = (0x00000FFFU & ADC_DATA_MEASURE);
-    temp_volt = (3000000 / 4096) * temp_volt;
+    temp_volt = (full_range / 4096) * temp_volt;
     return temp_volt;
 }
 

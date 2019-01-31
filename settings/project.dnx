@@ -12,7 +12,7 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <DebugChecksum>
-        <Checksum>3149442301</Checksum>
+        <Checksum>16036316</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
@@ -90,7 +90,7 @@
         <Fmt14>{W}1:sample	3	0</Fmt14>
         <Fmt15>{W}1:samples	4	6</Fmt15>
         <Fmt16>{W}1:steps	4	0</Fmt16>
-        <Fmt17>{W}1:temp	4	0</Fmt17>
+        <Fmt17>{W}1:temp	3	0</Fmt17>
     </watch_formats>
     <Trace1>
         <Enabled>0</Enabled>
@@ -167,7 +167,8 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Count>0</Count>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.cpp}.260.20" 0 0 1 "" 0 "" 0</Bp0>
+        <Count>1</Count>
     </Breakpoints2>
     <Aliases>
         <Count>0</Count>

@@ -6428,20 +6428,6 @@
     "scope": null
   },
   {
-    "ID": "c:stdint.h@T@__data_uintptr_t",
-    "What": "Typedef",
-    "defdec": "Def",
-    "display": "unsigned int",
-    "location": {
-      "column": "1",
-      "line": "89",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\arm\\inc\\c\\stdint.h"
-    },
-    "name": "__data_uintptr_t",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
     "ID": "c:stdint.h@T@__data_intptr_t",
     "What": "Typedef",
     "defdec": "Def",
@@ -6452,6 +6438,20 @@
       "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\arm\\inc\\c\\stdint.h"
     },
     "name": "__data_intptr_t",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdint.h@T@__data_uintptr_t",
+    "What": "Typedef",
+    "defdec": "Def",
+    "display": "unsigned int",
+    "location": {
+      "column": "1",
+      "line": "89",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\arm\\inc\\c\\stdint.h"
+    },
+    "name": "__data_uintptr_t",
     "origin": "system_include",
     "scope": null
   },
@@ -14842,12 +14842,12 @@
     "scope": null
   },
   {
-    "ID": "c:@dac_volt",
+    "ID": "c:main.cpp@dac_volt",
     "What": "Variable",
     "defdec": "Def",
     "display": "dac_volt",
     "location": {
-      "column": "20",
+      "column": "15",
       "line": "14",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
@@ -14862,7 +14862,7 @@
     "display": "adc_volt_a1",
     "location": {
       "column": "20",
-      "line": "15",
+      "line": "45",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "adc_volt_a1",
@@ -14876,7 +14876,7 @@
     "display": "adc_volt_a2",
     "location": {
       "column": "20",
-      "line": "16",
+      "line": "46",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "adc_volt_a2",
@@ -14890,7 +14890,7 @@
     "display": "void init_clock_for_wm8731(void)",
     "location": {
       "column": "6",
-      "line": "18",
+      "line": "48",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "init_clock_for_wm8731",
@@ -14904,7 +14904,7 @@
     "display": "void measure_system(void)",
     "location": {
       "column": "6",
-      "line": "19",
+      "line": "49",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "measure_system",
@@ -14918,7 +14918,7 @@
     "display": "int32_t convert_sample_to_voltage(int32_t)",
     "location": {
       "column": "9",
-      "line": "20",
+      "line": "50",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "convert_sample_to_voltage",
@@ -14932,7 +14932,7 @@
     "display": "int32_t convert_voltage_to_sample(int32_t)",
     "location": {
       "column": "9",
-      "line": "21",
+      "line": "51",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "convert_voltage_to_sample",
@@ -14946,7 +14946,7 @@
     "display": "lrtoggle",
     "location": {
       "column": "19",
-      "line": "23",
+      "line": "53",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "lrtoggle",
@@ -14960,7 +14960,7 @@
     "display": "input_l",
     "location": {
       "column": "19",
-      "line": "24",
+      "line": "54",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "input_l",
@@ -14974,10 +14974,52 @@
     "display": "input_r",
     "location": {
       "column": "19",
-      "line": "25",
+      "line": "55",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "input_r",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@coeff_a",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "coeff_a",
+    "location": {
+      "column": "10",
+      "line": "56",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "coeff_a",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@coeff_b",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "coeff_b",
+    "location": {
+      "column": "10",
+      "line": "57",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "coeff_b",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@coeff_c",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "coeff_c",
+    "location": {
+      "column": "10",
+      "line": "58",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "coeff_c",
     "origin": "project_file",
     "scope": null
   },
@@ -14988,7 +15030,7 @@
     "display": "sample",
     "location": {
       "column": "19",
-      "line": "28",
+      "line": "61",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "sample",
@@ -15002,7 +15044,7 @@
     "display": "SSC1",
     "location": {
       "column": "7",
-      "line": "31",
+      "line": "64",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "members": [
@@ -15013,7 +15055,7 @@
         "display": "void Handler(void)",
         "location": {
           "column": "17",
-          "line": "34",
+          "line": "67",
           "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
         },
         "name": "Handler",
@@ -15027,7 +15069,7 @@
         "display": "ticks",
         "location": {
           "column": "34",
-          "line": "35",
+          "line": "68",
           "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
         },
         "name": "ticks",
@@ -15046,7 +15088,7 @@
     "display": "void Handler(void)",
     "location": {
       "column": "12",
-      "line": "38",
+      "line": "71",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "Handler",
@@ -15060,7 +15102,7 @@
     "display": "int main(void)",
     "location": {
       "column": "5",
-      "line": "72",
+      "line": "105",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "main",
@@ -15068,16 +15110,30 @@
     "scope": null
   },
   {
-    "ID": "c:main.cpp@1455@F@main#@i",
+    "ID": "c:main.cpp@1870@F@main#@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "18",
-      "line": "74",
+      "line": "107",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@1895@F@main#@done",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "done",
+    "location": {
+      "column": "9",
+      "line": "108",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "done",
     "origin": "project_file",
     "scope": null
   },
@@ -15088,7 +15144,7 @@
     "display": "void init_clock_for_wm8731(void)",
     "location": {
       "column": "6",
-      "line": "120",
+      "line": "163",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "init_clock_for_wm8731",
@@ -15102,7 +15158,7 @@
     "display": "void measure_system(void)",
     "location": {
       "column": "6",
-      "line": "134",
+      "line": "177",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "measure_system",
@@ -15110,13 +15166,13 @@
     "scope": null
   },
   {
-    "ID": "c:main.cpp@2999@F@measure_system#@count",
+    "ID": "c:main.cpp@3653@F@measure_system#@count",
     "What": "Variable",
     "defdec": "Def",
     "display": "count",
     "location": {
       "column": "18",
-      "line": "136",
+      "line": "179",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "count",
@@ -15124,16 +15180,184 @@
     "scope": null
   },
   {
-    "ID": "c:main.cpp@3025@F@measure_system#@index",
+    "ID": "c:main.cpp@3678@F@measure_system#@points",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "points",
+    "location": {
+      "column": "18",
+      "line": "180",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "points",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3739@F@measure_system#@repeats",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "repeats",
+    "location": {
+      "column": "18",
+      "line": "181",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "repeats",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3775@F@measure_system#@index",
     "What": "Variable",
     "defdec": "Def",
     "display": "index",
     "location": {
       "column": "18",
-      "line": "137",
+      "line": "182",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "index",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3800@F@measure_system#@temp",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "temp",
+    "location": {
+      "column": "18",
+      "line": "183",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "temp",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@ua1",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "ua1",
+    "location": {
+      "column": "11",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "ua1",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@ua2",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "ua2",
+    "location": {
+      "column": "16",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "ua2",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@ua3",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "ua3",
+    "location": {
+      "column": "21",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "ua3",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@ug1",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "ug1",
+    "location": {
+      "column": "26",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "ug1",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@ug2",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "ug2",
+    "location": {
+      "column": "31",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "ug2",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@ug3",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "ug3",
+    "location": {
+      "column": "36",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "ug3",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@a1",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "a1",
+    "location": {
+      "column": "41",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "a1",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@b1",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "b1",
+    "location": {
+      "column": "45",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "b1",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.cpp@3828@F@measure_system#@c1",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "c1",
+    "location": {
+      "column": "49",
+      "line": "184",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
+    },
+    "name": "c1",
     "origin": "project_file",
     "scope": null
   },
@@ -15144,7 +15368,7 @@
     "display": "int32_t convert_sample_to_voltage(int32_t)",
     "location": {
       "column": "9",
-      "line": "205",
+      "line": "244",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "convert_sample_to_voltage",
@@ -15158,7 +15382,7 @@
     "display": "int32_t convert_voltage_to_sample(int32_t)",
     "location": {
       "column": "9",
-      "line": "219",
+      "line": "258",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "convert_voltage_to_sample",
@@ -15166,13 +15390,13 @@
     "scope": null
   },
   {
-    "ID": "c:main.cpp@4807@F@convert_voltage_to_sample#I#@temp",
+    "ID": "c:main.cpp@5941@F@convert_voltage_to_sample#I#@temp",
     "What": "Variable",
     "defdec": "Def",
     "display": "temp",
     "location": {
       "column": "20",
-      "line": "221",
+      "line": "260",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "temp",
@@ -15180,13 +15404,13 @@
     "scope": null
   },
   {
-    "ID": "c:main.cpp@4842@F@convert_voltage_to_sample#I#@temp1",
+    "ID": "c:main.cpp@5976@F@convert_voltage_to_sample#I#@temp1",
     "What": "Variable",
     "defdec": "Def",
     "display": "temp1",
     "location": {
       "column": "12",
-      "line": "222",
+      "line": "261",
       "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\main.cpp"
     },
     "name": "temp1",
@@ -17660,570 +17884,6 @@
     "scope": null
   },
   {
-    "ID": "c:sam3x8e_twi.h@58@macro@SAM3X8E_TWI_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "SAM3X8E_TWI_H",
-    "location": {
-      "column": "9",
-      "line": "6",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-    },
-    "name": "SAM3X8E_TWI_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@S@SAM3X8E_TWIClass",
-    "What": "Class",
-    "defdec": "Def",
-    "display": "SAM3X8E_TWIClass",
-    "location": {
-      "column": "7",
-      "line": "13",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-    },
-    "members": [
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@SAM3X8E_TWIClass#",
-        "What": "CXXConstructor",
-        "defdec": "Def",
-        "display": "void SAM3X8E_TWIClass(void)",
-        "location": {
-          "column": "2",
-          "line": "15",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "SAM3X8E_TWIClass",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1_clk#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void init_twi1_clk(void)",
-        "location": {
-          "column": "14",
-          "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "init_twi1_clk",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1_clk#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void init_twi1_clk(void)",
-        "location": {
-          "column": "14",
-          "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "init_twi1_clk",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void init_twi1(void)",
-        "location": {
-          "column": "14",
-          "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "init_twi1",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void init_twi1(void)",
-        "location": {
-          "column": "14",
-          "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "init_twi1",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_pio_for_twi1#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void setup_pio_for_twi1(void)",
-        "location": {
-          "column": "14",
-          "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "setup_pio_for_twi1",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_pio_for_twi1#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void setup_pio_for_twi1(void)",
-        "location": {
-          "column": "14",
-          "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "setup_pio_for_twi1",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_twi1_master_transfer#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void setup_twi1_master_transfer(void)",
-        "location": {
-          "column": "14",
-          "line": "20",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "setup_twi1_master_transfer",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_twi1_master_transfer#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void setup_twi1_master_transfer(void)",
-        "location": {
-          "column": "14",
-          "line": "20",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "setup_twi1_master_transfer",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@send_two_bytes_to_wm8731#c#c#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "uint8_t send_two_bytes_to_wm8731(uint8_t, uint8_t)",
-        "location": {
-          "column": "17",
-          "line": "21",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "send_two_bytes_to_wm8731",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@send_two_bytes_to_wm8731#c#c#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "uint8_t send_two_bytes_to_wm8731(uint8_t, uint8_t)",
-        "location": {
-          "column": "17",
-          "line": "21",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "send_two_bytes_to_wm8731",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_WM8731#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "uint16_t setup_WM8731(void)",
-        "location": {
-          "column": "18",
-          "line": "22",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "setup_WM8731",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_WM8731#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "uint16_t setup_WM8731(void)",
-        "location": {
-          "column": "18",
-          "line": "22",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-        },
-        "name": "setup_WM8731",
-        "origin": "user_include",
-        "scope": "SAM3X8E_TWIClass"
-      }
-    ],
-    "name": "SAM3X8E_TWIClass",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@SAM3X8E_TWI",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "SAM3X8E_TWI",
-    "location": {
-      "column": "25",
-      "line": "29",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-    },
-    "name": "SAM3X8E_TWI",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@SAM3X8E_TWI",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "SAM3X8E_TWI",
-    "location": {
-      "column": "25",
-      "line": "29",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
-    },
-    "name": "SAM3X8E_TWI",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:sam3x8e_adc.h@58@macro@SAM3X8E_ADC_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "SAM3X8E_ADC_H",
-    "location": {
-      "column": "9",
-      "line": "6",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-    },
-    "name": "SAM3X8E_ADC_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@S@SAM3X8E_ADCClass",
-    "What": "Class",
-    "defdec": "Def",
-    "display": "SAM3X8E_ADCClass",
-    "location": {
-      "column": "7",
-      "line": "12",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-    },
-    "members": [
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@SAM3X8E_ADCClass#",
-        "What": "CXXConstructor",
-        "defdec": "Def",
-        "display": "void SAM3X8E_ADCClass(void)",
-        "location": {
-          "column": "2",
-          "line": "14",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "SAM3X8E_ADCClass",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_adc_input(void)",
-        "location": {
-          "column": "14",
-          "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_adc_input",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_adc_input(void)",
-        "location": {
-          "column": "14",
-          "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_adc_input",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@configure_adc_input#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void configure_adc_input(void)",
-        "location": {
-          "column": "14",
-          "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "configure_adc_input",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@configure_adc_input#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void configure_adc_input(void)",
-        "location": {
-          "column": "14",
-          "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "configure_adc_input",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@reset_adc#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void reset_adc(void)",
-        "location": {
-          "column": "14",
-          "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "reset_adc",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@reset_adc#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void reset_adc(void)",
-        "location": {
-          "column": "14",
-          "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "reset_adc",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_measure_adc#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_measure_adc(void)",
-        "location": {
-          "column": "14",
-          "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_measure_adc",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_measure_adc#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_measure_adc(void)",
-        "location": {
-          "column": "14",
-          "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_measure_adc",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@read_measure_adc#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "uint32_t read_measure_adc(void)",
-        "location": {
-          "column": "18",
-          "line": "20",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "read_measure_adc",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@read_measure_adc#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "uint32_t read_measure_adc(void)",
-        "location": {
-          "column": "18",
-          "line": "20",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "read_measure_adc",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad3#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_ad3(void)",
-        "location": {
-          "column": "14",
-          "line": "21",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_ad3",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad3#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_ad3(void)",
-        "location": {
-          "column": "14",
-          "line": "21",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_ad3",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad2#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_ad2(void)",
-        "location": {
-          "column": "14",
-          "line": "22",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_ad2",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad2#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_ad2(void)",
-        "location": {
-          "column": "14",
-          "line": "22",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_ad2",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad1#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_ad1(void)",
-        "location": {
-          "column": "14",
-          "line": "23",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_ad1",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad1#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_ad1(void)",
-        "location": {
-          "column": "14",
-          "line": "23",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_ad1",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input_interrupts#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_adc_input_interrupts(void)",
-        "location": {
-          "column": "14",
-          "line": "24",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_adc_input_interrupts",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input_interrupts#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_adc_input_interrupts(void)",
-        "location": {
-          "column": "14",
-          "line": "24",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-        },
-        "name": "enable_adc_input_interrupts",
-        "origin": "user_include",
-        "scope": "SAM3X8E_ADCClass"
-      }
-    ],
-    "name": "SAM3X8E_ADCClass",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@SAM3X8E_ADC",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "SAM3X8E_ADC",
-    "location": {
-      "column": "25",
-      "line": "30",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-    },
-    "name": "SAM3X8E_ADC",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@SAM3X8E_ADC",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "SAM3X8E_ADC",
-    "location": {
-      "column": "25",
-      "line": "30",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
-    },
-    "name": "SAM3X8E_ADC",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
     "ID": "c:DLib_Product.h@75@macro@_DLIB_PRODUCTS_H_",
     "What": "MacroDef",
     "defdec": "Def",
@@ -18585,6 +18245,486 @@
     },
     "name": "_CPPINIT_ATTR",
     "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:sam3x8e_twi.h@58@macro@SAM3X8E_TWI_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "SAM3X8E_TWI_H",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+    },
+    "name": "SAM3X8E_TWI_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@S@SAM3X8E_TWIClass",
+    "What": "Class",
+    "defdec": "Def",
+    "display": "SAM3X8E_TWIClass",
+    "location": {
+      "column": "7",
+      "line": "13",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+    },
+    "members": [
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@SAM3X8E_TWIClass#",
+        "What": "CXXConstructor",
+        "defdec": "Def",
+        "display": "void SAM3X8E_TWIClass(void)",
+        "location": {
+          "column": "2",
+          "line": "15",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "SAM3X8E_TWIClass",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1_clk#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_twi1_clk(void)",
+        "location": {
+          "column": "14",
+          "line": "17",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "init_twi1_clk",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1_clk#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_twi1_clk(void)",
+        "location": {
+          "column": "14",
+          "line": "17",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "init_twi1_clk",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_twi1(void)",
+        "location": {
+          "column": "14",
+          "line": "18",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "init_twi1",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@init_twi1#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_twi1(void)",
+        "location": {
+          "column": "14",
+          "line": "18",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "init_twi1",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_pio_for_twi1#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_pio_for_twi1(void)",
+        "location": {
+          "column": "14",
+          "line": "19",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "setup_pio_for_twi1",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_pio_for_twi1#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_pio_for_twi1(void)",
+        "location": {
+          "column": "14",
+          "line": "19",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "setup_pio_for_twi1",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_twi1_master_transfer#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_twi1_master_transfer(void)",
+        "location": {
+          "column": "14",
+          "line": "20",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "setup_twi1_master_transfer",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_twi1_master_transfer#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_twi1_master_transfer(void)",
+        "location": {
+          "column": "14",
+          "line": "20",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "setup_twi1_master_transfer",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@send_two_bytes_to_wm8731#c#c#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "uint8_t send_two_bytes_to_wm8731(uint8_t, uint8_t)",
+        "location": {
+          "column": "17",
+          "line": "21",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "send_two_bytes_to_wm8731",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@send_two_bytes_to_wm8731#c#c#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "uint8_t send_two_bytes_to_wm8731(uint8_t, uint8_t)",
+        "location": {
+          "column": "17",
+          "line": "21",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "send_two_bytes_to_wm8731",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_WM8731#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "uint16_t setup_WM8731(void)",
+        "location": {
+          "column": "18",
+          "line": "22",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "setup_WM8731",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_TWIClass@F@setup_WM8731#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "uint16_t setup_WM8731(void)",
+        "location": {
+          "column": "18",
+          "line": "22",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+        },
+        "name": "setup_WM8731",
+        "origin": "user_include",
+        "scope": "SAM3X8E_TWIClass"
+      }
+    ],
+    "name": "SAM3X8E_TWIClass",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@SAM3X8E_TWI",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "SAM3X8E_TWI",
+    "location": {
+      "column": "25",
+      "line": "29",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+    },
+    "name": "SAM3X8E_TWI",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@SAM3X8E_TWI",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "SAM3X8E_TWI",
+    "location": {
+      "column": "25",
+      "line": "29",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_twi.h"
+    },
+    "name": "SAM3X8E_TWI",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:sam3x8e_ssc.h@58@macro@SAM3X8E_SSC_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "SAM3X8E_SSC_H",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+    },
+    "name": "SAM3X8E_SSC_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@S@SAM3X8E_SSCClass",
+    "What": "Class",
+    "defdec": "Def",
+    "display": "SAM3X8E_SSCClass",
+    "location": {
+      "column": "7",
+      "line": "12",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+    },
+    "members": [
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@SAM3X8E_SSCClass#",
+        "What": "CXXConstructor",
+        "defdec": "Def",
+        "display": "void SAM3X8E_SSCClass(void)",
+        "location": {
+          "column": "2",
+          "line": "14",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "SAM3X8E_SSCClass",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc_clk#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_ssc_clk(void)",
+        "location": {
+          "column": "14",
+          "line": "16",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "init_ssc_clk",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc_clk#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_ssc_clk(void)",
+        "location": {
+          "column": "14",
+          "line": "16",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "init_ssc_clk",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_ssc(void)",
+        "location": {
+          "column": "14",
+          "line": "17",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "init_ssc",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void init_ssc(void)",
+        "location": {
+          "column": "14",
+          "line": "17",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "init_ssc",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_pio_for_ssc#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_pio_for_ssc(void)",
+        "location": {
+          "column": "14",
+          "line": "18",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "setup_pio_for_ssc",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_pio_for_ssc#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_pio_for_ssc(void)",
+        "location": {
+          "column": "14",
+          "line": "18",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "setup_pio_for_ssc",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_ssc_master_transfer#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_ssc_master_transfer(void)",
+        "location": {
+          "column": "14",
+          "line": "19",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "setup_ssc_master_transfer",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_ssc_master_transfer#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void setup_ssc_master_transfer(void)",
+        "location": {
+          "column": "14",
+          "line": "19",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "setup_ssc_master_transfer",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@ssc_interrupt_setup#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void ssc_interrupt_setup(void)",
+        "location": {
+          "column": "14",
+          "line": "20",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "ssc_interrupt_setup",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@ssc_interrupt_setup#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void ssc_interrupt_setup(void)",
+        "location": {
+          "column": "14",
+          "line": "20",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "ssc_interrupt_setup",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@disable_ssc_interrupt_for_dma#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void disable_ssc_interrupt_for_dma(void)",
+        "location": {
+          "column": "14",
+          "line": "21",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "disable_ssc_interrupt_for_dma",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_SSCClass@F@disable_ssc_interrupt_for_dma#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void disable_ssc_interrupt_for_dma(void)",
+        "location": {
+          "column": "14",
+          "line": "21",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+        },
+        "name": "disable_ssc_interrupt_for_dma",
+        "origin": "user_include",
+        "scope": "SAM3X8E_SSCClass"
+      }
+    ],
+    "name": "SAM3X8E_SSCClass",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@SAM3X8E_SSC",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "SAM3X8E_SSC",
+    "location": {
+      "column": "25",
+      "line": "27",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+    },
+    "name": "SAM3X8E_SSC",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@SAM3X8E_SSC",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "SAM3X8E_SSC",
+    "location": {
+      "column": "25",
+      "line": "27",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+    },
+    "name": "SAM3X8E_SSC",
+    "origin": "user_include",
     "scope": null
   },
   {
@@ -19498,398 +19638,186 @@
     "scope": null
   },
   {
-    "ID": "c:sam3x8e_ssc.h@58@macro@SAM3X8E_SSC_H",
+    "ID": "c:sam3x8e_dac.h@58@macro@SAM3X8E_DAC_H",
     "What": "MacroDef",
     "defdec": "Def",
-    "display": "SAM3X8E_SSC_H",
+    "display": "SAM3X8E_DAC_H",
     "location": {
       "column": "9",
       "line": "6",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
     },
-    "name": "SAM3X8E_SSC_H",
+    "name": "SAM3X8E_DAC_H",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@S@SAM3X8E_SSCClass",
+    "ID": "c:@S@SAM3X8E_DACClass",
     "What": "Class",
     "defdec": "Def",
-    "display": "SAM3X8E_SSCClass",
+    "display": "SAM3X8E_DACClass",
     "location": {
       "column": "7",
       "line": "12",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
     },
     "members": [
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@SAM3X8E_SSCClass#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@SAM3X8E_DACClass#",
         "What": "CXXConstructor",
         "defdec": "Def",
-        "display": "void SAM3X8E_SSCClass(void)",
+        "display": "void SAM3X8E_DACClass(void)",
         "location": {
           "column": "2",
           "line": "14",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "SAM3X8E_SSCClass",
+        "name": "SAM3X8E_DACClass",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc_clk#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@enable_dac_output#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void init_ssc_clk(void)",
+        "display": "void enable_dac_output(void)",
         "location": {
           "column": "14",
           "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "init_ssc_clk",
+        "name": "enable_dac_output",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc_clk#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@enable_dac_output#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void init_ssc_clk(void)",
+        "display": "void enable_dac_output(void)",
         "location": {
           "column": "14",
           "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "init_ssc_clk",
+        "name": "enable_dac_output",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@configure_dac_output#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void init_ssc(void)",
+        "display": "void configure_dac_output(void)",
         "location": {
           "column": "14",
           "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "init_ssc",
+        "name": "configure_dac_output",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@init_ssc#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@configure_dac_output#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void init_ssc(void)",
+        "display": "void configure_dac_output(void)",
         "location": {
           "column": "14",
           "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "init_ssc",
+        "name": "configure_dac_output",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_pio_for_ssc#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac#i#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void setup_pio_for_ssc(void)",
+        "display": "void write_dac(uint32_t)",
         "location": {
           "column": "14",
           "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "setup_pio_for_ssc",
+        "name": "write_dac",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_pio_for_ssc#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac#i#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void setup_pio_for_ssc(void)",
+        "display": "void write_dac(uint32_t)",
         "location": {
           "column": "14",
           "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "setup_pio_for_ssc",
+        "name": "write_dac",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_ssc_master_transfer#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac_voltage#I#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void setup_ssc_master_transfer(void)",
+        "display": "void write_dac_voltage(int32_t)",
         "location": {
           "column": "14",
           "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "setup_ssc_master_transfer",
+        "name": "write_dac_voltage",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@setup_ssc_master_transfer#",
+        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac_voltage#I#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void setup_ssc_master_transfer(void)",
+        "display": "void write_dac_voltage(int32_t)",
         "location": {
           "column": "14",
           "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
         },
-        "name": "setup_ssc_master_transfer",
+        "name": "write_dac_voltage",
         "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@ssc_interrupt_setup#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void ssc_interrupt_setup(void)",
-        "location": {
-          "column": "14",
-          "line": "20",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
-        },
-        "name": "ssc_interrupt_setup",
-        "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@ssc_interrupt_setup#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void ssc_interrupt_setup(void)",
-        "location": {
-          "column": "14",
-          "line": "20",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
-        },
-        "name": "ssc_interrupt_setup",
-        "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@disable_ssc_interrupt_for_dma#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void disable_ssc_interrupt_for_dma(void)",
-        "location": {
-          "column": "14",
-          "line": "21",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
-        },
-        "name": "disable_ssc_interrupt_for_dma",
-        "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_SSCClass@F@disable_ssc_interrupt_for_dma#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void disable_ssc_interrupt_for_dma(void)",
-        "location": {
-          "column": "14",
-          "line": "21",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
-        },
-        "name": "disable_ssc_interrupt_for_dma",
-        "origin": "user_include",
-        "scope": "SAM3X8E_SSCClass"
+        "scope": "SAM3X8E_DACClass"
       }
     ],
-    "name": "SAM3X8E_SSCClass",
+    "name": "SAM3X8E_DACClass",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@SAM3X8E_SSC",
+    "ID": "c:@SAM3X8E_DAC",
     "What": "Variable",
     "defdec": "Dec",
-    "display": "SAM3X8E_SSC",
+    "display": "SAM3X8E_DAC",
     "location": {
       "column": "25",
-      "line": "27",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
+      "line": "25",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
     },
-    "name": "SAM3X8E_SSC",
+    "name": "SAM3X8E_DAC",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@SAM3X8E_SSC",
+    "ID": "c:@SAM3X8E_DAC",
     "What": "Variable",
     "defdec": "Dec",
-    "display": "SAM3X8E_SSC",
+    "display": "SAM3X8E_DAC",
     "location": {
       "column": "25",
-      "line": "27",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_ssc.h"
-    },
-    "name": "SAM3X8E_SSC",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:sam3x8e_dout.h@60@macro@SAM3X8E_DOUT_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "SAM3X8E_DOUT_H",
-    "location": {
-      "column": "9",
-      "line": "6",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-    },
-    "name": "SAM3X8E_DOUT_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@S@SAM3X8E_DOUTClass",
-    "What": "Class",
-    "defdec": "Def",
-    "display": "SAM3X8E_DOUTClass",
-    "location": {
-      "column": "7",
-      "line": "12",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-    },
-    "members": [
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@SAM3X8E_DOUTClass#",
-        "What": "CXXConstructor",
-        "defdec": "Def",
-        "display": "void SAM3X8E_DOUTClass(void)",
-        "location": {
-          "column": "2",
-          "line": "14",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "SAM3X8E_DOUTClass",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@enable_digital_output#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_digital_output(void)",
-        "location": {
-          "column": "14",
-          "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "enable_digital_output",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@enable_digital_output#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void enable_digital_output(void)",
-        "location": {
-          "column": "14",
-          "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "enable_digital_output",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@set_relay#i#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void set_relay(uint32_t)",
-        "location": {
-          "column": "14",
-          "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "set_relay",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@set_relay#i#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void set_relay(uint32_t)",
-        "location": {
-          "column": "14",
-          "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "set_relay",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@reset_relay#i#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void reset_relay(uint32_t)",
-        "location": {
-          "column": "14",
-          "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "reset_relay",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      },
-      {
-        "ID": "c:@S@SAM3X8E_DOUTClass@F@reset_relay#i#",
-        "What": "CXXMethod",
-        "defdec": "Dec",
-        "display": "void reset_relay(uint32_t)",
-        "location": {
-          "column": "14",
-          "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-        },
-        "name": "reset_relay",
-        "origin": "user_include",
-        "scope": "SAM3X8E_DOUTClass"
-      }
-    ],
-    "name": "SAM3X8E_DOUTClass",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@SAM3X8E_DOUT",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "SAM3X8E_DOUT",
-    "location": {
-      "column": "26",
       "line": "25",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
     },
-    "name": "SAM3X8E_DOUT",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@SAM3X8E_DOUT",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "SAM3X8E_DOUT",
-    "location": {
-      "column": "26",
-      "line": "25",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
-    },
-    "name": "SAM3X8E_DOUT",
+    "name": "SAM3X8E_DAC",
     "origin": "user_include",
     "scope": null
   },
@@ -20988,20 +20916,6 @@
     "scope": null
   },
   {
-    "ID": "c:DLib_Config_Normal.h@105@macro@_DLIB_CONFIG_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "_DLIB_CONFIG_H",
-    "location": {
-      "column": "9",
-      "line": "5",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\arm\\inc\\c\\DLib_Config_Normal.h"
-    },
-    "name": "_DLIB_CONFIG_H",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
     "ID": "c:sam3x8e_wdt.h@58@macro@SAM3X8E_WDT_H",
     "What": "MacroDef",
     "defdec": "Def",
@@ -21102,187 +21016,497 @@
     "scope": null
   },
   {
-    "ID": "c:sam3x8e_dac.h@58@macro@SAM3X8E_DAC_H",
+    "ID": "c:sam3x8e_adc.h@58@macro@SAM3X8E_ADC_H",
     "What": "MacroDef",
     "defdec": "Def",
-    "display": "SAM3X8E_DAC_H",
+    "display": "SAM3X8E_ADC_H",
     "location": {
       "column": "9",
       "line": "6",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
     },
-    "name": "SAM3X8E_DAC_H",
+    "name": "SAM3X8E_ADC_H",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@S@SAM3X8E_DACClass",
+    "ID": "c:@S@SAM3X8E_ADCClass",
     "What": "Class",
     "defdec": "Def",
-    "display": "SAM3X8E_DACClass",
+    "display": "SAM3X8E_ADCClass",
     "location": {
       "column": "7",
       "line": "12",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
     },
     "members": [
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@SAM3X8E_DACClass#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@SAM3X8E_ADCClass#",
         "What": "CXXConstructor",
         "defdec": "Def",
-        "display": "void SAM3X8E_DACClass(void)",
+        "display": "void SAM3X8E_ADCClass(void)",
         "location": {
           "column": "2",
           "line": "14",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "SAM3X8E_DACClass",
+        "name": "SAM3X8E_ADCClass",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@enable_dac_output#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void enable_dac_output(void)",
+        "display": "void enable_adc_input(void)",
         "location": {
           "column": "14",
           "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "enable_dac_output",
+        "name": "enable_adc_input",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@enable_dac_output#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void enable_dac_output(void)",
+        "display": "void enable_adc_input(void)",
         "location": {
           "column": "14",
           "line": "16",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "enable_dac_output",
+        "name": "enable_adc_input",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@configure_dac_output#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@configure_adc_input#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void configure_dac_output(void)",
+        "display": "void configure_adc_input(void)",
         "location": {
           "column": "14",
           "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "configure_dac_output",
+        "name": "configure_adc_input",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@configure_dac_output#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@configure_adc_input#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void configure_dac_output(void)",
+        "display": "void configure_adc_input(void)",
         "location": {
           "column": "14",
           "line": "17",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "configure_dac_output",
+        "name": "configure_adc_input",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac#i#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@reset_adc#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void write_dac(uint32_t)",
+        "display": "void reset_adc(void)",
         "location": {
           "column": "14",
           "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "write_dac",
+        "name": "reset_adc",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac#i#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@reset_adc#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void write_dac(uint32_t)",
+        "display": "void reset_adc(void)",
         "location": {
           "column": "14",
           "line": "18",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "write_dac",
+        "name": "reset_adc",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac_voltage#I#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_measure_adc#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void write_dac_voltage(int32_t)",
+        "display": "void enable_measure_adc(void)",
         "location": {
           "column": "14",
           "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "write_dac_voltage",
+        "name": "enable_measure_adc",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
       },
       {
-        "ID": "c:@S@SAM3X8E_DACClass@F@write_dac_voltage#I#",
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_measure_adc#",
         "What": "CXXMethod",
         "defdec": "Dec",
-        "display": "void write_dac_voltage(int32_t)",
+        "display": "void enable_measure_adc(void)",
         "location": {
           "column": "14",
           "line": "19",
-          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
         },
-        "name": "write_dac_voltage",
+        "name": "enable_measure_adc",
         "origin": "user_include",
-        "scope": "SAM3X8E_DACClass"
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@read_measure_adc#I#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "uint32_t read_measure_adc(int)",
+        "location": {
+          "column": "18",
+          "line": "20",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "read_measure_adc",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@read_measure_adc#I#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "uint32_t read_measure_adc(int)",
+        "location": {
+          "column": "18",
+          "line": "20",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "read_measure_adc",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad3#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_ad3(void)",
+        "location": {
+          "column": "14",
+          "line": "21",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_ad3",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad3#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_ad3(void)",
+        "location": {
+          "column": "14",
+          "line": "21",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_ad3",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad2#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_ad2(void)",
+        "location": {
+          "column": "14",
+          "line": "22",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_ad2",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad2#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_ad2(void)",
+        "location": {
+          "column": "14",
+          "line": "22",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_ad2",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad1#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_ad1(void)",
+        "location": {
+          "column": "14",
+          "line": "23",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_ad1",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_ad1#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_ad1(void)",
+        "location": {
+          "column": "14",
+          "line": "23",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_ad1",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input_interrupts#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_adc_input_interrupts(void)",
+        "location": {
+          "column": "14",
+          "line": "24",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_adc_input_interrupts",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_ADCClass@F@enable_adc_input_interrupts#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_adc_input_interrupts(void)",
+        "location": {
+          "column": "14",
+          "line": "24",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
+        },
+        "name": "enable_adc_input_interrupts",
+        "origin": "user_include",
+        "scope": "SAM3X8E_ADCClass"
       }
     ],
-    "name": "SAM3X8E_DACClass",
+    "name": "SAM3X8E_ADCClass",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@SAM3X8E_DAC",
+    "ID": "c:@SAM3X8E_ADC",
     "What": "Variable",
     "defdec": "Dec",
-    "display": "SAM3X8E_DAC",
+    "display": "SAM3X8E_ADC",
     "location": {
       "column": "25",
-      "line": "25",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+      "line": "30",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
     },
-    "name": "SAM3X8E_DAC",
+    "name": "SAM3X8E_ADC",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@SAM3X8E_DAC",
+    "ID": "c:@SAM3X8E_ADC",
     "What": "Variable",
     "defdec": "Dec",
-    "display": "SAM3X8E_DAC",
+    "display": "SAM3X8E_ADC",
     "location": {
       "column": "25",
-      "line": "25",
-      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dac.h"
+      "line": "30",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_adc.h"
     },
-    "name": "SAM3X8E_DAC",
+    "name": "SAM3X8E_ADC",
     "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:sam3x8e_dout.h@60@macro@SAM3X8E_DOUT_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "SAM3X8E_DOUT_H",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+    },
+    "name": "SAM3X8E_DOUT_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@S@SAM3X8E_DOUTClass",
+    "What": "Class",
+    "defdec": "Def",
+    "display": "SAM3X8E_DOUTClass",
+    "location": {
+      "column": "7",
+      "line": "12",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+    },
+    "members": [
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@SAM3X8E_DOUTClass#",
+        "What": "CXXConstructor",
+        "defdec": "Def",
+        "display": "void SAM3X8E_DOUTClass(void)",
+        "location": {
+          "column": "2",
+          "line": "14",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "SAM3X8E_DOUTClass",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@enable_digital_output#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_digital_output(void)",
+        "location": {
+          "column": "14",
+          "line": "16",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "enable_digital_output",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@enable_digital_output#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void enable_digital_output(void)",
+        "location": {
+          "column": "14",
+          "line": "16",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "enable_digital_output",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@set_relay#i#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void set_relay(uint32_t)",
+        "location": {
+          "column": "14",
+          "line": "18",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "set_relay",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@set_relay#i#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void set_relay(uint32_t)",
+        "location": {
+          "column": "14",
+          "line": "18",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "set_relay",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@reset_relay#i#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void reset_relay(uint32_t)",
+        "location": {
+          "column": "14",
+          "line": "19",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "reset_relay",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      },
+      {
+        "ID": "c:@S@SAM3X8E_DOUTClass@F@reset_relay#i#",
+        "What": "CXXMethod",
+        "defdec": "Dec",
+        "display": "void reset_relay(uint32_t)",
+        "location": {
+          "column": "14",
+          "line": "19",
+          "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+        },
+        "name": "reset_relay",
+        "origin": "user_include",
+        "scope": "SAM3X8E_DOUTClass"
+      }
+    ],
+    "name": "SAM3X8E_DOUTClass",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@SAM3X8E_DOUT",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "SAM3X8E_DOUT",
+    "location": {
+      "column": "26",
+      "line": "25",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+    },
+    "name": "SAM3X8E_DOUT",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@SAM3X8E_DOUT",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "SAM3X8E_DOUT",
+    "location": {
+      "column": "26",
+      "line": "25",
+      "path": "C:\\Users\\u15q86\\Documents\\GitHub\\Arduino-Due-DSP\\sam3x8e_dout.h"
+    },
+    "name": "SAM3X8E_DOUT",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:DLib_Config_Normal.h@105@macro@_DLIB_CONFIG_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_DLIB_CONFIG_H",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\arm\\inc\\c\\DLib_Config_Normal.h"
+    },
+    "name": "_DLIB_CONFIG_H",
+    "origin": "system_include",
     "scope": null
   },
   {
@@ -21398,10 +21622,10 @@
     "scope": null
   },
   {
-    "ID": "c:@S@SAM3X8E_ADCClass@F@read_measure_adc#",
+    "ID": "c:@S@SAM3X8E_ADCClass@F@read_measure_adc#I#",
     "What": "CXXMethod",
     "defdec": "Def",
-    "display": "uint32_t read_measure_adc(void)",
+    "display": "uint32_t read_measure_adc(int)",
     "location": {
       "column": "28",
       "line": "160",
@@ -21412,7 +21636,7 @@
     "scope": null
   },
   {
-    "ID": "c:sam3x8e_adc.cpp@3731@S@SAM3X8E_ADCClass@F@read_measure_adc#@temp_volt",
+    "ID": "c:sam3x8e_adc.cpp@3741@S@SAM3X8E_ADCClass@F@read_measure_adc#I#@temp_volt",
     "What": "Variable",
     "defdec": "Def",
     "display": "temp_volt",

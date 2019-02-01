@@ -8,11 +8,26 @@
 #include "sam3x8e_din.h"
 #include "sam3x8e_dac.h"
 #include "sam3x8e_dout.h"
+#include <math.h>
 
 using namespace std;
 
-const int32_t dac_volt[29] = {
-  -1400000,
+const int32_t dac_volt[3] = {
+  -2800000,/*
+  -2700000,
+  -2600000,
+  -2500000,
+  -2400000,
+  -2300000,
+  -2200000,
+  -2100000,
+  -2000000,
+  -1900000,
+  -1800000,
+  -1700000,
+  -1600000,
+  -1500000,*/
+  -1400000,/*
   -1300000,
   -1200000,
   -1100000,
@@ -25,41 +40,31 @@ const int32_t dac_volt[29] = {
   -400000,
   -300000,
   -200000,
-  -100000,
-  0,
-  100000,
-  200000,
-  300000,
-  400000,
-  500000,
-  600000,
-  700000,
-  800000,
-  900000,
-  1000000,
-  1100000,
-  1200000,
-  1300000,
-  1400000
+  -100000,*/
+  0
 };
-volatile uint32_t  adc_volt_a1[29];
-volatile uint32_t  adc_volt_a2[29];
+volatile uint32_t  adc_volt_anode[3];
 
 void init_clock_for_wm8731(void);
 void measure_system(void);
 int32_t convert_sample_to_voltage(int32_t);
 int32_t convert_voltage_to_sample(int32_t);
 
-static   int      lrtoggle  = 0;
+static  volatile int      lrtoggle  = 0;
 volatile int32_t  input_l   = 0;
 volatile int32_t  input_r   = 0;
-int32_t  coeff_a   = 0;
-int32_t  coeff_b   = 0;
-int32_t  coeff_c   = 0;
+static volatile int32_t  coeff_a   = 0;
+static volatile int32_t  coeff_b   = 0;
+static volatile int32_t  coeff_c   = 0;
+static volatile int32_t  coeff_g_k = 0;
+static volatile int32_t  coeff_g_d = 0;
+static volatile int32_t  z1 = 0;
+static volatile int32_t  z2 = 0;
+static volatile int32_t  z3 = 0;
+static volatile int32_t  y_desired = 0;
+static volatile int32_t  x_desired = 0;
 
-//volatile int32_t  samples[500];
-volatile int32_t  sample;
-//volatile int      index     = 0;
+static volatile int32_t  sample;
 
 class SSC1
 {
@@ -73,31 +78,25 @@ void SSC1::Handler()
     if(!lrtoggle)
     {
         lrtoggle = 1;
-        
         input_l = (int32_t)(SSC_RHR);
-        
         sample = convert_sample_to_voltage(input_l);
         
-        //sample = sample;
+        y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
+        x_desired = y_desired * z1;
+        x_desired = x_desired + z2;
+        x_desired = (int32_t)sqrt((float)x_desired);
+        x_desired = x_desired + coeff_b;
+        x_desired = ((-1000000)*x_desired) / z3;
+        
+        //sample = x_desired;
         
         sample = convert_voltage_to_sample(sample);
-
-        /*
-        if(index > 499)
-        {
-          index = 0;
-        }
-        samples[index++] = sample;
-        */
-
         SSC_THR = sample;
     }
     else
     {
         lrtoggle = 0;
-        
         input_r = (int32_t)(SSC_RHR);
-
         SSC_THR = 0x0000U;
     }
 }
@@ -140,15 +139,8 @@ int main()
       
       SAM3X8E_DOUT.reset_relay(RELAY_ALL);
       SAM3X8E_DAC.write_dac(0x07FFU);
-      
-      
-      SAM3X8E_DOUT.set_relay(RELAY_IN_AUDIO);
-      measure_system();
 
-      while(1)
-      {
-        SAM3X8E_DAC.write_dac_voltage(-1000000);        
-      }
+      measure_system();
       
       __enable_interrupt();
       if(!i) done = 1;
@@ -187,7 +179,6 @@ void measure_system()
     
     SAM3X8E_DOUT.reset_relay(RELAY_ALL);
     SAM3X8E_DOUT.set_relay(RELAY_MEAS_A2);
-    //SAM3X8E_DOUT.set_relay(RELAY_IN_CV);
     
     while(index < points)
     {
@@ -197,44 +188,37 @@ void measure_system()
         temp = (temp + SAM3X8E_ADC.read_measure_adc(490000))/2;
         count++;
       }
-      adc_volt_a1[index] = temp;
+      adc_volt_anode[index] = temp;
       count = 0;
       index++;
     }
     count = 0;
-    index = 0;
-    //SAM3X8E_DOUT.reset_relay(RELAY_ALL);
-    //SAM3X8E_DOUT.set_relay(RELAY_MEAS_A2);
-    //SAM3X8E_DOUT.set_relay(RELAY_IN_CV);
-    //while(index < points)
-    //{
-    //  while(count < repeats)
-    //  {
-    //    SAM3X8E_DAC.write_dac_voltage(dac_volt[index]);
-    //    temp = (temp + SAM3X8E_ADC.read_measure_adc())/2;
-    //    count++;
-    //  }
-    //  adc_volt_a2[index] = temp;
-    //  count = 0;
-    //  index++;
-    //}
-    //index = 0;
+    index = 0;    
     
+    ua1 = ((float)adc_volt_anode[0])/10000;
+    ua2 = ((float)adc_volt_anode[1])/10000;
+    ua3 = ((float)adc_volt_anode[2])/10000;
+    ug1 = (((float)dac_volt[0])/1000000);
+    ug2 = (((float)dac_volt[1])/1000000);
+    ug3 = (((float)dac_volt[2])/1000000);
     
-    //ua1 = ((float)adc_volt_a1[0])/10000;
-    //ua2 = ((float)adc_volt_a1[2])/10000;
-    //ua3 = ((float)adc_volt_a1[4])/10000;
-    //ug1 = (((float)dac_volt[0])/1000000);
-    //ug2 = (((float)dac_volt[2])/1000000);
-    //ug3 = (((float)dac_volt[4])/1000000);
+    a1 = (ug1*(ua2-ua3)+ug2*(ua3-ua1)+ug3*(ua1-ua2))/((ug1-ug2)*(ug1-ug3)*(ug3-ug2));
+    b1 = ((ug1*ug1)*(ua2-ua3)+(ug2*ug2)*(ua3-ua1)+(ug3*ug3)*(ua1-ua2))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
+    c1 = ((ug1*ug1)*(ug2*ua3-ug3*ua2)+ug1*((ug3*ug3)*ua2-(ug2*ug2)*ua3)+ug2*ug3*ua1*(ug2-ug3))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
     
-    //a1 = (ug1*(ua2-ua3)+ug2*(ua3-ua1)+ug3*(ua1-ua2))/((ug1-ug2)*(ug1-ug3)*(ug3-ug2));
-    //b1 = ((ug1*ug1)*(ua2-ua3)+(ug2*ug2)*(ua3-ua1)+(ug3*ug3)*(ua1-ua2))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
-    //c1 = ((ug1*ug1)*(ug2*ua3-ug3*ua2)+ug1*((ug3*ug3)*ua2-(ug2*ug2)*ua3)+ug2*ug3*ua1*(ug2-ug3))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
+    // Koeffizienten für quadratische Funktion
+    coeff_a = (int32_t)(a1 * 1000);
+    coeff_b = (int32_t)(b1 * 1000);
+    coeff_c = (int32_t)(c1 * 1000);
     
-    //coeff_a = (int32_t)(a1 * 1000);
-    //coeff_b = (int32_t)(b1 * 1000);
-    //coeff_c = (int32_t)(c1 * 1000);
+    // Koeffizienten für lineaere Funktion
+    coeff_g_k = (int32_t)(((ua3 - ua1)/(ug3 - ug1))*1000);
+    coeff_g_d = (int32_t)((ua1 - (coeff_g_k * ug1))*1000);
+    
+    // Hilfswerte für Linearisierung
+    z1 = 4*coeff_a;
+    z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b));
+    z3 = 2*coeff_a;
     
     SAM3X8E_DOUT.reset_relay(RELAY_ALL);
     

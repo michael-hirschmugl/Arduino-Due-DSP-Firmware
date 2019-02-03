@@ -9,13 +9,13 @@
 #define LRINBOTH                (1U)    // L register controls L/R
 #define LINMUTE                 (0U)    // Mute OFF
 //#define LINVOL                  (0x17U) // 0dB input
-#define LINVOL                  (0x1CU) // +12dB input: 1F, +6dB: 1B, 0dB: 17
+#define LINVOL                  (0x1DU) // +12dB input: 1F, +6dB: 1B, 0dB: 17
 
 // RIGHT LINE IN
 #define RLINBOTH                (1U)
 #define RINMUTE                 (0U)
 //#define RINVOL                  (0x17U)
-#define RINVOL                  (0x1CU)
+#define RINVOL                  (0x1DU)
 
 // LEFT HEADPHONE OUT
 #define LRHPBOTH                (1U)    // L register controls L/R
@@ -32,6 +32,7 @@
 #define SIDETONE                (0U)    // Disable Side Tone
 #define DACSEL                  (1U)    // DAC selected
 #define BYPASS                  (0U)    // Bypass OFF
+//#define BYPASS                  (1U)    // Bypass ON
 #define INSEL                   (0U)    // Line In to ADC
 #define MUTEMIC                 (1U)    // Mic Mute ON
 #define MICBOOST                (0U)    // Mic Boost OFF

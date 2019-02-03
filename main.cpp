@@ -45,26 +45,30 @@ const int32_t dac_volt[3] = {
 };
 volatile uint32_t  adc_volt_anode[3];
 
-void init_clock_for_wm8731(void);
-void measure_system(void);
+void    init_clock_for_wm8731(void);
+void    measure_system(void);
 int32_t convert_sample_to_voltage(int32_t);
 int32_t convert_voltage_to_sample(int32_t);
 
-static  volatile int      lrtoggle  = 0;
+volatile int      lrtoggle  = 0;
 volatile int32_t  input_l   = 0;
 volatile int32_t  input_r   = 0;
-static volatile int32_t  coeff_a   = 0;
-static volatile int32_t  coeff_b   = 0;
-static volatile int32_t  coeff_c   = 0;
-static volatile int32_t  coeff_g_k = 0;
-static volatile int32_t  coeff_g_d = 0;
-static volatile int32_t  z1 = 0;
-static volatile int32_t  z2 = 0;
-static volatile int32_t  z3 = 0;
-static volatile int32_t  y_desired = 0;
-static volatile int32_t  x_desired = 0;
+volatile int32_t  coeff_a   = 0;
+volatile int32_t  coeff_b   = 0;
+volatile int32_t  coeff_c   = 0;
+volatile int32_t  coeff_g_k = 0;
+volatile int32_t  coeff_g_d = 0;
+volatile int32_t  z1 = 0;
+volatile int32_t  z2 = 0;
+volatile int32_t  z3 = 0;
+volatile int32_t  y_desired = 0;
+volatile int32_t  x_desired = 0;
 
-static volatile int32_t  sample;
+volatile int32_t  sample;
+volatile int32_t  samples_in[100];
+volatile int32_t  samples_out[100];
+volatile int32_t  count1 = 0;
+volatile int32_t  count2 = 0;
 
 class SSC1
 {
@@ -79,72 +83,55 @@ void SSC1::Handler()
     {
         lrtoggle = 1;
         input_l = (int32_t)(SSC_RHR);
-        sample = convert_sample_to_voltage(input_l);
-        
-        y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
-        x_desired = y_desired * z1;
-        x_desired = x_desired + z2;
-        x_desired = (int32_t)sqrt((float)x_desired);
-        x_desired = x_desired + coeff_b;
-        x_desired = ((-1000000)*x_desired) / z3;
-        
-        //sample = x_desired;
-        
-        sample = convert_voltage_to_sample(sample);
-        SSC_THR = sample;
+
+        SSC_THR = input_l;
     }
     else
     {
         lrtoggle = 0;
         input_r = (int32_t)(SSC_RHR);
-        SSC_THR = 0x0000U;
+        SSC_THR = count1 << 8;
     }
 }
 
 int main()
 {
-    volatile int i = 0;
-    int done = 0;
-    while(!done)
-    {
-      __disable_interrupt();
+    __disable_interrupt();
+    
+    SAM3X8E_WDT.disable_watchdog_timer();
+    
+    SAM3X8E_SETUP.init_clock();
+    
+    init_clock_for_wm8731();
+    
+    SAM3X8E_TWI.init_twi1();
+    SAM3X8E_TWI.setup_twi1_master_transfer();
+    SAM3X8E_SSC.init_ssc();
+    
+    SAM3X8E_TWI.setup_WM8731();
+    
+    SAM3X8E_SSC.setup_ssc_master_transfer();
+    SAM3X8E_SSC.ssc_interrupt_setup();
+    SAM3X8E_DIN.enable_digital_input();
+    SAM3X8E_ADC.enable_adc_input();
+    SAM3X8E_ADC.reset_adc();
+    SAM3X8E_ADC.enable_ad1();
+    SAM3X8E_ADC.enable_ad2();
+    SAM3X8E_ADC.enable_ad3();
+    SAM3X8E_ADC.enable_measure_adc();
+    SAM3X8E_ADC.configure_adc_input();
+    
+    SAM3X8E_DAC.enable_dac_output();
+    SAM3X8E_DAC.configure_dac_output();
+    
+    SAM3X8E_DOUT.enable_digital_output();
+    
+    SAM3X8E_DOUT.reset_relay(RELAY_ALL);
+    SAM3X8E_DAC.write_dac(0x07FFU);
+    
+    //measure_system();
 
-      SAM3X8E_WDT.disable_watchdog_timer();
-
-      SAM3X8E_SETUP.init_clock();
-      
-      init_clock_for_wm8731();
-      
-      SAM3X8E_TWI.init_twi1();
-      SAM3X8E_TWI.setup_twi1_master_transfer();
-      SAM3X8E_SSC.init_ssc();
-
-      i = SAM3X8E_TWI.setup_WM8731();
-
-      SAM3X8E_SSC.setup_ssc_master_transfer();
-      SAM3X8E_SSC.ssc_interrupt_setup();
-      //SAM3X8E_DIN.enable_digital_input();
-      SAM3X8E_ADC.enable_adc_input();
-      SAM3X8E_ADC.reset_adc();
-      //SAM3X8E_ADC.enable_ad1();
-      //SAM3X8E_ADC.enable_ad2();
-      //SAM3X8E_ADC.enable_ad3();
-      SAM3X8E_ADC.enable_measure_adc();
-      SAM3X8E_ADC.configure_adc_input();
-      
-      SAM3X8E_DAC.enable_dac_output();
-      SAM3X8E_DAC.configure_dac_output();
-      
-      SAM3X8E_DOUT.enable_digital_output();
-      
-      SAM3X8E_DOUT.reset_relay(RELAY_ALL);
-      SAM3X8E_DAC.write_dac(0x07FFU);
-
-      measure_system();
-      
-      __enable_interrupt();
-      if(!i) done = 1;
-    }
+    __enable_interrupt();
     
     while(1)
     {
@@ -212,12 +199,12 @@ void measure_system()
     coeff_c = (int32_t)(c1 * 1000);
     
     // Koeffizienten für lineaere Funktion
-    coeff_g_k = (int32_t)(((ua3 - ua1)/(ug3 - ug1))*1000);
-    coeff_g_d = (int32_t)((ua1 - (coeff_g_k * ug1))*1000);
+    coeff_g_k = (int32_t)(((ua1 - ua3)/(ug1 - ug3))*1000);
+    coeff_g_d = (int32_t)((ua3 - (coeff_g_k * ug3))*1000);
     
     // Hilfswerte für Linearisierung
     z1 = 4*coeff_a;
-    z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b));
+    z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b)); ///////////////// Quadrieren könnte Fehler sein!
     z3 = 2*coeff_a;
     
     SAM3X8E_DOUT.reset_relay(RELAY_ALL);
@@ -230,11 +217,11 @@ int32_t convert_sample_to_voltage(int32_t sample)
   if(sample >= 32767)
   {
     sample = sample - 65535;
-    sample = (2850000/32767) * sample;
+    sample = (1200000/32767) * sample;
   }
   else
   {
-    sample = (2850000/32767) * sample;
+    sample = (1200000/32767) * sample;
   }
   return sample;
 }
@@ -246,13 +233,13 @@ int32_t convert_voltage_to_sample(int32_t sample)
   if(temp >= 0)
   {
     temp1 = (uint32_t)(temp * 1000);
-    temp1 = temp1 / 86975;
+    temp1 = temp1 / 38910;
     temp = temp1;
   }
   else
   {
     temp1 = (uint32_t)(temp * (-1000));
-    temp1 = temp1 / 86975;
+    temp1 = temp1 / 38910;
     temp = temp1;
     temp = temp * (-1);
     temp = (temp & 0x0000FFFFU) | 0x8000U;

@@ -61,7 +61,7 @@ void SAM3X8E_SSCClass::setup_pio_for_ssc(void)
 void SAM3X8E_SSCClass::setup_ssc_master_transfer(void)
 {
     SSC_WPMR = SSC_WPKEY | WPEN_0;
-    SSC_CR = TWI1_CR_SWRST;  // Reset
+    SSC_CR = SSC_CR_SWRST_SSC;  // Reset
     
     SSC_CR = SSC_CR_RXEN | SSC_CR_RXDIS | SSC_CR_TXEN | SSC_CR_TXDIS;
     SSC_CMR = SSC_CMR_DIV; // divider is deactivated (kept for compatibility)

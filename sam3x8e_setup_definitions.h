@@ -8,7 +8,7 @@
 #define DMA_CH                          (0)
 #define DMA_BUF_SIZE                    (32)
 #define DMAC_INTERRUPT_PRIORITY         (0)
-#define SSC_INTERRUPT_PRIORITY          (0)
+#define SSC_INTERRUPT_PRIORITY          (1)
 #define DIG_INP_INTERRUPT_PRIORITY      (5)
 
 #define GLOBAL_TIMEOUT                  (0xFFDCU)
@@ -75,6 +75,8 @@
 #define SSC_RCKG                (0x0U << 6)
 /* Receive Start Selection: Detection of any edge on RF signal */
 #define SSC_RSTART              (0x7U << 8)
+/* Receive Start Selection: Detection of rising edge on RF signal */
+//#define SSC_RSTART              (0x5U << 8)
 /* Receive Stop Selection: After completion of a data transfer when starting */
 /* with a Compare 0, the receiver stops the data transfer and waits for a    */
 /* new compare 0.                                                            */

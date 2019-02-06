@@ -74,7 +74,8 @@
 /* Receive Clock Gating Selection: NONE */
 #define SSC_RCKG                (0x0U << 6)
 /* Receive Start Selection: Detection of any edge on RF signal */
-#define SSC_RSTART              (0x7U << 8)
+//#define SSC_RSTART              (0x7U << 8)
+#define SSC_RSTART              (0x5U << 8)
 /* Receive Start Selection: Detection of rising edge on RF signal */
 //#define SSC_RSTART              (0x5U << 8)
 /* Receive Stop Selection: After completion of a data transfer when starting */

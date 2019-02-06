@@ -79,19 +79,19 @@ public:
 
 void SSC1::Handler()
 {
-    if(!lrtoggle)
-    {
-        lrtoggle = 1;
-        input_l = (int32_t)(SSC_RHR);
-
-        SSC_THR = input_l;
-    }
-    else
-    {
-        lrtoggle = 0;
-        input_r = (int32_t)(SSC_RHR);
-        SSC_THR = count1 << 8;
-    }
+  input_l = (int32_t)(SSC_RHR);
+  sample = convert_sample_to_voltage(input_l);
+  
+  y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
+  x_desired = y_desired * z1;
+  x_desired = x_desired + z2;
+  x_desired = sqrt(x_desired);
+  x_desired = x_desired + coeff_b;
+  x_desired = ((-1000000)*x_desired) / z3;
+  
+  
+  sample = convert_voltage_to_sample(x_desired);
+  SSC_THR = sample;
 }
 
 int main()
@@ -129,7 +129,7 @@ int main()
     SAM3X8E_DOUT.reset_relay(RELAY_ALL);
     SAM3X8E_DAC.write_dac(0x07FFU);
     
-    //measure_system();
+    measure_system();
 
     __enable_interrupt();
     
@@ -233,13 +233,13 @@ int32_t convert_voltage_to_sample(int32_t sample)
   if(temp >= 0)
   {
     temp1 = (uint32_t)(temp * 1000);
-    temp1 = temp1 / 38910;
+    temp1 = temp1 / 36621;
     temp = temp1;
   }
   else
   {
     temp1 = (uint32_t)(temp * (-1000));
-    temp1 = temp1 / 38910;
+    temp1 = temp1 / 36621;
     temp = temp1;
     temp = temp * (-1);
     temp = (temp & 0x0000FFFFU) | 0x8000U;

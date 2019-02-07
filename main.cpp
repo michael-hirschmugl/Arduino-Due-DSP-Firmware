@@ -80,14 +80,14 @@ public:
 void SSC1::Handler()
 {
   input_l = (int32_t)(SSC_RHR);
-  sample = convert_sample_to_voltage(input_l);
+  sample = convert_sample_to_voltage(input_l) - 1400000;
   
   y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
   x_desired = y_desired * z1;
   x_desired = x_desired + z2;
   x_desired = sqrt(x_desired);
   x_desired = x_desired + coeff_b;
-  x_desired = ((-1000000)*x_desired) / z3;
+  x_desired = ((-1000)*x_desired) / z3;
   
   
   sample = convert_voltage_to_sample(x_desired);
@@ -205,7 +205,7 @@ void measure_system()
     // Hilfswerte für Linearisierung
     z1 = 4*coeff_a;
     z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b)); ///////////////// Quadrieren könnte Fehler sein!
-    z3 = 2*coeff_a;
+    z3 = (2*coeff_a)/1000;
     
     SAM3X8E_DOUT.reset_relay(RELAY_ALL);
     

@@ -5,186 +5,132 @@
     <configuration>
         <name>Debug</name>
         <outputs>
+            <file>$TOOLKIT_DIR$\inc\c\iar_intrinsics_common.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\iccarm_builtin.h</file>
             <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_din.o</file>
-            <file>$PROJ_DIR$\sam3x8e_wdt.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_wdt.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_ssc.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_wdt.__cstat.et</file>
             <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_adc.pbi</file>
-            <file>$PROJ_DIR$\sam3x8e_din.h</file>
-            <file>$PROJ_DIR$\sam3x8e_ssc.cpp</file>
-            <file>$PROJ_DIR$\main.cpp</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$TOOLKIT_DIR$\lib\dlpp7M_tl_nc.a</file>
-            <file>$PROJ_DIR$\sam3x8e_twi.h</file>
-            <file>$PROJ_DIR$\sam3x8e_dac.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_dma.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_dout.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_adc.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_din.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_ssc.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\xtgmath.h</file>
-            <file>$PROJ_DIR$\sam3x8e_dout.h</file>
-            <file>$PROJ_DIR$\cstartupCM3.s</file>
-            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$PROJ_DIR$\sam3x8e.h</file>
-            <file>$PROJ_DIR$\sam3x8e_dma.h</file>
-            <file>$PROJ_DIR$\sam3x8e_setup.h</file>
-            <file>$PROJ_DIR$\cstartup_M_cpp.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_setup.cpp</file>
-            <file>$PROJ_DIR$\sam3x8e_twi.cpp</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-            <file>$PROJ_DIR$\sam3x8e_wdt.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dac.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\sam3x8e_ssc.o</file>
-            <file>$PROJ_DIR$\sam3x8e_adc.h</file>
-            <file>$PROJ_DIR$\sam3x8e_dac.h</file>
+            <file>$PROJ_DIR$\sam3x8e_din.cpp</file>
+            <file>$PROJ_DIR$\sam3x8e_dma.cpp</file>
+            <file>$PROJ_DIR$\sam3x8e_wdt.cpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup_M_cpp.pbi</file>
+            <file>$PROJ_DIR$\sam3x8e_dout.cpp</file>
+            <file>$PROJ_DIR$\sam3x8e_twi.cpp</file>
+            <file>$PROJ_DIR$\main.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_twi.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_stdlib.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dma.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_twi.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_setup.pbi</file>
+            <file>$PROJ_DIR$\cstartup_M_cpp.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dac.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_din.pbi</file>
+            <file>$PROJ_DIR$\sam3x8e_setup.cpp</file>
+            <file>$PROJ_DIR$\sam3x8e_ssc.cpp</file>
+            <file>$PROJ_DIR$\sam3x8e_dac.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_din.o</file>
+            <file>$PROJ_DIR$\Debug\List\project.map</file>
+            <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlpp7M_tl_nc.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup_M_cpp.__cstat.et</file>
+            <file>$PROJ_DIR$\sam3x8e_din.h</file>
             <file>$PROJ_DIR$\sam3x8e_register_definitions.h</file>
             <file>$PROJ_DIR$\wm8731_setup_definitions.h</file>
+            <file>$PROJ_DIR$\sam3x8e_dout.h</file>
+            <file>$PROJ_DIR$\sam3x8e_ssc.h</file>
+            <file>$PROJ_DIR$\sam3x8e_adc.h</file>
+            <file>$PROJ_DIR$\sam3x8e_dac.h</file>
+            <file>$PROJ_DIR$\sam3x8e_twi.h</file>
+            <file>$PROJ_DIR$\sam3x8e_wdt.h</file>
+            <file>$PROJ_DIR$\sam3x8e_setup.h</file>
+            <file>$PROJ_DIR$\sam3x8e_adc.cpp</file>
+            <file>$PROJ_DIR$\sam3x8e_dma.h</file>
             <file>$PROJ_DIR$\sam3x8e_setup_definitions.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\cpp\xtr1common</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dac.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dout.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
-            <file>$PROJ_DIR$\sam3x8e.cpp</file>
             <file>$PROJ_DIR$\Debug\Obj\sam3x8e_setup.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\inc\cpp\cstdlib</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_setup.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_din.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_adc.o</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartupCM3.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\project.pbd</file>
+            <file>$PROJ_DIR$\cstartup_M.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dout.o</file>
+            <file>$PROJ_DIR$\sam3x8e.cpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_ssc.__cstat.et</file>
             <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\inc\c\iccarm_builtin.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dout.pbi</file>
             <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_twi.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xtr1common</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\project.pbd</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_adc.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Exe\project.out</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_float_setup.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup_M.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_adc.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_wdt.pbi</file>
+            <file>$TOOLKIT_DIR$\config\linker\Microchip\sam3x8e\flash.icf</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dout.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dma.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\xtgmath.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup_M_cpp.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_wdt.o</file>
             <file>$PROJ_DIR$\Debug\Obj\cstartup_M.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_twi.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_din.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_setup.o</file>
+            <file>$PROJ_DIR$\cstartupCM3.s</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartupCM3.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dout.__cstat.et</file>
+            <file>$PROJ_DIR$\sam3x8e.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cstdlib</file>
             <file>$PROJ_DIR$\Debug\Obj\sam3x8e_ssc.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dac.o</file>
-            <file>$TOOLKIT_DIR$\config\linker\Microchip\sam3x8e\flash.icf</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartup_M_cpp.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_float_setup.h</file>
-            <file>$PROJ_DIR$\Debug\List\project.map</file>
-            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
             <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dma.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_wdt.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_din.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\c\iar_intrinsics_common.h</file>
-            <file>$PROJ_DIR$\cstartup_M.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_adc.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_setup.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dout.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dac.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_wdt.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dma.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartup_M_cpp.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartup_M.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_dma.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartup_M_cpp.o</file>
-            <file>$PROJ_DIR$\Debug\Exe\project.out</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_twi.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_twi.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\sam3x8e_adc.pbi</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 89 68</file>
+                    <file> 61 28</file>
                 </tool>
             </outputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\sam3x8e_ssc.cpp</name>
+            <name>$PROJ_DIR$\sam3x8e_din.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 31</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 62</file>
+                    <file> 27</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 4</file>
+                    <file> 78</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 23</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 18 0 37 5 44 29 10 34 36</file>
+                    <file> 32 2 49 4 63 56 10 33 44</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 29 36 0 37 10 34 5 44 18</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\main.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 65</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 52</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 55</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 0 37 5 44 29 10 70 56 74 25 34 36 2 12 35 18 32 7 33 20 41 67 19 38 45 77 69 60</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 34 33 12 56 36 25 32 41 5 0 70 2 18 7 20 37 44 29 10 74 35 67 19 38 45 77 69 60</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\sam3x8e_dac.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 63</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 81</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 39</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 33 0 37 5 44 29 10 34 36</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 36 0 37 34 5 44 33 29 10</file>
+                    <file> 44 2 49 33 4 63 32 56 10</file>
                 </tool>
             </inputs>
         </file>
@@ -193,186 +139,25 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 84</file>
+                    <file> 17</file>
                 </tool>
                 <tool>
-                    <name>BICOMP</name>
+                    <name>__cstat</name>
                     <file> 71</file>
                 </tool>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 87</file>
+                    <name>BICOMP</name>
+                    <file> 89</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 24 0 37 5 44 29 10 34 36</file>
+                    <file> 43 2 49 4 63 56 10 33 44</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 29 36 0 37 10 24 34 5 44</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\sam3x8e_dout.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 40</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 57</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 80</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 20 0 37 5 44 29 10 34 36</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 36 0 37 34 5 44 20 29 10</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\sam3x8e_adc.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 50</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 6</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 76</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 32 0 37 5 44 29 10 34 36</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 29 36 0 37 10 34 5 44 32</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\sam3x8e_din.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 1</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 73</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 48</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 7 0 37 5 44 29 10 34 36</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 36 0 37 34 5 44 7 29 10</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\cstartupCM3.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 53</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\cstartup_M_cpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 88</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 66</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 85</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\sam3x8e_setup.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 46</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 78</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 43</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 25 0 37 5 44 29 10 34 36</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 29 36 0 37 10 25 34 5 44</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\sam3x8e_twi.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 59</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 90</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 91</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 12 0 37 5 44 29 10 34 36 35</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 5 44 36 0 34 35 37 29 10 12</file>
+                    <file> 56 44 2 49 10 43 33 4 63</file>
                 </tool>
             </inputs>
         </file>
@@ -381,52 +166,231 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
+                    <file> 75</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
                     <file> 3</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 72</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 83</file>
+                    <file> 67</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 2 0 37 5 44 29 10 34 36</file>
+                    <file> 40 2 49 4 63 56 10 33 44</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 36 0 37 34 5 44 2 29 10</file>
+                    <file> 44 2 49 33 4 63 40 56 10</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\sam3x8e.cpp</name>
+            <name>$PROJ_DIR$\sam3x8e_dout.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 47</file>
                 </tool>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 82</file>
+                    <name>__cstat</name>
+                    <file> 84</file>
                 </tool>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 79</file>
+                    <name>BICOMP</name>
+                    <file> 69</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 23 0 37 5 44 29 10 34 36 35 70</file>
+                    <file> 35 2 49 4 63 56 10 33 44</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 37 34 10 35 29 70 0 36 5 44 23</file>
+                    <file> 44 2 49 33 4 63 35 56 10</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_twi.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 77</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 15</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 39 2 49 4 63 56 10 33 44 34</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 4 63 44 2 33 34 49 56 10 39</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 90</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 53</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 73</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 2 49 4 63 56 10 29 1 0 41 33 44 40 39 34 36 37 32 38 35 64 62 72 55 86 79 50 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0 10 38 49 63 44 39 2 4 41 37 64 56 33 72 29 40 36 32 35 1 62 55 34 86 79 50 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\cstartup_M_cpp.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 74</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 31</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_setup.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 80</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 45</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 41 2 49 4 63 56 10 33 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 56 44 2 49 10 41 33 4 63</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_ssc.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 6</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 52</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 87</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 36 2 49 4 63 56 10 33 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 56 44 2 49 10 33 4 63 36</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_dac.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 88</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 21</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 5</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 38 2 49 4 63 56 10 33 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 44 2 49 33 4 63 38 56 10</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e_adc.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 66</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 60</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 91</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 37 2 49 4 63 56 10 33 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 44 56 4 2 63 10 33 49 37</file>
                 </tool>
             </inputs>
         </file>
@@ -435,28 +399,64 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 61</file>
+                    <file> 76</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 86</file>
+                    <file> 65</file>
                 </tool>
             </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\sam3x8e.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 70</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 51</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 83</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 85 2 49 4 63 56 10 33 44 34 29</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 49 33 10 34 56 29 2 44 4 63 85</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\Debug\Exe\project.out</name>
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 68</file>
+                    <file> 28</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 64 88 65 50 63 1 84 40 46 31 59 3 22 49 11 58 51</file>
+                    <file> 68 74 90 66 88 27 17 47 80 6 18 75 22 59 30 54 57</file>
                 </tool>
             </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\cstartupCM3.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 82</file>
+                </tool>
+            </outputs>
         </file>
     </configuration>
     <configuration>

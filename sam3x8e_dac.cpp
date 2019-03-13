@@ -76,9 +76,10 @@ void SAM3X8E_DACClass::write_dac(uint32_t value)
 */
 void SAM3X8E_DACClass::write_dac_voltage(int32_t value)
 {
-    uint32_t temp = 0x7FFU;
-    
-    temp = temp + (value / 1464);
+    uint32_t temp = 0x0U;
+    temp = (value / 1465);
+    temp = temp + 0x07FFU;
+    //temp = temp + (value / 1465);
     
     DAC_CDR = (0x0000FFFFU & temp);
 }

@@ -119,7 +119,7 @@ uint16_t SAM3X8E_TWIClass::setup_WM8731(void)
 {
     uint16_t i = 0;
     
-    i |= (send_two_bytes_to_wm8731(0x0CU,
+    i |= (send_two_bytes_to_wm8731(0x0CU,(uint8_t)
                                   ((PWROFF << 7)|
                                    (CLKOUTPUT << 6)|
                                    (OSCPD << 5)|
@@ -128,35 +128,35 @@ uint16_t SAM3X8E_TWIClass::setup_WM8731(void)
                                    (ADCPD << 2)|
                                    (MICPD << 1)|
                                    (LINEINPD << 0))) << 0 );
-    i |= (send_two_bytes_to_wm8731(0x0EU,
+    i |= (send_two_bytes_to_wm8731(0x0EU,(uint8_t)
                                   ((BCLKINV << 7)|
                                    (MS << 6)|
                                    (LRSWAP << 5)|
                                    (LRP << 4)|
                                    (IWL << 2)|
                                    (FORMAT << 0))) << 1);
-    i |= (send_two_bytes_to_wm8731(0x00U,
+    i |= (send_two_bytes_to_wm8731(0x00U,(uint8_t)
                                   ((LRINBOTH << 8)|
                                    (LINMUTE << 7)|
                                    (LINVOL << 0))) << 2);
-    i |= (send_two_bytes_to_wm8731(0x02U,
+    i |= (send_two_bytes_to_wm8731(0x02U,(uint8_t)
                                   ((RLINBOTH << 8)|
                                    (RINMUTE << 7)|
                                    (RINVOL << 0))) << 3);
-    i |= (send_two_bytes_to_wm8731(0x04U,
+    i |= (send_two_bytes_to_wm8731(0x04U,(uint8_t)
                                   ((LRHPBOTH << 8)|
                                    (LZCEN << 7)|
                                    (LHPVOL << 0))) << 4);
-    i |= (send_two_bytes_to_wm8731(0x06U,
+    i |= (send_two_bytes_to_wm8731(0x06U,(uint8_t)
                                   ((RLHPBOTH << 8)|
                                    (RZCEN << 7)|
                                    (RHPVOL << 0))) << 5);
-    i |= (send_two_bytes_to_wm8731(0x0AU,
+    i |= (send_two_bytes_to_wm8731(0x0AU,(uint8_t)
                                   ((HPOR << 4)|
                                    (DACMU << 3)|
                                    (DEEMPH << 1)|
                                    (ADCHPD << 0))) << 6);
-    i |= (send_two_bytes_to_wm8731(0x08U,
+    i |= (send_two_bytes_to_wm8731(0x08U,(uint8_t)
                                   ((SIDEATT << 6)|
                                    (SIDETONE << 5)|
                                    (DACSEL << 4)|
@@ -164,7 +164,7 @@ uint16_t SAM3X8E_TWIClass::setup_WM8731(void)
                                    (INSEL << 2)|
                                    (MUTEMIC << 1)|
                                    (MICBOOST << 0))) << 7);
-    i |= (send_two_bytes_to_wm8731(0x10U,
+    i |= (send_two_bytes_to_wm8731(0x10U,(uint8_t)
                                   ((CLKODIV2 << 7)|
                                    (CLKIDIV2 << 6)|
                                    (SR << 2)|

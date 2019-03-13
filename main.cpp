@@ -12,47 +12,20 @@
 
 using namespace std;
 
-const int32_t dac_volt[3] = {
-  -2800000,/*
-  -2700000,
-  -2600000,
-  -2500000,
-  -2400000,
-  -2300000,
-  -2200000,
-  -2100000,
-  -2000000,
-  -1900000,
-  -1800000,
-  -1700000,
-  -1600000,
-  -1500000,*/
-  -1400000,/*
-  -1300000,
-  -1200000,
-  -1100000,
-  -1000000,
-  -900000,
-  -800000,
+const int32_t dac_volt[4] = {
+  -3000000,
+  -1500000,
   -700000,
-  -600000,
-  -500000,
-  -400000,
-  -300000,
-  -200000,
-  -100000,*/
   0
 };
-volatile uint32_t  adc_volt_anode[3];
+volatile uint32_t  adc_volt_anode[4];
 
 void    init_clock_for_wm8731(void);
 void    measure_system(void);
 int32_t convert_sample_to_voltage(int32_t);
 int32_t convert_voltage_to_sample(int32_t);
 
-volatile int      lrtoggle  = 0;
 volatile int32_t  input_l   = 0;
-volatile int32_t  input_r   = 0;
 volatile int32_t  coeff_a   = 0;
 volatile int32_t  coeff_b   = 0;
 volatile int32_t  coeff_c   = 0;
@@ -65,10 +38,6 @@ volatile int32_t  y_desired = 0;
 volatile int32_t  x_desired = 0;
 
 volatile int32_t  sample;
-volatile int32_t  samples_in[100];
-volatile int32_t  samples_out[100];
-volatile int32_t  count1 = 0;
-volatile int32_t  count2 = 0;
 
 class SSC1
 {
@@ -82,15 +51,15 @@ void SSC1::Handler()
   input_l = (int32_t)(SSC_RHR);
   sample = convert_sample_to_voltage(input_l) - 1400000;
   
-  y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
-  x_desired = y_desired * z1;
-  x_desired = x_desired + z2;
-  x_desired = sqrt(x_desired);
-  x_desired = x_desired + coeff_b;
-  x_desired = ((-1000)*x_desired) / z3;
+  //y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
+  //x_desired = y_desired * z1;
+  //x_desired = x_desired + z2;
+  //x_desired = sqrt(x_desired);
+  //x_desired = x_desired + coeff_b;
+  //x_desired = ((-1000)*x_desired) / z3;
   
   
-  sample = convert_voltage_to_sample(x_desired);
+  sample = convert_voltage_to_sample(sample + 1400000);
   SSC_THR = sample;
 }
 
@@ -126,61 +95,55 @@ int main()
     
     SAM3X8E_DOUT.enable_digital_output();
     
-    SAM3X8E_DOUT.reset_relay(RELAY_ALL);
-    SAM3X8E_DAC.write_dac(0x07FFU);
+    SAM3X8E_DOUT.reset_relay(RELAY_ALL);        // All Relays OFF
+    SAM3X8E_DAC.write_dac(0x07FFU);             // U_cv = 0V
     
     measure_system();
 
     __enable_interrupt();
     
-    while(1)
-    {
-      
-    }
+    SAM3X8E_DOUT.set_relay(RELAY_IN_AUDIO);
+
+    while(1){}
 }
 
 void init_clock_for_wm8731()
 {
     PIOA_WPMR = PIO_WPKEY | WPEN_0;
-    PIOA_PDR = ~PIOA_PSR | (1U << 1);  // enable peripheral control
-    PIOA_PER = PIOA_PSR & ~(1U << 1);
-    PIOA_ABSR |= (1U << 1);  // peripherial B selected
+    PIOA_PDR  = ~PIOA_PSR | (1U << 1);          // enable peripheral control
+    PIOA_PER  = PIOA_PSR & ~(1U << 1);
+    PIOA_ABSR |= (1U << 1);                     // peripherial B selected
     PIOA_WPMR = PIO_WPKEY | WPEN_1;
     
-    PMC_WPMR = PMC_WPKEY | WPEN_0;
-    PMC_SCER |=	0x0100U;  // page 558
-    PMC_PCK0 = 0x01U;  // main crystak osc = 12Mhz
-    PMC_WPMR = PMC_WPKEY | WPEN_1;
+    PMC_WPMR  = PMC_WPKEY | WPEN_0;
+    PMC_SCER  |=	0x0100U;                // page 558
+    PMC_PCK0  = 0x01U;                          // main crystak osc = 12Mhz
+    PMC_WPMR  = PMC_WPKEY | WPEN_1;
 }
 
 void measure_system()
 {
-    volatile int count;
     volatile int points = sizeof(dac_volt)/sizeof(int32_t);
-    volatile int repeats = 999999;
     volatile int index;
-    volatile int temp = 0;
+    int i,j;
+    int temp,temp1;
     float ua1, ua2, ua3, ug1, ug2, ug3, a1, b1, c1;
     index = 0;
-    count = 0;
+    i = index;
+    j = points;
     
-    SAM3X8E_DOUT.reset_relay(RELAY_ALL);
-    SAM3X8E_DOUT.set_relay(RELAY_MEAS_A2);
+    SAM3X8E_DOUT.reset_relay(RELAY_ALL);        // All Relays OFF
+    SAM3X8E_DOUT.set_relay(RELAY_MEAS_A2);      // Relay Preamp Measurement ON
     
-    while(index < points)
+    while(i < j)
     {
-      while(count < repeats)
-      {
-        SAM3X8E_DAC.write_dac_voltage(dac_volt[index]);
-        temp = (temp + SAM3X8E_ADC.read_measure_adc(490000))/2;
-        count++;
-      }
-      adc_volt_anode[index] = temp;
-      count = 0;
-      index++;
+      SAM3X8E_DOUT.reset_relay(RELAY_ALL);
+      SAM3X8E_DOUT.set_relay(RELAY_MEAS_A2);
+      SAM3X8E_DAC.write_dac_voltage(dac_volt[index]);              // Set U_cv
+      adc_volt_anode[index] = SAM3X8E_ADC.measure_preamp_anode();  // Read U_a
+      i++;
+      index = i;
     }
-    count = 0;
-    index = 0;    
     
     ua1 = ((float)adc_volt_anode[0])/10000;
     ua2 = ((float)adc_volt_anode[1])/10000;
@@ -189,9 +152,12 @@ void measure_system()
     ug2 = (((float)dac_volt[1])/1000000);
     ug3 = (((float)dac_volt[2])/1000000);
     
-    a1 = (ug1*(ua2-ua3)+ug2*(ua3-ua1)+ug3*(ua1-ua2))/((ug1-ug2)*(ug1-ug3)*(ug3-ug2));
-    b1 = ((ug1*ug1)*(ua2-ua3)+(ug2*ug2)*(ua3-ua1)+(ug3*ug3)*(ua1-ua2))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
-    c1 = ((ug1*ug1)*(ug2*ua3-ug3*ua2)+ug1*((ug3*ug3)*ua2-(ug2*ug2)*ua3)+ug2*ug3*ua1*(ug2-ug3))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
+    a1 = (ug1*(ua2-ua3)+ug2*(ua3-ua1)+ug3*(ua1-ua2))/
+         ((ug1-ug2)*(ug1-ug3)*(ug3-ug2));
+    b1 = ((ug1*ug1)*(ua2-ua3)+(ug2*ug2)*(ua3-ua1)+(ug3*ug3)*(ua1-ua2))/
+         ((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
+    c1 = ((ug1*ug1)*(ug2*ua3-ug3*ua2)+ug1*((ug3*ug3)*ua2-(ug2*ug2)*ua3)+
+         ug2*ug3*ua1*(ug2-ug3))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
     
     // Koeffizienten für quadratische Funktion
     coeff_a = (int32_t)(a1 * 1000);
@@ -204,12 +170,16 @@ void measure_system()
     
     // Hilfswerte für Linearisierung
     z1 = 4*coeff_a;
-    z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b)); ///////////////// Quadrieren könnte Fehler sein!
+    // z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b));
+    z2 = (-4)*coeff_a;
+    temp = z2;
+    z2 = temp*coeff_c;
+    temp = z2;
+    temp1 = coeff_b;
+    z2 = temp+(coeff_b*temp1);
     z3 = (2*coeff_a)/1000;
     
-    SAM3X8E_DOUT.reset_relay(RELAY_ALL);
-    
-    
+    SAM3X8E_DOUT.reset_relay(RELAY_ALL);        // All Relays OFF
 }
 
 int32_t convert_sample_to_voltage(int32_t sample)

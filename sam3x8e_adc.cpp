@@ -166,6 +166,46 @@ uint32_t SAM3X8E_ADCClass::read_measure_adc(int full_range)
 }
 
 /*
+  Read voltage from preamp anode
+*/
+uint32_t SAM3X8E_ADCClass::measure_preamp_anode(void)
+{
+    uint32_t temp_volt[20];
+    int i = 0;
+    volatile int j = 0;
+    
+    temp_volt[0] = 0;
+    
+    while(j++ < 999999){}
+    j = 0;
+    
+    while(i < 20)
+    {
+      if (i == 0)
+      {
+        while(j++ < 999999)
+        {
+          temp_volt[i] = read_measure_adc(51900000) / 1000;
+        }
+        i++;
+        j = 0;
+      }
+      else
+      {
+        while(j++ < 999999)
+        {
+          temp_volt[i] = read_measure_adc(51900000) / 1000;
+        }
+        j = 0;
+        temp_volt[i] = temp_volt[i-1] + temp_volt[i];
+        i++;
+      }   
+    }
+    
+    return (temp_volt[19] / 20) * 1000;
+}
+
+/*
   Not used.
 */
 void SAM3X8E_ADCClass::enable_adc_input_interrupts(void)

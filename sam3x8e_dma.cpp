@@ -14,7 +14,7 @@ void SAM3X8E_DMAClass::configure_dma(uint8_t channel, uint8_t sod,
                                  uint8_t src_dev,
                                  uint8_t dest_dev)
 {
-    uint32_t read_dummy = 0;
+    //uint32_t read_dummy = 0;
     uint8_t src_per = 0;
     uint8_t dst_per = 0;
     uint8_t src_h2sel = 0;
@@ -96,7 +96,7 @@ void SAM3X8E_DMAClass::configure_dma(uint8_t channel, uint8_t sod,
                                           | ((uint8_t)(0x1U & src_h2sel) << 9);
     
     /* Clear any pending interrupts */
-    read_dummy = DMAC_EBCISR;
+    //read_dummy = DMAC_EBCISR;
     
     DMAC_SADDR0(channel) = (uint32_t)src;
     DMAC_DADDR0(channel) = (uint32_t)dst;

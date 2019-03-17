@@ -184,6 +184,7 @@ uint32_t SAM3X8E_ADCClass::measure_preamp_anode(void)
       if (i == 0)
       {
         while(j++ < 999999)
+        //while(j++ < 9999)
         {
           temp_volt[i] = read_measure_adc(51900000) / 1000;
         }
@@ -193,6 +194,7 @@ uint32_t SAM3X8E_ADCClass::measure_preamp_anode(void)
       else
       {
         while(j++ < 999999)
+        //while(j++ < 9999)
         {
           temp_volt[i] = read_measure_adc(51900000) / 1000;
         }

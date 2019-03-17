@@ -13,10 +13,10 @@
 using namespace std;
 
 const int32_t dac_volt[4] = {
-  -3000000,
-  -1500000,
+  -3000000,     // Untere Grenze
+  -1500000,     // Arbeitspunkt
   -700000,
-  0
+  0             // Obere Grenze
 };
 volatile uint32_t  adc_volt_anode[4];
 
@@ -31,13 +31,18 @@ volatile int32_t  coeff_b   = 0;
 volatile int32_t  coeff_c   = 0;
 volatile int32_t  coeff_g_k = 0;
 volatile int32_t  coeff_g_d = 0;
-volatile int32_t  z1 = 0;
-volatile int32_t  z2 = 0;
-volatile int32_t  z3 = 0;
+volatile int32_t  z1_i = 0;
+volatile int32_t  z2_i = 0;
+volatile int32_t  z3_i = 0;
 volatile int32_t  y_desired = 0;
 volatile int32_t  x_desired = 0;
+volatile int32_t  new_bias = 0;
 
 volatile int32_t  sample;
+volatile int32_t  delta_x;
+
+volatile int32_t  samples[100];
+volatile int32_t  counter;
 
 class SSC1
 {
@@ -49,17 +54,35 @@ public:
 void SSC1::Handler()
 {
   input_l = (int32_t)(SSC_RHR);
-  sample = convert_sample_to_voltage(input_l) - 1400000;
+  sample = convert_sample_to_voltage(input_l) + dac_volt[1];
+  //sample = convert_sample_to_voltage(input_l);
   
-  //y_desired = (((sample / 1000) * coeff_g_k) / 1000) + coeff_g_d;
-  //x_desired = y_desired * z1;
-  //x_desired = x_desired + z2;
-  //x_desired = sqrt(x_desired);
-  //x_desired = x_desired + coeff_b;
-  //x_desired = ((-1000)*x_desired) / z3;
+  y_desired = ((sample / 1000) * coeff_g_k) + coeff_g_d;
+  x_desired = (y_desired / 1000) * z1_i;
+  x_desired = x_desired + z2_i;
+  x_desired = sqrt(x_desired);
+  x_desired = x_desired + coeff_b;
+  x_desired = (((-1000)*x_desired) / z3_i)*1000;
   
+  //delta_x = sample - x_desired;
+  //x_desired = sample - (delta_x * 0.2);
   
-  sample = convert_voltage_to_sample(sample + 1400000);
+  //x_desired = sample;
+/*
+  if(counter < 100)
+  {
+    //samples[counter++] = x_desired - new_bias;
+    samples[counter++] = sample;
+  }
+  else
+  {
+    counter = 0;
+  }
+*/
+  //sample = convert_voltage_to_sample(sample);
+  
+  sample = convert_voltage_to_sample(x_desired - new_bias);
+  
   SSC_THR = sample;
 }
 
@@ -99,6 +122,10 @@ int main()
     SAM3X8E_DAC.write_dac(0x07FFU);             // U_cv = 0V
     
     measure_system();
+    
+    SAM3X8E_DAC.write_dac_voltage(new_bias);
+    //SAM3X8E_DAC.write_dac_voltage(dac_volt[1]);
+    //SAM3X8E_DAC.write_dac_voltage(-1500000);
 
     __enable_interrupt();
     
@@ -109,16 +136,16 @@ int main()
 
 void init_clock_for_wm8731()
 {
-    PIOA_WPMR = PIO_WPKEY | WPEN_0;
-    PIOA_PDR  = ~PIOA_PSR | (1U << 1);          // enable peripheral control
-    PIOA_PER  = PIOA_PSR & ~(1U << 1);
-    PIOA_ABSR |= (1U << 1);                     // peripherial B selected
-    PIOA_WPMR = PIO_WPKEY | WPEN_1;
+    PIOA_WPMR  =  PIO_WPKEY | WPEN_0;
+    PIOA_PDR   =  ~PIOA_PSR | (1U << 1);          // enable peripheral control
+    PIOA_PER   =  PIOA_PSR & ~(1U << 1);
+    PIOA_ABSR |=  (1U << 1);                      // peripherial B selected
+    PIOA_WPMR  =  PIO_WPKEY | WPEN_1;
     
-    PMC_WPMR  = PMC_WPKEY | WPEN_0;
-    PMC_SCER  |=	0x0100U;                // page 558
-    PMC_PCK0  = 0x01U;                          // main crystak osc = 12Mhz
-    PMC_WPMR  = PMC_WPKEY | WPEN_1;
+    PMC_WPMR   =  PMC_WPKEY | WPEN_0;
+    PMC_SCER  |=  0x0100U;                        // page 558
+    PMC_PCK0   =  0x01U;                          // main crystak osc = 12Mhz
+    PMC_WPMR   =  PMC_WPKEY | WPEN_1;
 }
 
 void measure_system()
@@ -128,6 +155,7 @@ void measure_system()
     int i,j;
     int temp,temp1;
     float ua1, ua2, ua3, ug1, ug2, ug3, a1, b1, c1;
+    float z1,z2,z3;
     index = 0;
     i = index;
     j = points;
@@ -145,13 +173,14 @@ void measure_system()
       index = i;
     }
     
-    ua1 = ((float)adc_volt_anode[0])/10000;
-    ua2 = ((float)adc_volt_anode[1])/10000;
-    ua3 = ((float)adc_volt_anode[2])/10000;
+    ua1 = ((float)adc_volt_anode[0])/1000000;
+    ua2 = ((float)adc_volt_anode[1])/1000000;
+    ua3 = ((float)adc_volt_anode[3])/1000000;
     ug1 = (((float)dac_volt[0])/1000000);
     ug2 = (((float)dac_volt[1])/1000000);
-    ug3 = (((float)dac_volt[2])/1000000);
+    ug3 = (((float)dac_volt[3])/1000000);
     
+    // Koeffizienten für quadratische Funktion
     a1 = (ug1*(ua2-ua3)+ug2*(ua3-ua1)+ug3*(ua1-ua2))/
          ((ug1-ug2)*(ug1-ug3)*(ug3-ug2));
     b1 = ((ug1*ug1)*(ua2-ua3)+(ug2*ug2)*(ua3-ua1)+(ug3*ug3)*(ua1-ua2))/
@@ -159,25 +188,40 @@ void measure_system()
     c1 = ((ug1*ug1)*(ug2*ua3-ug3*ua2)+ug1*((ug3*ug3)*ua2-(ug2*ug2)*ua3)+
          ug2*ug3*ua1*(ug2-ug3))/((ug1-ug2)*(ug1-ug3)*(ug2-ug3));
     
-    // Koeffizienten für quadratische Funktion
-    coeff_a = (int32_t)(a1 * 1000);
+    // Skalieren der Koeffizienten
+    //coeff_a = (int32_t)(a1 * 1000);
     coeff_b = (int32_t)(b1 * 1000);
-    coeff_c = (int32_t)(c1 * 1000);
+    //coeff_c = (int32_t)(c1 * 1000);
     
     // Koeffizienten für lineaere Funktion
     coeff_g_k = (int32_t)(((ua1 - ua3)/(ug1 - ug3))*1000);
-    coeff_g_d = (int32_t)((ua3 - (coeff_g_k * ug3))*1000);
+    coeff_g_d = (int32_t)((ua3 - (coeff_g_k * ug3))*1000000);
     
     // Hilfswerte für Linearisierung
-    z1 = 4*coeff_a;
+    z1 = 4*a1;
+    z2 = (-4)*a1*c1+(b1*b1);
+    z3 = 2*a1;
+    z1_i = (int32_t)(z1 * 1000);
+    z2_i = (int32_t)(z2 * 1000000);
+    z3_i = (int32_t)(z3 * 1000);
+    //z1 = 4*coeff_a;
     // z2 = (((-4)*coeff_a*coeff_c)+(coeff_b*coeff_b));
-    z2 = (-4)*coeff_a;
-    temp = z2;
-    z2 = temp*coeff_c;
-    temp = z2;
-    temp1 = coeff_b;
-    z2 = temp+(coeff_b*temp1);
-    z3 = (2*coeff_a)/1000;
+    //z2 = (-4)*coeff_a;
+    //temp = z2;
+    //z2 = temp*coeff_c;
+    //temp = z2;
+    //temp1 = coeff_b;
+    //z2 = temp+(coeff_b*temp1);
+    //z3 = (2*coeff_a)/1000;
+    
+    y_desired = ((dac_volt[1] / 1000) * coeff_g_k) + coeff_g_d;
+    x_desired = (y_desired / 1000) * z1_i;
+    x_desired = x_desired + z2_i;
+    x_desired = sqrt(x_desired);
+    x_desired = x_desired + coeff_b;
+    x_desired = (((-1000)*x_desired) / z3_i)*1000;
+    
+    new_bias = x_desired;
     
     SAM3X8E_DOUT.reset_relay(RELAY_ALL);        // All Relays OFF
 }
@@ -204,15 +248,18 @@ int32_t convert_voltage_to_sample(int32_t sample)
   {
     temp1 = (uint32_t)(temp * 1000);
     temp1 = temp1 / 36621;
-    temp = temp1;
+    //temp1 = temp1 / 1000;
+    //temp = temp1;
+    temp = (temp1 & 0x0000FFFFU);
   }
   else
   {
     temp1 = (uint32_t)(temp * (-1000));
     temp1 = temp1 / 36621;
-    temp = temp1;
-    temp = temp * (-1);
-    temp = (temp & 0x0000FFFFU) | 0x8000U;
+    //temp1 = temp1 / 1000;
+    //temp = temp1;
+    //temp = temp * (-1);
+    temp = (((-1)*temp1) & 0x0000FFFFU) | 0x8000U;
   }
   
   return temp;

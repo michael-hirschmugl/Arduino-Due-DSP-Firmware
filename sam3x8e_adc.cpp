@@ -170,33 +170,37 @@ uint32_t SAM3X8E_ADCClass::read_measure_adc(int full_range)
 */
 uint32_t SAM3X8E_ADCClass::measure_preamp_anode(void)
 {
-    uint32_t temp_volt[20];
+    const int mean = 1000;
+    uint32_t temp_volt[mean];
     int i = 0;
     volatile int j = 0;
     
+    int full_range = 51700000;
+    int repeats = 0x00000FFFU;
+    int delay   = 0x05FFFFFFU;;
+    
+    
     temp_volt[0] = 0;
     
-    while(j++ < 999999){}
+    while(j++ < delay){}
     j = 0;
     
-    while(i < 20)
+    while(i < mean)
     {
       if (i == 0)
       {
-        while(j++ < 999999)
-        //while(j++ < 9999)
+        while(j++ < repeats)
         {
-          temp_volt[i] = read_measure_adc(51900000) / 1000;
+          temp_volt[i] = read_measure_adc(full_range) / 1000;
         }
         i++;
         j = 0;
       }
       else
       {
-        while(j++ < 999999)
-        //while(j++ < 9999)
+        while(j++ < repeats)
         {
-          temp_volt[i] = read_measure_adc(51900000) / 1000;
+          temp_volt[i] = read_measure_adc(full_range) / 1000;
         }
         j = 0;
         temp_volt[i] = temp_volt[i-1] + temp_volt[i];
@@ -204,7 +208,7 @@ uint32_t SAM3X8E_ADCClass::measure_preamp_anode(void)
       }   
     }
     
-    return (temp_volt[19] / 20) * 1000;
+    return (temp_volt[mean-1] / mean) * 1000;
 }
 
 /*

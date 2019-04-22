@@ -9,7 +9,11 @@
 #define LRINBOTH                (1U)    // L register controls L/R
 #define LINMUTE                 (0U)    // Mute OFF
 //#define LINVOL                  (0x17U) // 0dB input
-#define LINVOL                  (0x1CU) // +12dB input: 1F, +6dB: 1B, 0dB: 17
+#define LINVOL                  (0x1CU) // +12dB input: 0x1F, +6dB: 0x1B, 0dB: 0x17
+/* Eingang = Ausgang mit 0x1C */
+/* Aber auch nur +-1.35V Eingangsspannungsbereich "dsp_pp2.png"*/
+/* Mit 0x1B ist der Ausgang etwas kleiner, aber Eingangsspannungsbereich geht bis 1.6V +/-. */
+/* Dann Ausgang nur 2.75V (pp) Ausgang und 3.2V (pp) Eingang "dsp_pp1.png"*/
 
 // RIGHT LINE IN
 #define RLINBOTH                (1U)

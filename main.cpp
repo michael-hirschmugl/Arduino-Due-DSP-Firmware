@@ -17,13 +17,16 @@ using namespace std;
 /* ------------------- */
 //#define LINEARISATION
 //#define OPT_LINEARISATION
-#define PASS_THROUGH
+//#define PASS_THROUGH
 //#define FULL_SWEEP
-//#define COMP
+#define COMP
 /* ------------------- */
 
 #define RMS_SAMPLES 1000
 #define BIAS -1500000
+
+#define COMP_THRESH_DB -10
+#define COMP_BIAS -700000
 
 #ifdef LINEARISATION
 const int32_t dac_volt[3] = {
@@ -104,12 +107,12 @@ int32_t  coeff_b   = 0;
 int32_t  coeff_c   = 0;
 int32_t  coeff_g_k = 0;
 int32_t  coeff_g_d = 0;
-int32_t  z1_i = 0;
-int32_t  z2_i = 0;
-int32_t  z3_i = 0;
+int32_t  z1_i      = 0;
+int32_t  z2_i      = 0;
+int32_t  z3_i      = 0;
 int32_t  y_desired = 0;
 int32_t  x_desired = 0;
-int32_t  new_bias = 0;
+int32_t  new_bias  = 0;
 #endif /* LINEARISATION or OPT_LINEARISATION */
 
 #ifdef PASS_THROUGH
@@ -118,15 +121,19 @@ volatile int32_t  counter;
 #endif /* PASS_THROUGH */
 
 #ifdef COMP
-int32_t rms_tot = 1;
-int32_t rms_res = 0;
-int32_t rms_w = RMS_SAMPLES;
-int32_t rms_new = 0;
-int32_t rms_last = 0;
-int32_t rms_count = 0;
+int32_t rms_tot    = 1;
+int32_t rms_res    = 0;
+int32_t rms_w      = RMS_SAMPLES;
+int32_t rms_new    = 0;
+int32_t rms_last   = 0;
+int32_t rms_count  = 0;
 int32_t rms_loop[RMS_SAMPLES];
 int32_t rms_loop_ptr = 0;
-int32_t u_cv = 0;
+int32_t u_cv       = 0;
+int32_t iCompThreshRMS     = 0;
+float fCompThreshRMS       = 0;
+int32_t iCompThreshAMP     = 0;
+float fCompThreshAMP       = 0;
 #endif /* COMP */
 
 class SSC1
@@ -169,19 +176,20 @@ void SSC1::Handler()
   
   rms_tot = ((rms_tot - rms_last) + rms_new);
   rms_res = (int32_t)sqrt(rms_tot/rms_w);
-  
+  /* Ergebnis des RMS ist etwa RMS/100 */
+
   rms_loop[rms_loop_ptr++] = rms_new;
     
   if(rms_loop_ptr == RMS_SAMPLES){ rms_loop_ptr = 0; }
   
   /* Compression */
-  if(rms_res < 22)
+  if(rms_res < iCompThreshRMS)
   {
-    SAM3X8E_DAC.write_dac_voltage(-200000);
+    SAM3X8E_DAC.write_dac_voltage(COMP_BIAS);
   }
   else
   {
-    u_cv = (-200000) - ((rms_res-22) / 4) * (100000);
+    u_cv = COMP_BIAS - ((rms_res * 14140) - iCompThreshAMP);
     SAM3X8E_DAC.write_dac_voltage(u_cv);
   }
   
@@ -278,8 +286,13 @@ int main()
     
 #ifdef COMP
     //measure_system();
-    
-    SAM3X8E_DAC.write_dac_voltage(-700000);
+    fCompThreshRMS = COMP_THRESH_DB;
+    fCompThreshRMS = fCompThreshRMS / 20;
+    fCompThreshRMS = (pow(10,fCompThreshRMS)*1.5/sqrt(2));
+    iCompThreshRMS = (int32_t)(fCompThreshRMS*100);
+    fCompThreshAMP = fCompThreshRMS * sqrt(2) * 1000000;
+    iCompThreshAMP = (int32_t)fCompThreshAMP;
+    SAM3X8E_DAC.write_dac_voltage(COMP_BIAS);
     __enable_interrupt();
     SAM3X8E_DOUT.set_relay(RELAY_IN_AUDIO);
 #endif /* COMP */
@@ -387,30 +400,35 @@ void measure_system()
 
 int32_t convert_sample_to_voltage(int32_t sample)
 {
-  if(sample >= 32767)
+  int max_out = 3300000; // Eingangsspannungsbereich
+  
+  if(sample >= 32767) // (2^16)/2
   {
     sample = sample - 65535;
-    sample = (1350000/32767) * sample;
+    sample = ((max_out/2)/32767) * sample;
   }
   else
   {
-    sample = (1350000/32767) * sample;
+    sample = ((max_out/2)/32767) * sample;
   }
   return sample;
 }
 
 int32_t convert_voltage_to_sample(int32_t sample)
 {
+  /* Maximaler Ausgangsspannungsbereich ist 1V(RMS), daher 2.82Vpp */
+  int quant = 43700; // 2.82V / (2^16) = 43158;
+  
   if(sample >= 0)
   {
     sample = (sample * 1000);
-    sample = sample / 41199;
+    sample = sample / quant;
     sample = (sample & 0x0000FFFFU);
   }
   else
   {
     sample = (sample * 1000);
-    sample = sample / 41199;
+    sample = sample / quant;
     sample = (sample & 0x0000FFFFU);
     sample = (sample | 0x8000U);
   }

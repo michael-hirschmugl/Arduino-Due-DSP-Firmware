@@ -21,7 +21,6 @@ void SAM3X8E_ADCClass::enable_adc_input(void)
     PMC_WPMR = PMC_WPKEY | WPEN_0;
     PMC_PCER1 = PMC_PCSR1 | ADC_PID;  // PID: 37
     PMC_WPMR = PMC_WPKEY | WPEN_1;
-
 }
 
 /*
@@ -60,10 +59,8 @@ void SAM3X8E_ADCClass::configure_adc_input(void)
 */
 void SAM3X8E_ADCClass::reset_adc(void)
 {
-
     //ADC Reset
     ADC_CR = ADC_CR_SWRST;
-
 }
 
 /*
@@ -156,6 +153,7 @@ void SAM3X8E_ADCClass::enable_ad1(void)
 
 /*
   Read voltage from arduino due A4 analog in
+  int full_range ... Voltage value of maximum voltage range (*10^6)
 */
 uint32_t SAM3X8E_ADCClass::read_measure_adc(int full_range)
 {
@@ -167,6 +165,10 @@ uint32_t SAM3X8E_ADCClass::read_measure_adc(int full_range)
 
 /*
   Read voltage from preamp anode
+  Measures voltage of tube preamp anode.
+  starts with delay of "int delay" iterations
+  "int repeats" defines amount of measurement repeats
+  "int full_range" maximum voltage range to measure
 */
 uint32_t SAM3X8E_ADCClass::measure_preamp_anode(void)
 {

@@ -25,7 +25,7 @@ void SAM3X8E_DACClass::enable_dac_output(void)
 }
 
 /*
-  Configure DAC.
+  Configure DAC on channel 0.
 */
 void SAM3X8E_DACClass::configure_dac_output(void)
 {
@@ -39,6 +39,7 @@ void SAM3X8E_DACClass::configure_dac_output(void)
 
 /*
   Write to DAC channel 0.
+  uint32_t value ... hex value for DAC
 */
 void SAM3X8E_DACClass::write_dac(uint32_t value)
 {
@@ -48,6 +49,9 @@ void SAM3X8E_DACClass::write_dac(uint32_t value)
 /*
   Write voltage between -3 and +3V to DAC channel 0.
   DAC supports 0.55-2.75V at 12bit
+  value need factor 10^6
+
+  example:
   2^12 = 4096
   2.75-0.55 = 2.2V
   2.2V / 4096 = 537µV
@@ -79,8 +83,6 @@ void SAM3X8E_DACClass::write_dac_voltage(int32_t value)
     uint32_t temp = 0x0U;
     temp = (value / 1465);
     temp = temp + 0x07FFU;
-    //temp = temp + (value / 1465);
-    
     DAC_CDR = (0x0000FFFFU & temp);
 }
 

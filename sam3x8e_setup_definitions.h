@@ -1,18 +1,26 @@
 /*
   sam3x8e_setup_definitions.h
+
+  By Michael Hirschmugl
 */
 
 #ifndef SAM3X8E_SETUP_DEFINITIONS_H
 #define SAM3X8E_SETUP_DEFINITIONS_H
 
-#define DMA_CH                          (0)
-#define DMA_BUF_SIZE                    (32)
+/*
+    Interrupt Priorities
+*/
 #define DMAC_INTERRUPT_PRIORITY         (0)
 #define SSC_INTERRUPT_PRIORITY          (1)
 #define DIG_INP_INTERRUPT_PRIORITY      (5)
 
+/*  Timeout for all setup routines */
 #define GLOBAL_TIMEOUT                  (0xFFDCU)
 
+/*
+    Relay pinout definitions
+    Actually not SAM3X8E specific defines...
+*/
 #define RELAY_IN_AUDIO                  (1U << 13)
 #define RELAY_IN_CV                     (1U << 15)
 #define RELAY_MEAS_A1                   (1U << 12)

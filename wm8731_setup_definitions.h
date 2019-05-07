@@ -1,5 +1,9 @@
 /*
   wm8731_setup_definitions.h
+
+  Definitions to initialize the WM8731 Audio CODEC
+
+  By Michael Hirschmugl
 */
 
 #ifndef WM8731_SETUP_DEFINITIONS_H
@@ -10,10 +14,6 @@
 #define LINMUTE                 (0U)    // Mute OFF
 //#define LINVOL                  (0x17U) // 0dB input
 #define LINVOL                  (0x1BU) // +12dB input: 0x1F, +6dB: 0x1B, 0dB: 0x17
-/* Eingang = Ausgang mit 0x1C */
-/* Aber auch nur +-1.35V Eingangsspannungsbereich "dsp_pp2.png"*/
-/* Mit 0x1B ist der Ausgang etwas kleiner, aber Eingangsspannungsbereich geht bis 1.6V +/-. */
-/* Dann Ausgang nur 2.75V (pp) Ausgang und 3.2V (pp) Eingang "dsp_pp1.png"*/
 
 // RIGHT LINE IN
 #define RLINBOTH                (1U)

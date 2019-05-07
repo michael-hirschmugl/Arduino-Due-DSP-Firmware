@@ -1,5 +1,7 @@
 /*
   sam3x8e_dac.h
+
+  By Michael Hirschmugl
 */
 
 #ifndef SAM3X8E_DAC_H

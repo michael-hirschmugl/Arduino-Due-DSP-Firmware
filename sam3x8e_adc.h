@@ -1,5 +1,7 @@
 /*
   sam3x8e_adc.h
+
+  By Michael Hirschmugl
 */
 
 #ifndef SAM3X8E_ADC_H

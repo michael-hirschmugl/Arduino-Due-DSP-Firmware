@@ -1,5 +1,7 @@
 /*
   sam3x8e_dma.h
+
+  By Michael Hirschmugl
 */
 
 #ifndef SAM3X8E_DMA_H

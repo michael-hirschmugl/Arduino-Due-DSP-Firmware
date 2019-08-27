@@ -17,15 +17,15 @@ using namespace std;
 /* ------------------- */
 //#define LINEARISATION
 //#define OPT_LINEARISATION
-#define PASS_THROUGH
+//#define PASS_THROUGH
 //#define FULL_SWEEP
-//#define COMP
+#define COMP
 /* ------------------- */
 
 #define RMS_SAMPLES     1000
 #define BIAS            -1500000
 
-#define COMP_THRESH_DB  -5
+#define COMP_THRESH_DB  -15
 #define COMP_BIAS       -700000
 
 #ifdef LINEARISATION
@@ -215,6 +215,7 @@ void SSC1::Handler()
     sample = sample / 1000;
     sample = sample * 1000;
     
+    /*
     if(counter < 100)
     {
       samples[counter] = sample;
@@ -224,6 +225,7 @@ void SSC1::Handler()
     {
       counter = 0;
     }
+*/
     
     sample = convert_voltage_to_sample(sample);
   #endif /* PASS_THROUGH or COMP */

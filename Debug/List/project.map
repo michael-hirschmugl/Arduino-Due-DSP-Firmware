@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.32.2.178/W32 for ARM                  08/May/2019  00:20:45
+# IAR ELF Linker V8.32.2.178/W32 for ARM                  11/Jun/2019  10:35:56
 # Copyright 2007-2018 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,7 +8,7 @@
 #    Map file     =  
 #        C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\List\project.map
 #    Command line =  
-#        -f C:\Users\u15q86\AppData\Local\Temp\EW718A.tmp
+#        -f C:\Users\u15q86\AppData\Local\Temp\EW53BF.tmp
 #        (C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\Obj\cstartup_M_cpp.o
 #        C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\Obj\main.o
 #        C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\Obj\sam3x8e_adc.o
@@ -62,73 +62,113 @@ define block CSTACK with size = 4K, alignment = 8 { };
 define block HEAP with size = 8K, alignment = 8 { };
 "P2":  place in [from 0x2007'0000 to 0x2008'7fff] {
           rw, block CSTACK, block HEAP };
+initialize by copy { rw };
 
-  Section          Kind         Address    Size  Object
-  -------          ----         -------    ----  ------
-"A0":                                      0xe0
-  .intvec          const       0x8'0000    0xe0  cstartup_M_cpp.o [1]
-                             - 0x8'00e0    0xe0
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                        0xe0
+  .intvec            const       0x8'0000    0xe0  cstartup_M_cpp.o [1]
+                               - 0x8'00e0    0xe0
 
-"P1":                                     0xb5f
-  .text            ro code     0x8'00e0   0x21c  main.o [1]
-  .text            ro code     0x8'02fc    0x10  sam3x8e_wdt.o [1]
-  .text            ro code     0x8'030c   0x150  sam3x8e_setup.o [1]
-  .text            ro code     0x8'045c   0x1d0  sam3x8e_twi.o [1]
-  .text            ro code     0x8'062c   0x1b8  sam3x8e_ssc.o [1]
-  .text            ro code     0x8'07e4    0x88  sam3x8e_din.o [1]
-  .text            ro code     0x8'086c   0x1b8  sam3x8e_adc.o [1]
-  .text            ro code     0x8'0a24    0x8c  sam3x8e_dac.o [1]
-  .text            ro code     0x8'0ab0    0xb4  sam3x8e_dout.o [1]
-  .text            ro code     0x8'0b64    0x3a  zero_init3.o [3]
-  .text            ro code     0x8'0b9e     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0ba0    0x28  data_init.o [3]
-  .iar.init_table  const       0x8'0bc8    0x10  - Linker created -
-  .text            ro code     0x8'0bd8    0x1e  cmain.o [3]
-  .text            ro code     0x8'0bf6     0x4  exit.o [2]
-  .text            ro code     0x8'0bfa     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0bfc     0xa  cexit.o [3]
-  .text            ro code     0x8'0c06     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c08    0x14  exit.o [4]
-  .text            ro code     0x8'0c1c    0x10  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c2c     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c2e     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c30     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c32     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c34     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c36     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c38     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c3a     0x2  cstartup_M_cpp.o [1]
-  .text            ro code     0x8'0c3c     0x2  cstartup_M_cpp.o [1]
-  .rodata          const       0x8'0c3e     0x1  unwind_debug.o [4]
-  .rodata          const       0x8'0c3f     0x0  zero_init3.o [3]
-                             - 0x8'0c3f   0xb5f
+"P1":                                      0x2849
+  .text              ro code     0x8'00e0   0x714  pow64.o [3]
+  .text              ro code     0x8'07f4    0x20  DblCmpEq.o [3]
+  .text              ro code     0x8'0814    0x70  frexp.o [3]
+  .text              ro code     0x8'0884    0x2e  DblCmpLe.o [3]
+  .text              ro code     0x8'08b2    0x3a  zero_init3.o [4]
+  .text              ro code     0x8'08ec   0x13a  ldexp.o [3]
+  .text              ro code     0x8'0a26     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'0a28   0x1a2  DblMul.o [3]
+  .text              ro code     0x8'0bca     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'0bcc   0x17a  DblAdd.o [3]
+  .text              ro code     0x8'0d46     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'0d48    0x3a  DblToS32.o [3]
+  .text              ro code     0x8'0d82     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'0d84    0x22  S32ToDbl.o [3]
+  .text              ro code     0x8'0da6     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'0da8    0xe2  DblSub.o [3]
+  .text              ro code     0x8'0e8a     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'0e8c   0x246  DblDiv.o [3]
+  .text              ro code     0x8'10d2     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'10d4    0x2e  DblCmpGe.o [3]
+  .text              ro code     0x8'1102     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'1104   0x374  iar_Exp64.o [3]
+  .rodata            const       0x8'1478   0x420  pow64.o [3]
+  .text              ro code     0x8'1898   0x37c  main.o [1]
+  .text              ro code     0x8'1c14    0x10  main.o [1]
+  .text              ro code     0x8'1c24    0x8c  sam3x8e_dac.o [1]
+  .text              ro code     0x8'1cb0    0x10  sam3x8e_wdt.o [1]
+  .text              ro code     0x8'1cc0   0x150  sam3x8e_setup.o [1]
+  .text              ro code     0x8'1e10   0x1d0  sam3x8e_twi.o [1]
+  .text              ro code     0x8'1fe0   0x1b8  sam3x8e_ssc.o [1]
+  .text              ro code     0x8'2198    0x88  sam3x8e_din.o [1]
+  .text              ro code     0x8'2220   0x1b8  sam3x8e_adc.o [1]
+  .text              ro code     0x8'23d8    0xb4  sam3x8e_dout.o [1]
+  .text              ro code     0x8'248c    0xfc  FltDiv.o [3]
+  .text              ro code     0x8'2588    0x24  main.o [1]
+  .text              ro code     0x8'25ac    0x68  DblToFlt.o [3]
+  .text              ro code     0x8'2614    0xd8  FltMul.o [3]
+  .text              ro code     0x8'26ec    0x2a  FltToS32.o [3]
+  .text              ro code     0x8'2716     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'2718    0x48  FltToDbl.o [3]
+  .text              ro code     0x8'2760    0xf2  sqrt.o [3]
+  .text              ro code     0x8'2852    0x2c  copy_init3.o [4]
+  .text              ro code     0x8'287e     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'2880    0x28  data_init.o [4]
+  .iar.init_table    const       0x8'28a8    0x24  - Linker created -
+  .text              ro code     0x8'28cc    0x1e  cmain.o [4]
+  .text              ro code     0x8'28ea     0x4  exit.o [2]
+  .text              ro code     0x8'28ee     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'28f0     0xa  cexit.o [4]
+  .text              ro code     0x8'28fa     0x2  cstartup_M_cpp.o [1]
+  .text              ro code     0x8'28fc    0x14  exit.o [5]
+  .text              ro code     0x8'2910    0x10  cstartup_M_cpp.o [1]
+  Initializer bytes  const       0x8'2920     0x8  <for P2-1>
+  .rodata            const       0x8'2928     0x1  unwind_debug.o [5]
+  .rodata            const       0x8'2929     0x0  zero_init3.o [4]
+  .rodata            const       0x8'2929     0x0  copy_init3.o [4]
+                               - 0x8'2929  0x2849
 
-"P2", part 1 of 2:                        0x1a8
-  .bss             zero     0x2007'0000   0x190  main.o [1]
-  .bss             zero     0x2007'0190     0x4  main.o [1]
-  .bss             zero     0x2007'0194     0x4  main.o [1]
-  .bss             zero     0x2007'0198     0x4  main.o [1]
-  .bss             zero     0x2007'019c     0x4  sam3x8e_setup.o [1]
-  .bss             zero     0x2007'01a0     0x1  sam3x8e_adc.o [1]
-  .bss             zero     0x2007'01a1     0x1  sam3x8e_dac.o [1]
-  .bss             zero     0x2007'01a2     0x1  sam3x8e_din.o [1]
-  .bss             zero     0x2007'01a3     0x1  sam3x8e_dout.o [1]
-  .bss             zero     0x2007'01a4     0x1  sam3x8e_ssc.o [1]
-  .bss             zero     0x2007'01a5     0x1  sam3x8e_twi.o [1]
-  .bss             zero     0x2007'01a6     0x1  sam3x8e_wdt.o [1]
-                          - 0x2007'01a7   0x1a7
+"P2", part 1 of 3:                            0x8
+  P2-1                        0x2007'0000     0x8  <Init block>
+    .data            inited   0x2007'0000     0x4  main.o [1]
+    .data            inited   0x2007'0004     0x4  main.o [1]
+                            - 0x2007'0008     0x8
 
-"P2", part 2 of 2:                       0x1000
-  CSTACK                    0x2007'01a8  0x1000  <Block>
-    CSTACK         uninit   0x2007'01a8  0x1000  <Block tail>
-                          - 0x2007'11a8  0x1000
+"P2", part 2 of 3:                          0xfd8
+  .bss               zero     0x2007'0008   0xfa0  main.o [1]
+  .bss               zero     0x2007'0fa8     0x4  main.o [1]
+  .bss               zero     0x2007'0fac     0x4  main.o [1]
+  .bss               zero     0x2007'0fb0     0x4  main.o [1]
+  .bss               zero     0x2007'0fb4     0x4  main.o [1]
+  .bss               zero     0x2007'0fb8     0x4  main.o [1]
+  .bss               zero     0x2007'0fbc     0x4  main.o [1]
+  .bss               zero     0x2007'0fc0     0x4  main.o [1]
+  .bss               zero     0x2007'0fc4     0x4  main.o [1]
+  .bss               zero     0x2007'0fc8     0x4  main.o [1]
+  .bss               zero     0x2007'0fcc     0x4  main.o [1]
+  .bss               zero     0x2007'0fd0     0x4  main.o [1]
+  .bss               zero     0x2007'0fd4     0x4  sam3x8e_setup.o [1]
+  .bss               zero     0x2007'0fd8     0x1  sam3x8e_adc.o [1]
+  .bss               zero     0x2007'0fd9     0x1  sam3x8e_dac.o [1]
+  .bss               zero     0x2007'0fda     0x1  sam3x8e_din.o [1]
+  .bss               zero     0x2007'0fdb     0x1  sam3x8e_dout.o [1]
+  .bss               zero     0x2007'0fdc     0x1  sam3x8e_ssc.o [1]
+  .bss               zero     0x2007'0fdd     0x1  sam3x8e_twi.o [1]
+  .bss               zero     0x2007'0fde     0x1  sam3x8e_wdt.o [1]
+                            - 0x2007'0fdf   0xfd7
+
+"P2", part 3 of 3:                         0x1000
+  CSTACK                      0x2007'0fe0  0x1000  <Block>
+    CSTACK           uninit   0x2007'0fe0  0x1000  <Block tail>
+                            - 0x2007'1fe0  0x1000
 
 Unused ranges:
 
          From           To      Size
          ----           --      ----
-     0x8'0c3f     0xf'ffff  0x7'f3c1
-  0x2007'11a8  0x2008'7fff  0x1'6e58
+     0x8'2929     0xf'ffff  0x7'd6d7
+  0x2007'1fe0  0x2008'7fff  0x1'6020
 
 
 *******************************************************************************
@@ -138,8 +178,14 @@ Unused ranges:
           Address      Size
           -------      ----
 Zero (__iar_zero_init3)
-    1 destination range, total size 0x1a7:
-          0x2007'0000  0x1a7
+    1 destination range, total size 0xfd7:
+          0x2007'0008  0xfd7
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x8:
+             0x8'2920    0x8
+    1 destination range, total size 0x8:
+          0x2007'0000    0x8
 
 
 
@@ -155,7 +201,7 @@ command line/config:
 
 C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\Obj: [1]
     cstartup_M_cpp.o       40      224
-    main.o                540               412
+    main.o                944        8    4 052
     sam3x8e_adc.o         440                 1
     sam3x8e_dac.o         140                 1
     sam3x8e_din.o         136                 1
@@ -165,30 +211,54 @@ C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\Obj: [1]
     sam3x8e_twi.o         464                 1
     sam3x8e_wdt.o          16                 1
     -------------------------------------------
-    Total:              2 732      224      423
+    Total:              3 136      232    4 063
 
 dl7M_tln.a: [2]
     exit.o                  4
     -------------------------------------------
     Total:                  4
 
-rt7M_tl.a: [3]
+m7M_tl.a: [3]
+    DblAdd.o              378
+    DblCmpEq.o             32
+    DblCmpGe.o             46
+    DblCmpLe.o             46
+    DblDiv.o              582
+    DblMul.o              418
+    DblSub.o              226
+    DblToFlt.o            104
+    DblToS32.o             58
+    FltDiv.o              252
+    FltMul.o              216
+    FltToDbl.o             72
+    FltToS32.o             42
+    S32ToDbl.o             34
+    frexp.o               112
+    iar_Exp64.o           884
+    ldexp.o               314
+    pow64.o             1 812    1 056
+    sqrt.o                242
+    -------------------------------------------
+    Total:              5 870    1 056
+
+rt7M_tl.a: [4]
     cexit.o                10
     cmain.o                30
+    copy_init3.o           44
     data_init.o            40
     zero_init3.o           58
     -------------------------------------------
-    Total:                138
+    Total:                182
 
-shb_l.a: [4]
+shb_l.a: [5]
     exit.o                 20
     unwind_debug.o                   1
     -------------------------------------------
     Total:                 20        1
 
-    Linker created                  16    4 096
+    Linker created                  36    4 096
 -----------------------------------------------
-    Grand Total:        2 894      241    4 519
+    Grand Total:        9 212    1 325    8 159
 
 
 *******************************************************************************
@@ -197,126 +267,185 @@ shb_l.a: [4]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base      0x8'0bc8          --   Gb  - Linker created -
-.iar.init_table$$Limit     0x8'0bd8          --   Gb  - Linker created -
-?main                      0x8'0bd9         Code  Gb  cmain.o [3]
-CSTACK$$Base            0x2007'01a8          --   Gb  - Linker created -
-CSTACK$$Limit           0x2007'11a8          --   Gb  - Linker created -
-Region$$Table$$Base        0x8'0bc8          --   Gb  - Linker created -
-Region$$Table$$Limit       0x8'0bd8          --   Gb  - Linker created -
-SAM3X8E_ADC             0x2007'01a0    0x1  Data  Gb  sam3x8e_adc.o [1]
+.iar.init_table$$Base      0x8'28a8          --   Gb  - Linker created -
+.iar.init_table$$Limit     0x8'28cc          --   Gb  - Linker created -
+?main                      0x8'28cd         Code  Gb  cmain.o [4]
+CSTACK$$Base            0x2007'0fe0          --   Gb  - Linker created -
+CSTACK$$Limit           0x2007'1fe0          --   Gb  - Linker created -
+Region$$Table$$Base        0x8'28a8          --   Gb  - Linker created -
+Region$$Table$$Limit       0x8'28cc          --   Gb  - Linker created -
+SAM3X8E_ADC             0x2007'0fd8    0x1  Data  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::configure_adc_input()
-                           0x8'0885   0x18  Code  Gb  sam3x8e_adc.o [1]
+                           0x8'2239   0x18  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::enable_ad1()
-                           0x8'0983   0x4a  Code  Gb  sam3x8e_adc.o [1]
+                           0x8'2337   0x4a  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::enable_ad2()
-                           0x8'0939   0x4a  Code  Gb  sam3x8e_adc.o [1]
+                           0x8'22ed   0x4a  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::enable_ad3()
-                           0x8'08ef   0x4a  Code  Gb  sam3x8e_adc.o [1]
+                           0x8'22a3   0x4a  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::enable_adc_input()
-                           0x8'086d   0x18  Code  Gb  sam3x8e_adc.o [1]
+                           0x8'2221   0x18  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::enable_measure_adc()
-                           0x8'08a5   0x4a  Code  Gb  sam3x8e_adc.o [1]
+                           0x8'2259   0x4a  Code  Gb  sam3x8e_adc.o [1]
 SAM3X8E_ADCClass::reset_adc()
-                           0x8'089d    0x8  Code  Gb  sam3x8e_adc.o [1]
-SAM3X8E_DAC             0x2007'01a1    0x1  Data  Gb  sam3x8e_dac.o [1]
+                           0x8'2251    0x8  Code  Gb  sam3x8e_adc.o [1]
+SAM3X8E_DAC             0x2007'0fd9    0x1  Data  Gb  sam3x8e_dac.o [1]
 SAM3X8E_DACClass::configure_dac_output()
-                           0x8'0a3d   0x20  Code  Gb  sam3x8e_dac.o [1]
+                           0x8'1c3d   0x20  Code  Gb  sam3x8e_dac.o [1]
 SAM3X8E_DACClass::enable_dac_output()
-                           0x8'0a25   0x18  Code  Gb  sam3x8e_dac.o [1]
+                           0x8'1c25   0x18  Code  Gb  sam3x8e_dac.o [1]
 SAM3X8E_DACClass::write_dac(unsigned int)
-                           0x8'0a5d    0x8  Code  Gb  sam3x8e_dac.o [1]
+                           0x8'1c5d    0x8  Code  Gb  sam3x8e_dac.o [1]
 SAM3X8E_DACClass::write_dac_voltage(int)
-                           0x8'0a65   0x1a  Code  Gb  sam3x8e_dac.o [1]
-SAM3X8E_DIN             0x2007'01a2    0x1  Data  Gb  sam3x8e_din.o [1]
+                           0x8'1c65   0x1a  Code  Gb  sam3x8e_dac.o [1]
+SAM3X8E_DIN             0x2007'0fda    0x1  Data  Gb  sam3x8e_din.o [1]
 SAM3X8E_DINClass::enable_digital_input()
-                           0x8'07e5   0x4c  Code  Gb  sam3x8e_din.o [1]
-SAM3X8E_DOUT            0x2007'01a3    0x1  Data  Gb  sam3x8e_dout.o [1]
+                           0x8'2199   0x4c  Code  Gb  sam3x8e_din.o [1]
+SAM3X8E_DOUT            0x2007'0fdb    0x1  Data  Gb  sam3x8e_dout.o [1]
 SAM3X8E_DOUTClass::enable_digital_output()
-                           0x8'0ab1   0x6e  Code  Gb  sam3x8e_dout.o [1]
+                           0x8'23d9   0x6e  Code  Gb  sam3x8e_dout.o [1]
 SAM3X8E_DOUTClass::reset_relay(unsigned int)
-                           0x8'0b25    0x6  Code  Gb  sam3x8e_dout.o [1]
+                           0x8'244d    0x6  Code  Gb  sam3x8e_dout.o [1]
 SAM3X8E_DOUTClass::set_relay(unsigned int)
-                           0x8'0b1f    0x6  Code  Gb  sam3x8e_dout.o [1]
-SAM3X8E_SETUP           0x2007'019c    0x4  Data  Gb  sam3x8e_setup.o [1]
+                           0x8'2447    0x6  Code  Gb  sam3x8e_dout.o [1]
+SAM3X8E_SETUP           0x2007'0fd4    0x4  Data  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::change_flash_read_waitstate(int)
-                           0x8'035f    0xe  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1d13    0xe  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::check_main_oscillator_frequency()
-                           0x8'0413   0x18  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1dc7   0x18  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::enable_main_oscillator()
-                           0x8'036d   0x12  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1d21   0x12  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::init_clock()
-                           0x8'030d   0x52  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1cc1   0x52  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::select_master_clock()
-                           0x8'03a9   0x48  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1d5d   0x48  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::set_pll_and_divider()
-                           0x8'038b   0x12  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1d3f   0x12  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::wait_for_main_oscillator()
-                           0x8'037f    0xc  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1d33    0xc  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::wait_for_master_clock()
-                           0x8'03f1   0x22  Code  Gb  sam3x8e_setup.o [1]
+                           0x8'1da5   0x22  Code  Gb  sam3x8e_setup.o [1]
 SAM3X8E_SETUPClass::wait_for_pll()
-                           0x8'039d    0xc  Code  Gb  sam3x8e_setup.o [1]
-SAM3X8E_SSC             0x2007'01a4    0x1  Data  Gb  sam3x8e_ssc.o [1]
+                           0x8'1d51    0xc  Code  Gb  sam3x8e_setup.o [1]
+SAM3X8E_SSC             0x2007'0fdc    0x1  Data  Gb  sam3x8e_ssc.o [1]
 SAM3X8E_SSCClass::init_ssc()
-                           0x8'0645   0x12  Code  Gb  sam3x8e_ssc.o [1]
+                           0x8'1ff9   0x12  Code  Gb  sam3x8e_ssc.o [1]
 SAM3X8E_SSCClass::init_ssc_clk()
-                           0x8'062d   0x18  Code  Gb  sam3x8e_ssc.o [1]
+                           0x8'1fe1   0x18  Code  Gb  sam3x8e_ssc.o [1]
 SAM3X8E_SSCClass::setup_pio_for_ssc()
-                           0x8'0657   0xa6  Code  Gb  sam3x8e_ssc.o [1]
+                           0x8'200b   0xa6  Code  Gb  sam3x8e_ssc.o [1]
 SAM3X8E_SSCClass::setup_ssc_master_transfer()
-                           0x8'06fd   0x48  Code  Gb  sam3x8e_ssc.o [1]
+                           0x8'20b1   0x48  Code  Gb  sam3x8e_ssc.o [1]
 SAM3X8E_SSCClass::ssc_interrupt_setup()
-                           0x8'0745   0x12  Code  Gb  sam3x8e_ssc.o [1]
-SAM3X8E_TWI             0x2007'01a5    0x1  Data  Gb  sam3x8e_twi.o [1]
+                           0x8'20f9   0x12  Code  Gb  sam3x8e_ssc.o [1]
+SAM3X8E_TWI             0x2007'0fdd    0x1  Data  Gb  sam3x8e_twi.o [1]
 SAM3X8E_TWIClass::init_twi1()
-                           0x8'0475   0x12  Code  Gb  sam3x8e_twi.o [1]
+                           0x8'1e29   0x12  Code  Gb  sam3x8e_twi.o [1]
 SAM3X8E_TWIClass::init_twi1_clk()
-                           0x8'045d   0x18  Code  Gb  sam3x8e_twi.o [1]
+                           0x8'1e11   0x18  Code  Gb  sam3x8e_twi.o [1]
 SAM3X8E_TWIClass::send_two_bytes_to_wm8731(unsigned char, unsigned char)
-                           0x8'04c5   0x78  Code  Gb  sam3x8e_twi.o [1]
+                           0x8'1e79   0x78  Code  Gb  sam3x8e_twi.o [1]
 SAM3X8E_TWIClass::setup_WM8731()
-                           0x8'057d   0xb0  Code  Gb  sam3x8e_twi.o [1]
+                           0x8'1f31   0xb0  Code  Gb  sam3x8e_twi.o [1]
 SAM3X8E_TWIClass::setup_pio_for_twi1()
-                           0x8'0487   0x24  Code  Gb  sam3x8e_twi.o [1]
+                           0x8'1e3b   0x24  Code  Gb  sam3x8e_twi.o [1]
 SAM3X8E_TWIClass::setup_twi1_master_transfer()
-                           0x8'04ab   0x1a  Code  Gb  sam3x8e_twi.o [1]
-SAM3X8E_WDT             0x2007'01a6    0x1  Data  Gb  sam3x8e_wdt.o [1]
+                           0x8'1e5f   0x1a  Code  Gb  sam3x8e_twi.o [1]
+SAM3X8E_WDT             0x2007'0fde    0x1  Data  Gb  sam3x8e_wdt.o [1]
 SAM3X8E_WDTClass::disable_watchdog_timer()
-                           0x8'02fd   0x10  Code  Gb  sam3x8e_wdt.o [1]
-SSC1::Handler()            0x8'00e1   0x58  Code  Gb  main.o [1]
-__cmain                    0x8'0bd9         Code  Gb  cmain.o [3]
-__exit                     0x8'0c09   0x14  Code  Gb  exit.o [4]
-__iar_data_init3           0x8'0ba1   0x28  Code  Gb  data_init.o [3]
-__iar_debug_exceptions     0x8'0c3e    0x1  Data  Gb  unwind_debug.o [4]
-__iar_program_start        0x8'0c1d   0x10  Code  Gb  cstartup_M_cpp.o [1]
-__iar_zero_init3           0x8'0b65   0x3a  Code  Gb  zero_init3.o [3]
+                           0x8'1cb1   0x10  Code  Gb  sam3x8e_wdt.o [1]
+SSC1::Handler()            0x8'1899   0xde  Code  Gb  main.o [1]
+__aeabi_cdcmpeq            0x8'07f5         Code  Gb  DblCmpEq.o [3]
+__aeabi_cdcmple            0x8'0885         Code  Gb  DblCmpLe.o [3]
+__aeabi_cdrcmple           0x8'10d5         Code  Gb  DblCmpGe.o [3]
+__aeabi_d2f                0x8'25ad         Code  Gb  DblToFlt.o [3]
+__aeabi_d2iz               0x8'0d49         Code  Gb  DblToS32.o [3]
+__aeabi_dadd               0x8'0bcd         Code  Gb  DblAdd.o [3]
+__aeabi_ddiv               0x8'0e8d         Code  Gb  DblDiv.o [3]
+__aeabi_dmul               0x8'0a29         Code  Gb  DblMul.o [3]
+__aeabi_dsub               0x8'0da9         Code  Gb  DblSub.o [3]
+__aeabi_f2d                0x8'2719         Code  Gb  FltToDbl.o [3]
+__aeabi_f2iz               0x8'26ed         Code  Gb  FltToS32.o [3]
+__aeabi_fdiv               0x8'248d         Code  Gb  FltDiv.o [3]
+__aeabi_fmul               0x8'2615         Code  Gb  FltMul.o [3]
+__aeabi_i2d                0x8'0d85         Code  Gb  S32ToDbl.o [3]
+__cmain                    0x8'28cd         Code  Gb  cmain.o [4]
+__exit                     0x8'28fd   0x14  Code  Gb  exit.o [5]
+__iar_Exp64                0x8'1105  0x320  Code  Gb  iar_Exp64.o [3]
+__iar_Pow64                0x8'00e1  0x682  Code  Lc  pow64.o [3]
+__iar_copy_init3           0x8'2853   0x2c  Code  Gb  copy_init3.o [4]
+__iar_dadd                 0x8'0db9         Code  Gb  DblSub.o [3]
+__iar_data_init3           0x8'2881   0x28  Code  Gb  data_init.o [4]
+__iar_debug_exceptions     0x8'2928    0x1  Data  Gb  unwind_debug.o [5]
+__iar_dsub                 0x8'0bdd         Code  Gb  DblAdd.o [3]
+__iar_dsubStart            0x8'0bef         Code  Gb  DblAdd.o [3]
+__iar_frexp                0x8'0821         Code  Gb  frexp.o [3]
+__iar_frexp64              0x8'0815         Code  Gb  frexp.o [3]
+__iar_frexpl               0x8'0821         Code  Gb  frexp.o [3]
+__iar_ldexp64              0x8'08ed         Code  Gb  ldexp.o [3]
+__iar_pow64                0x8'07e9    0xc  Code  Gb  pow64.o [3]
+__iar_pow_medium           0x8'07e9    0xc  Code  Gb  pow64.o [3]
+__iar_pow_medium64         0x8'07e9    0xc  Code  Gb  pow64.o [3]
+__iar_pow_mediuml          0x8'07e9    0xc  Code  Gb  pow64.o [3]
+__iar_program_start        0x8'2911   0x10  Code  Gb  cstartup_M_cpp.o [1]
+__iar_scalbln64            0x8'08ed         Code  Gb  ldexp.o [3]
+__iar_scalbn64             0x8'08ed         Code  Gb  ldexp.o [3]
+__iar_sqrt64               0x8'2761         Code  Gb  sqrt.o [3]
+__iar_zero_init3           0x8'08b3   0x3a  Code  Gb  zero_init3.o [4]
 __vector_table             0x8'0000   0xe0  Data  Gb  cstartup_M_cpp.o [1]
-_call_main                 0x8'0be5         Code  Gb  cmain.o [3]
-_exit                      0x8'0bfd         Code  Gb  cexit.o [3]
-_main                      0x8'0bf3         Code  Gb  cmain.o [3]
+_call_main                 0x8'28d9         Code  Gb  cmain.o [4]
+_exit                      0x8'28f1         Code  Gb  cexit.o [4]
+_main                      0x8'28e7         Code  Gb  cmain.o [4]
 convert_sample_to_voltage(int)
-                           0x8'022f   0x32  Code  Gb  main.o [1]
+                           0x8'1b0b   0x32  Code  Gb  main.o [1]
 convert_voltage_to_sample(int)
-                           0x8'02d5   0x28  Code  Gb  main.o [1]
-counter                 0x2007'0198    0x4  Data  Gb  main.o [1]
-exit                       0x8'0bf7    0x4  Code  Gb  exit.o [2]
+                           0x8'1bed   0x28  Code  Gb  main.o [1]
+exit                       0x8'28eb    0x4  Code  Gb  exit.o [2]
+fCompThreshAMP          0x2007'0fd0    0x4  Data  Gb  main.o [1]
+fCompThreshRMS          0x2007'0fc8    0x4  Data  Gb  main.o [1]
+frexp                      0x8'0815         Code  Gb  frexp.o [3]
+frexpl                     0x8'0815         Code  Gb  frexp.o [3]
+iCompThreshAMP          0x2007'0fcc    0x4  Data  Gb  main.o [1]
+iCompThreshRMS          0x2007'0fc4    0x4  Data  Gb  main.o [1]
 init_clock_for_wm8731()
-                           0x8'01e7   0x48  Code  Gb  main.o [1]
-input_l                 0x2007'0190    0x4  Data  Gb  main.o [1]
-main                       0x8'0139   0xae  Code  Gb  main.o [1]
-sample                  0x2007'0194    0x4  Data  Gb  main.o [1]
-samples                 0x2007'0000  0x190  Data  Gb  main.o [1]
+                           0x8'1ac3   0x48  Code  Gb  main.o [1]
+input_l                 0x2007'0fa8    0x4  Data  Gb  main.o [1]
+ldexp                      0x8'08ed         Code  Gb  ldexp.o [3]
+ldexpl                     0x8'08ed         Code  Gb  ldexp.o [3]
+lnbias                     0x8'1478  0x420  Data  Lc  pow64.o [3]
+main                       0x8'1977  0x14c  Code  Gb  main.o [1]
+pow                        0x8'07e9    0xc  Code  Gb  pow64.o [3]
+powl                       0x8'07e9    0xc  Code  Gb  pow64.o [3]
+rms_last                0x2007'0fb8    0x4  Data  Gb  main.o [1]
+rms_loop                0x2007'0008  0xfa0  Data  Gb  main.o [1]
+rms_loop_ptr            0x2007'0fbc    0x4  Data  Gb  main.o [1]
+rms_new                 0x2007'0fb4    0x4  Data  Gb  main.o [1]
+rms_res                 0x2007'0fb0    0x4  Data  Gb  main.o [1]
+rms_tot                 0x2007'0000    0x4  Data  Gb  main.o [1]
+rms_w                   0x2007'0004    0x4  Data  Gb  main.o [1]
+sample                  0x2007'0fac    0x4  Data  Gb  main.o [1]
+scalbln                    0x8'08ed         Code  Gb  ldexp.o [3]
+scalblnl                   0x8'08ed         Code  Gb  ldexp.o [3]
+scalbn                     0x8'08ed         Code  Gb  ldexp.o [3]
+scalbnl                    0x8'08ed         Code  Gb  ldexp.o [3]
+sqrt                       0x8'2761         Code  Gb  sqrt.o [3]
+sqrtl                      0x8'2761         Code  Gb  sqrt.o [3]
+std::enable_if<((std::is_arithmetic<int>::value&&std::is_arithmetic<float>::value)&&std::_AvoidSame2), std::_Common_float_type<int, float>::type>::type pow<int, float>(int, float)
+                           0x8'2589   0x24  Code  Gb  main.o [1]
+std::enable_if<(std::is_integral<int>::value&&std::_AvoidSame), double>::type sqrt<int>(int)
+                           0x8'1c15   0x10  Code  Gb  main.o [1]
+u_cv                    0x2007'0fc0    0x4  Data  Gb  main.o [1]
 
 
 [1] = C:\Users\u15q86\Documents\GitHub\Arduino-Due-DSP\Debug\Obj
 [2] = dl7M_tln.a
-[3] = rt7M_tl.a
-[4] = shb_l.a
+[3] = m7M_tl.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
 
-  2 894 bytes of readonly  code memory
-    241 bytes of readonly  data memory
-  4 519 bytes of readwrite data memory
+  9 212 bytes of readonly  code memory
+  1 325 bytes of readonly  data memory
+  8 159 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

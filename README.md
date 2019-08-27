@@ -23,3 +23,6 @@ A mute button.
 - Work on defined filter gain control in dB.
 - Three potentiometers for every filter gain.
 - Measure frequency response for all filters.
+
+## Branches
+Well, I actually completely abandoned the idea of the filtering stuff for my thesis. The branch "linearisation" is the firmware for my completed project and it features dynamic linearisation of a tube amplifier circuit, measurement und voltage output and even dynamic audio compression algorithms. Still, I will not merge it with the master branch because I delted all filtering code which might be usefull in the future. Just so you know: This rep is closed for good! :)
